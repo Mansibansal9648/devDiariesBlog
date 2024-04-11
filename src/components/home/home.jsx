@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import Footer from "../common/footer";
-import NavBar from "../common/navBar";
-import {useLocation,useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
+import Footer from '../common/footer';
+import NavBar from '../common/navBar';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Home() {
-    const location=useLocation();
-    const navigate=useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-useEffect(()=>{
-if(location.pathname==='/'){
-    navigate('/home');
-}
-},[])
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/home');
+    }
+  }, []);
 
   return (
     <>
