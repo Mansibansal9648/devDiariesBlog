@@ -27,6 +27,7 @@ function RichTextEditor() {
       title: postdata?.title ?? "",
       content: postdata?.content ?? "",
       labels: postdata?.labels ?? "",
+      comment_options: postdata?.comment_options??"allow",
     };
   };
 
@@ -99,7 +100,7 @@ function RichTextEditor() {
     }
     // console.log(post);
   };
-  
+  console.log("post", post)
   const onChangeHandlerLabel = (event) => {
     setSearchedLAbel({ [event.target.name]: event.target.value });
   };
@@ -374,7 +375,8 @@ function RichTextEditor() {
                         id="allow"
                         value={"allow"}
                         className="me-2"
-                        defaultChecked={true}
+                        onChange={(e)=>{onChangeHandler("",e)}}
+                        defaultChecked={postdata?.comment_options=="allow"?true:false}
                       />
 
                       <label htmlFor="allow">Allow</label>
@@ -386,6 +388,8 @@ function RichTextEditor() {
                         id="show_existing"
                         value={"show_existing"}
                         className="me-2"
+                        onChange={(e)=>{onChangeHandler("",e)}}
+                        defaultChecked={postdata?.comment_options=="show_existing"?true:false}
                       />
                       <label htmlFor="show_existing">Show Existing</label>
                     </div>
@@ -395,6 +399,8 @@ function RichTextEditor() {
                         name="comment_options"
                         id="hide_existing"
                         value={"hide_existing"}
+                        onChange={(e)=>{onChangeHandler("",e)}}
+                        defaultChecked={postdata?.comment_options=="hide_existing"?true:false}
                         className="me-2"
                       />
 

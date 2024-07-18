@@ -68,7 +68,7 @@ function MyBlog() {
                           <h6>{item.title}</h6>
                           <p>{}</p>
                           <span>
-                            {item.createdAt.split(".")[0].replace("T", " ")}
+                            {item.createdAt}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
