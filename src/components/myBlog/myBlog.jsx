@@ -68,7 +68,7 @@ function MyBlog() {
                           <h6>{item.title}</h6>
                           <p>{}</p>
                           <span>
-                            {item.createdAt}
+                            {item.updatedAt}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">

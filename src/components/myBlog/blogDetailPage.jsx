@@ -5,11 +5,13 @@ import "./blogDetailPage.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import pp from '../../assets/images/profile.png'
+import { useAppContext } from "../../contextApi/context";
 
 function BlogDetailPage() {
   const [blog, setBlog] = useState({});
 
  const location = useLocation()
+ const {store:{user}}=useAppContext();
  const post = location.state
  console.log("postd", post)
 
@@ -32,7 +34,7 @@ function BlogDetailPage() {
                 <img src={pp} className="img-fluid" alt="" />
               </div>
               <div className="blog_details">
-                <h6 className="fs-5 pb-3"> BY {post.userId.name.toUpperCase()}</h6>
+                <h6 className="fs-5 pb-3"> BY {user.name.toUpperCase()}</h6>
                 <h6>UPDATED: {post.updatedAt}</h6>
               </div>
               </div>
