@@ -371,12 +371,13 @@ function RichTextEditor() {
                     <div>
                       <input
                         type="radio"
-                        name="comment_options"
+                        name="[comment_options]"
                         id="allow"
-                        value={"allow"}
+                        // value={"allow"}
+                        value={"postdata"}
                         className="me-2"
                         onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options=="allow"?true:false}
+                        defaultChecked={postdata?.comment_options=="allow"?true:postdata?false:true}
                       />
 
                       <label htmlFor="allow">Allow</label>
@@ -384,7 +385,7 @@ function RichTextEditor() {
                     <div>
                       <input
                         type="radio"
-                        name="comment_options"
+                        name="[comment_options]"
                         id="show_existing"
                         value={"show_existing"}
                         className="me-2"
@@ -396,7 +397,7 @@ function RichTextEditor() {
                     <div>
                       <input
                         type="radio"
-                        name="comment_options"
+                        name="[comment_options]"
                         id="hide_existing"
                         value={"hide_existing"}
                         onChange={(e)=>{onChangeHandler("",e)}}
