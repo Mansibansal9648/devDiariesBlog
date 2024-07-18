@@ -89,7 +89,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/userpage/:userId/blogdetailpage"
+            path="/userpage/:userId/post/blogdetailpage"
             element={
               <PrivateRoute>
                 <UserLayoutPage>

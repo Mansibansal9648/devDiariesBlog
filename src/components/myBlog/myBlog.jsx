@@ -95,6 +95,13 @@ function MyBlog() {
                           >
                             <i className="fa-solid fa-pen edit_btn pe-3 fs-5"></i>
                           </Link>
+                          <Link
+                            to={`/userpage/${user.id}/post/blogdetailpage`}
+                            state={item}
+                            className="nav-link d-inline-block"
+                          >
+                            <i className="fa-regular fa-eye edit_btn pe-3 fs-5"></i>
+                          </Link>
                         </div>
                         <div className="end_icons">
                           <div className="username d-flex align-items-center gap-1">
