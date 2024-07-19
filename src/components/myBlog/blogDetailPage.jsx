@@ -1,19 +1,13 @@
 import { useLocation } from "react-router-dom";
-import Footer from "../common/footer/footer";
-import NavBar from "../common/navBar/navBar";
 import "./blogDetailPage.css";
-import { useEffect } from "react";
-import { useState } from "react";
 import pp from '../../assets/images/profile.png'
 import { useAppContext } from "../../contextApi/context";
 
 function BlogDetailPage() {
-  const [blog, setBlog] = useState({});
-
  const location = useLocation()
  const {store:{user}}=useAppContext();
  const post = location.state
- console.log("postd", post)
+//  console.log("postd", post)
 
   return (
     <>
