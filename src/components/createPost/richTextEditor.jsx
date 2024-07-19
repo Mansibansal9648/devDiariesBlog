@@ -132,18 +132,22 @@ function RichTextEditor() {
       setTimeout(() => {
         setFlag(false);
       }, 1000);
+      
     }else{
      let res = await editPost({...post, postId:postdata._id})
      toast.success(res.data.resMessage)
+     if(res.data.responseCode ===200){
+      navigate(`/userpage/${user.id}`)
+     }
     //  console.log("check", res)
     }
-    navigate(`/userpage/${user.id}`)
   };
 
   const createPost = async () => {
     let res = await createNewPost(post, user.accessToken);
     if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
+      navigate(`/userpage/${user.id}`)
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
