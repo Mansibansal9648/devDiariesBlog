@@ -11,17 +11,19 @@ function MyBlog() {
   const {
     store: { user },
   } = useAppContext();
-  console.log(user);
+  // console.log(user);
 
   const [posts, setPosts] = useState(null);
 
   const getmyPost = async () => {
-    let data = await getPost(user.accessToken);
-    if(data !== undefined){
-      setPosts(data.data.data);
+    let res = await getPost(user.accessToken);
+    if(res && res.data.responseCode ===200){
+      setPosts(res.data.data);
+    }else if(res && res.data.responseCode ===400){
+      toast.error(res.data.errMessage);
     }
     else{
-    console.log("Backend Error")
+      toast.error("Something wrong with backend")
     }
   }
 
@@ -33,7 +35,6 @@ function MyBlog() {
     } else {
       toast.error(res.data.errMessage);
     }
-    console.log(res);
   };
   useEffect(() => {
     getmyPost();
@@ -74,7 +75,7 @@ function MyBlog() {
                         <div className="mid d-flex gap-2 align-self-end">
                           {item.labels.map((label) => {
                             return (
-                              <div className="label border border-3 rounded-4 px-2" key={label._id}>{label.name}</div>
+                              <div className="label border border-3 rounded-4 px-2">{label}</div>
                             );
                           })}
                         </div>

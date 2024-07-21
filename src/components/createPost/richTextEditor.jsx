@@ -13,14 +13,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createNewPost, updatePost } from "../common/api/postApi";
 import { useAppContext } from "../../contextApi/context";
-import { useLocation, useNavigate } from "react-router-dom";  /**, useParams */
+import { useLocation, useNavigate } from "react-router-dom"; 
 
 function RichTextEditor() {
-  // const {postId} = useParams(null);
   const navigate = useNavigate()
   const location = useLocation();
   const postdata = location.state;
-  console.log(postdata);
   const initialState = () => {
     return {
       userId: postdata?.userId ?? "",
@@ -42,22 +40,19 @@ function RichTextEditor() {
 
   const selectedLabel = (label) => {
     setMyLabel((preVal) => {
-      return [...preVal, label];
+      return [...preVal, label.name];
     });
   };
 
   useEffect(()=>{
     setPost((preVal)=>{
-      let labelId = myLabel.map((item)=>{
-        return item._id;
-      })
-      return {...preVal, labels:labelId}
+      return {...preVal, labels:myLabel}
     })
   },[myLabel])
   
   const removeSelectedLabel = (label) => {
     const filteredLabel = myLabel.filter((myLab) => {
-      return myLab._id !== label._id;
+      return myLab !== label;
     });
     setMyLabel(filteredLabel);
   };
@@ -92,15 +87,13 @@ function RichTextEditor() {
 
   const onChangeHandler = (value, e) => {
     if (flag) return;
-    // console.log(value);
     if (e) {
       setPost({ ...post, [e.target.name]: e.target.value });
     } else {
       setPost({ ...post, content: value });
     }
-    // console.log(post);
   };
-  console.log("post", post)
+
   const onChangeHandlerLabel = (event) => {
     setSearchedLAbel({ [event.target.name]: event.target.value });
   };
@@ -108,11 +101,10 @@ function RichTextEditor() {
 
   const addNewLabel = async () => {
     const res = await createNewLabel(searchedLabel.name);
-    console.log(res.data);
     if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
       setMyLabel((preVal) => {
-        return [...preVal, res.data.data];
+        return [...preVal, res.data.data.name];
       });
     } else {
       toast.error(res.data.errMessage);
@@ -139,7 +131,6 @@ function RichTextEditor() {
      if(res.data.responseCode ===200){
       navigate(`/userpage/${user.id}`)
      }
-    //  console.log("check", res)
     }
   };
 
@@ -157,7 +148,6 @@ function RichTextEditor() {
 
   const editPost = async (data) => {
     let res = await updatePost(data, user.accessToken);
-    // console.log("editpostRes", res.data);
     return res;
   };
 
@@ -288,7 +278,7 @@ function RichTextEditor() {
                       return (
                         <>
                           <span className="badge badge-pill badge-secondary bg-secondary mb-2 ms-2">
-                            {label.name}
+                            {label}
                           </span>
                           <button
                             type="button"
