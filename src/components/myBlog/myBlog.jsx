@@ -23,7 +23,7 @@ function MyBlog() {
       toast.error(res.data.errMessage);
     }
     else{
-      toast.error("Something wrong with backend")
+      toast.error("Something went wrong..")
     }
   }
 
