@@ -66,10 +66,10 @@ function MyBlog() {
                           ></img>
                         </div>
                         <div className="post-detail">
-                          <h6>{item.title}</h6>
+                          <h6 className="fw-bold">{item.title}</h6>
                           <p>{}</p>
                           <span>
-                            {item.updatedAt}
+                            Updated : {item.updatedAt.split("GMT")[0]}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
@@ -82,9 +82,9 @@ function MyBlog() {
                       </div>
 
                       <div className="last d-flex gap-4">
-                        <div className="end_btn">
+                        <div className="end_btn me-4">
                           <i
-                            className="fa-solid fa-trash pe-5 fs-5 del_btn"
+                            className="fa-solid fa-trash me-5 fs-5 del_btn"
                             onClick={() => {
                               removePost(item._id);
                             }}
@@ -92,16 +92,16 @@ function MyBlog() {
                           <Link
                             to={`/userpage/post/${item._id}/edit`}
                             state={item}
-                            className="nav-link d-inline-block"
+                            className="nav-link d-inline-block me-5"
                           >
-                            <i className="fa-solid fa-pen edit_btn pe-3 fs-5"></i>
+                            <i className="fa-solid fa-pen edit_btn  fs-5"></i>
                           </Link>
                           <Link
                             to={`/userpage/${user.id}/post/blogdetailpage`}
                             state={item}
                             className="nav-link d-inline-block"
                           >
-                            <i className="fa-regular fa-eye edit_btn pe-3 fs-5"></i>
+                            <i className="fa-regular fa-eye edit_btn  fs-5"></i>
                           </Link>
                         </div>
                         <div className="end_icons">
