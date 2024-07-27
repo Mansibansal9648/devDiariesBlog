@@ -8,7 +8,7 @@ import {
   getAllLabels,
   getLabelByName,
   createNewLabel,
-} from "../common/api/label";
+} from "../common/api/labelApi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createNewPost, updatePost } from "../common/api/postApi";
