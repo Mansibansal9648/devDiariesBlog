@@ -23,7 +23,6 @@ function MyBlog() {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       setPosts(res.data.data);
-      toast.success(res.data.resMessage);
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -79,7 +78,7 @@ function MyBlog() {
                           <h6 className="fw-bold">{item.title}</h6>
                           <p>{}</p>
                           <span>
-                            Updated : {item.updatedAt.split("GMT")[0]}
+                            {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
