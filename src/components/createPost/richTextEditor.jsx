@@ -126,17 +126,19 @@ function RichTextEditor() {
       }, 1000);
       
     }else{
-     let res = await editPost({...post, postId:postdata._id})
-     toast.success(res.data.resMessage)
-     if(res.data.responseCode ===200){
-      navigate(`/userpage/${user.id}`)
-     }
+     editPost({...post, postId:postdata._id})
     }
   };
 
   const createPost = async () => {
     let res = await createNewPost(post, user.accessToken);
-    if (res && res.data.responseCode === 201) {
+    if(res && res.data.responseCode ===401){
+      toast.error(res.data.errMessage)
+    }
+    else if(res && res.data.responseCode ===403){
+      toast.error(res.data.errMessage)
+    }
+    else if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
       navigate(`/userpage/${user.id}`)
     } else if (res && res.data.responseCode === 400) {
@@ -148,7 +150,22 @@ function RichTextEditor() {
 
   const editPost = async (data) => {
     let res = await updatePost(data, user.accessToken);
-    return res;
+    if(res && res.data.responseCode ===401){
+      toast.error(res.data.errMessage)
+    }
+    else if(res && res.data.responseCode ===403){
+      toast.error(res.data.errMessage)
+    }
+    else if(res.data.responseCode ===200){
+        toast.success(res.data.resMessage)
+     navigate(`/userpage/${user.id}`)
+    }
+    else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    }
+    else {
+      toast.error("Something went wrong! ");
+    }
   };
 
   const modules = {

@@ -17,23 +17,33 @@ function MyBlog() {
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken);
-    if(res && res.data.responseCode ===200){
-      setPosts(res.data.data);
-    }else if(res && res.data.responseCode ===400){
+    if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 403) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
+      setPosts(res.data.data);
+      toast.success(res.data.resMessage);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
     }
-    else{
-      toast.error("Something went wrong..")
-    }
-  }
+  };
 
   const removePost = async (postId) => {
     let res = await deletePost(postId, user.accessToken);
-    if (res && res.data.responseCode === 200) {
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 403) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
       getmyPost();
-    } else {
+    } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
     }
   };
   useEffect(() => {
@@ -75,7 +85,9 @@ function MyBlog() {
                         <div className="mid d-flex gap-2 align-self-end">
                           {item.labels.map((label) => {
                             return (
-                              <div className="label border border-3 rounded-4 px-2">{label}</div>
+                              <div className="label border border-3 rounded-4 px-2">
+                                {label}
+                              </div>
                             );
                           })}
                         </div>
