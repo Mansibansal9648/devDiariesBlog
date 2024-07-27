@@ -29,7 +29,7 @@ function BlogDetailPage() {
               </div>
               <div className="blog_details">
                 <h6 className="fs-5 pb-3"> BY {user.name.toUpperCase()}</h6>
-                <h6>UPDATED: {post.updatedAt}</h6>
+                <h6>UPDATED: {post.updatedAt.split("GMT")[0]}</h6>
               </div>
               </div>
               <hr />
@@ -41,9 +41,7 @@ function BlogDetailPage() {
                   className="img-fluid"
                 />
 
-                <p className="my-5">
-                {post.content}
-                </p>
+                <div dangerouslySetInnerHTML={{__html:post.content}} className="my-5"/>
               </div>
           </div>
         </div>
