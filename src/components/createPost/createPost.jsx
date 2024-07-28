@@ -24,7 +24,7 @@ function CreatePost() {
       userId: postdata?.userId ?? "",
       title: postdata?.title ?? "",
       content: postdata?.content ?? "",
-      labels: postdata?.labels ?? "",
+      labels: postdata?.labels ?? [],
       comment_options: postdata?.comment_options??"allow",
     };
   };
@@ -115,7 +115,7 @@ function CreatePost() {
       setPost({
         title: "",
         content: "",
-        labels: "",
+        labels: [],
       });
       setTimeout(() => {
         setFlag(false);
