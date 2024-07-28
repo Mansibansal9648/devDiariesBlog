@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import "./blogDetailPage.css";
-import pp from '../../assets/images/profile.png'
+import profilePic from '../../assets/images/profile.png'
 import { useAppContext } from "../../contextApi/context";
 
 function BlogDetailPage() {
@@ -25,7 +25,7 @@ function BlogDetailPage() {
             <hr />
             <div className="user_details">
               <div className="bd_profile_pic">
-                <img src={pp} className="img-fluid" alt="" />
+                <img src={profilePic} className="img-fluid" alt="" />
               </div>
               <div className="blog_details">
                 <h6 className="fs-5 pb-3"> BY {user.name.toUpperCase()}</h6>

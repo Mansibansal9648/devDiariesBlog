@@ -1,5 +1,5 @@
 import { useAppContext } from "../../contextApi/context";
-import pp from "../../assets/images/profile.png";
+import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
 import { getPost, deletePost } from "../common/api/postApi";
 import { useEffect, useState } from "react";
@@ -19,8 +19,8 @@ function MyBlog() {
     let res = await getPost(user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    } else if (res && res.data.responseCode === 403) {
-      toast.error(res.data.errMessage);
+    // } else if (res && res.data.responseCode === 403) {
+    //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
@@ -34,8 +34,8 @@ function MyBlog() {
     let res = await deletePost(postId, user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    } else if (res && res.data.responseCode === 403) {
-      toast.error(res.data.errMessage);
+    // } else if (res && res.data.responseCode === 403) {
+    //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
       getmyPost();
@@ -120,7 +120,7 @@ function MyBlog() {
                             <h6 className="m-0">{user.username}</h6>
                             {/* <i class="fa-solid fa-trash"></i> */}
                             <div className="profile_pic broder border-2 rounded-circle">
-                              <img src={pp} alt="U" className="img-fluid" />
+                              <img src={profilePic} alt="U" className="img-fluid" />
                             </div>
                           </div>
                           <div className="stats d-flex gap-0 p-2">

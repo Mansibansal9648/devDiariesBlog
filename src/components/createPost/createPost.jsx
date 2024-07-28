@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import ReactQuill from "react-quill";
-import "./richTextEditor.css";
+import "./createPost.css";
 import "react-quill/dist/quill.snow.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleRight } from "@fortawesome/fontawesome-free-solid";
@@ -15,7 +15,7 @@ import { createNewPost, updatePost } from "../common/api/postApi";
 import { useAppContext } from "../../contextApi/context";
 import { useLocation, useNavigate } from "react-router-dom"; 
 
-function RichTextEditor() {
+function CreatePost() {
   const navigate = useNavigate()
   const location = useLocation();
   const postdata = location.state;
@@ -135,9 +135,9 @@ function RichTextEditor() {
     if(res && res.data.responseCode ===401){
       toast.error(res.data.errMessage)
     }
-    else if(res && res.data.responseCode ===403){
-      toast.error(res.data.errMessage)
-    }
+    // else if(res && res.data.responseCode ===403){
+    //   toast.error(res.data.errMessage)
+    // }
     else if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
       navigate(`/userpage/${user.id}`)
@@ -153,9 +153,9 @@ function RichTextEditor() {
     if(res && res.data.responseCode ===401){
       toast.error(res.data.errMessage)
     }
-    else if(res && res.data.responseCode ===403){
-      toast.error(res.data.errMessage)
-    }
+    // else if(res && res.data.responseCode ===403){
+    //   toast.error(res.data.errMessage)
+    // }
     else if(res.data.responseCode ===200){
         toast.success(res.data.resMessage)
      navigate(`/userpage/${user.id}`)
@@ -428,4 +428,4 @@ function RichTextEditor() {
   );
 }
 
-export default RichTextEditor;
+export default CreatePost;

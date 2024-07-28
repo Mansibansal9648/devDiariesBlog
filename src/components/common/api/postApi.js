@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const createNewPost = async (post,accessToken)=>{
-    console.log("asdf", post)
+    // console.log("asdf", post)
     try {
          const headers = {
             'Authorization': `Bearer ${accessToken}`

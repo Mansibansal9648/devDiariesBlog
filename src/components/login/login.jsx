@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loginSchema } from "../Schema/loginSchema";
+import { loginSchema } from "../../Schema/loginSchema";
 import useCustomDispatch from "../../hooks/useCustomDispatch";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
