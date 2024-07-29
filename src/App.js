@@ -7,13 +7,14 @@ import NotFound from "./components/notFound/notFound";
 import LogIn from "./components/login/login";
 import PrivateRoute from "./components/common/privateRoute";
 import { AppProvider } from "./contextApi/context";
-import BlogDetailPage from "./components/myBlog/blogDetailPage";
+import BlogDetailPage from "./components/blogDetailPage/blogDetailPage";
 import UpdatePassword from "./components/updatePassword/updatePassword";
 import ForgotPassword from "./components/forgotPassword/forgotPassword";
 import BlogPage from "./components/blogsPage/blogPage";
 import { ToastContainer } from "react-toastify";
-import UserLayoutPage from "./components/userDashbard/userLayoutPage";
-import RichTextEditor from "./components/createPost/richTextEditor";
+import UserLayoutPage from "./components/userDashboard/userLayoutPage";
+import NavBar from "./components/common/navBar/navBar";
+import CreatePost from "./components/createPost/createPost";
 
 function App() {
   return (
@@ -88,12 +89,35 @@ function App() {
             }
           ></Route>
           <Route
-            path="/userpage/post/:userId"
+            path="/userpage/:userId/post/blogdetailpage"
             element={
               <PrivateRoute>
                 <UserLayoutPage>
-            <RichTextEditor/>
+                  <BlogDetailPage />
                 </UserLayoutPage>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/userpage/post/:userId"
+            element={
+              <PrivateRoute>
+                <div>
+                  <NavBar />
+                  <CreatePost />
+                </div>
+              </PrivateRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/userpage/post/:postId/edit"
+            element={
+              <PrivateRoute>
+                <div>
+                  <NavBar />
+                  <CreatePost />
+                </div>
               </PrivateRoute>
             }
           ></Route>

@@ -1,15 +1,17 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import search from "../../../assets/images/search-icon.png";
 import { useAppContext } from "../../../contextApi/context";
 import { useState } from "react";
-import demoimg from "../../../assets/images/demo-img.jpg"
+import demoimg from "../../../assets/images/demo-img.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NavBar({ handleClick }) {
   const {
     store: { user },
   } = useAppContext();
-  // const [isLogin, setIsLogin] = useState(user.isLogin);
+  let location = useLocation();
+  let pathArr = location.pathname.split("/");
 
   const [isrightSidebarExpanded, setIsRightSidebarExpanded] = useState(false);
 
@@ -22,20 +24,29 @@ function NavBar({ handleClick }) {
       {user.isLogin ? (
         <div>
           <div className="navbar z-1 fixed-top">
-            <div className="start">
-              <button className="btn bg-white" onClick={handleClick}>
-                <svg focusable="false" viewBox="0 0 24 24" className="">
-                  <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                </svg>
-              </button>
-            </div>
-            <div className="searchbar">
-              <input
-                type="text"
-                placeholder="Search posts"
-                className="search_input d-none d-lg-flex"
-              />
-            </div>
+            {pathArr[2] === "post" ? (
+              <Link className="btn bg-white rounded-circle d-flex justify-content-center align-items-center" style={{height:"40px", width: "40px"}} to={`/userpage/${pathArr[3]}`}>
+                <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+              </Link>
+            ) : (
+              <>
+                <div className="start">
+                  <button className="btn bg-white" onClick={handleClick}>
+                    <svg focusable="false" viewBox="0 0 24 24" className="">
+                      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                  </button>
+                </div>
+                <div className="searchbar">
+                  <input
+                    type="text"
+                    placeholder="Search posts"
+                    className="search_input d-none d-lg-flex"
+                  />
+                </div>
+              </>
+            )}
+
             <div className="end" onClick={toggleProfile}>
               <img src={demoimg} alt="Profile" className="profile bg-white" />
             </div>
@@ -44,9 +55,19 @@ function NavBar({ handleClick }) {
                 isrightSidebarExpanded ? "expanded " : ""
               } z-2`}
             >
-              <img src={demoimg} alt="" className="bg-white  rounded-circle" style={{width:"100px", height:"100px", objectFit:"cover"}}/>
+              <img
+                src={demoimg}
+                alt=""
+                className="bg-white  rounded-circle"
+                style={{ width: "100px", height: "100px", objectFit: "cover" }}
+              />
               <h2 className="text-primary">@{user.username}</h2>
-              <button className="btn btn-danger rounded-4" onClick={()=>(localStorage.clear())}>Logout </button>
+              <button
+                className="btn btn-danger rounded-4"
+                onClick={() => localStorage.clear()}
+              >
+                Logout{" "}
+              </button>
             </div>
           </div>
         </div>
@@ -74,7 +95,10 @@ function NavBar({ handleClick }) {
             >
               <ul className="navbar-nav mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link active text-white" to="/blogs/sport">
+                  <Link
+                    className="nav-link active text-white"
+                    to="/blogs/sport"
+                  >
                     Sport
                   </Link>
                 </li>
@@ -104,7 +128,10 @@ function NavBar({ handleClick }) {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/entertainment">
+                  <Link
+                    className="nav-link text-white"
+                    to="/blogs/entertainment"
+                  >
                     Entertainment
                   </Link>
                 </li>
