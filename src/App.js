@@ -12,15 +12,10 @@ import UpdatePassword from "./components/updatePassword/updatePassword";
 import ForgotPassword from "./components/forgotPassword/forgotPassword";
 import BlogPage from "./components/blogsPage/blogPage";
 import { ToastContainer } from "react-toastify";
-<<<<<<< Updated upstream
-import UserLayoutPage from "./components/userDashbard/userLayoutPage";
-import RichTextEditor from "./components/createPost/richTextEditor";
-=======
 import UserLayoutPage from "./components/userDashboard/userLayoutPage";
 import NavBar from "./components/common/navBar/navBar";
 import CreatePost from "./components/createPost/createPost";
 import Stats from "./components/stats/stats";
->>>>>>> Stashed changes
 
 function App() {
   return (
