@@ -1,0 +1,17 @@
+.thumbnail {
+  height: 80px;
+  width: 80px;
+}
+
+.profile_pic {
+  display: flex;
+  height: 25px;
+  width: 25px;
+}
+
+.del_btn:hover{
+  color: red;
+}
+.edit_btn:hover{
+  color:rgb(24, 149, 53);
+}

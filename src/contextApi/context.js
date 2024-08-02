@@ -8,6 +8,7 @@ const initialState = {
   user: {
     id: "",
     username: "",
+    name:"",
     email: "",
     isLogin:false,
     accessToken:""
