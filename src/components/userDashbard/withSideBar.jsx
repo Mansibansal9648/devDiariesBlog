@@ -71,7 +71,7 @@ const WithSideBar = ({
               </Link>
             </div>
             <div className="list-group-item">
-              <Link to={"/"} className="nav-link">
+              <Link to={"/stats"} className="nav-link">
                 Stats
               </Link>
             </div>
