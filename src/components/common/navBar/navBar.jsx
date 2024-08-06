@@ -5,6 +5,7 @@ import { useAppContext } from "../../../contextApi/context";
 import { useState } from "react";
 import demoimg from "../../../assets/images/demo-img.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {searchPostByTitle} from "../api/searchPost"
 
 function NavBar({ handleClick }) {
   const {
@@ -18,6 +19,11 @@ function NavBar({ handleClick }) {
   const toggleProfile = () => {
     setIsRightSidebarExpanded((prevState) => !prevState);
   };
+
+  const handleInputTitle =async (event)=> {
+   let searchedTitle = await searchPostByTitle({title:event.target.value}, user.accessToken)
+   console.log("Titles",searchedTitle)
+  }
 
   return (
     <>
@@ -42,6 +48,7 @@ function NavBar({ handleClick }) {
                     type="text"
                     placeholder="Search posts"
                     className="search_input d-none d-lg-flex"
+                    onChange={handleInputTitle}
                   />
                 </div>
               </>
