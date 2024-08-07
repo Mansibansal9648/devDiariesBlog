@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppContext } from "../../contextApi/context";
+import { useAppContext } from "../../../contextApi/context";
 
 function PrivateRoute({ children }) {
   const {

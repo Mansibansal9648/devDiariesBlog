@@ -5,7 +5,7 @@ import Register from "./components/register/register";
 import "./App.css";
 import NotFound from "./components/notFound/notFound";
 import LogIn from "./components/login/login";
-import PrivateRoute from "./components/common/privateRoute";
+import PrivateRoute from "./components/common/privateRoute/privateRoute";
 import { AppProvider } from "./contextApi/context";
 import BlogDetailPage from "./components/blogDetailPage/blogDetailPage";
 import UpdatePassword from "./components/updatePassword/updatePassword";
