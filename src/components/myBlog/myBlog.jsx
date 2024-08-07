@@ -53,10 +53,10 @@ function MyBlog({student,postTitle}) {
 
   const getPostByTitle = async ()=>{
     let res = await searchPostByTitle({title:postTitle}, user.accessToken)
-    if(res && res.data.responseCode ===200){
+    if(res && res.data.data.length){
       setPosts(res.data.data);
-    }else if(res && res.data.responseCode ===400){
-      toast.error(res.data.errMessage)
+    }else if(res && !res.data.data.length){
+      toast.error("Post dosen't exists")
       setPosts(null)
     }else{
       toast.error("Something went wrong..");
