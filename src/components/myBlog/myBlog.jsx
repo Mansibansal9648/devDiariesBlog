@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
+import { searchPostByTitle } from "../common/api/searchPost";
 
-function MyBlog() {
+function MyBlog({student,postTitle}) {
   const {
     store: { user },
   } = useAppContext();
@@ -49,6 +50,26 @@ function MyBlog() {
     getmyPost();
   }, []);
 
+
+  const getPostByTitle = async ()=>{
+    let res = await searchPostByTitle({title:postTitle}, user.accessToken)
+    if(res && res.data.responseCode ===200){
+      setPosts(res.data.data);
+    }else if(res && res.data.responseCode ===400){
+      toast.error(res.data.errMessage)
+      setPosts(null)
+    }else{
+      toast.error("Something went wrong..");
+    }
+  }
+
+  useEffect(()=>{
+    if(!postTitle){
+      getmyPost()
+    }else{
+      getPostByTitle()
+    }
+  },[postTitle])
   // const extractImage =()=>{
 
   // }
@@ -84,7 +105,7 @@ function MyBlog() {
                         <div className="mid d-flex gap-2 align-self-end">
                           {item.labels.map((label) => {
                             return (
-                              <div className="label border border-3 rounded-4 px-2">
+                              <div className="label border border-3 rounded-4 px-2" key={label}>
                                 {label}
                               </div>
                             );
