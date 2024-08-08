@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
+import { usedLabel, getPostByLabel } from "../common/api/usedLabelApi";
 
 function MyBlog() {
   const {
@@ -14,13 +15,14 @@ function MyBlog() {
   // console.log(user);
 
   const [posts, setPosts] = useState(null);
+  const [usedLabels, setUsedLabels] = useState([]);
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    // } else if (res && res.data.responseCode === 403) {
-    //   toast.error(res.data.errMessage);
+      // } else if (res && res.data.responseCode === 403) {
+      //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
@@ -30,12 +32,43 @@ function MyBlog() {
     }
   };
 
+  const allUsedLabels = async () => {
+    let res = await usedLabel(user.accessToken);
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
+      setUsedLabels(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
+    }
+  };
+
+  const getAllUserPostByLabel = async (label) => {
+    let res = await getPostByLabel(
+      { label: label },
+      user.accessToken
+    );
+    console.log("labelss", label)
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
+      setPosts(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
+    }
+  };
+
+
   const removePost = async (postId) => {
     let res = await deletePost(postId, user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    // } else if (res && res.data.responseCode === 403) {
-    //   toast.error(res.data.errMessage);
+      // } else if (res && res.data.responseCode === 403) {
+      //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
       getmyPost();
@@ -47,6 +80,7 @@ function MyBlog() {
   };
   useEffect(() => {
     getmyPost();
+    allUsedLabels();
   }, []);
 
   // const extractImage =()=>{
@@ -56,7 +90,24 @@ function MyBlog() {
     <>
       {user != null ? (
         <div className="col-10 offset-1">
-          <div className="container my-3 py-3 border border-1">
+          <div className="container label_container position-fixed py-2">
+            <span  className="badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" onClick={getmyPost}>All</span>
+            {usedLabels.length != 0 &&
+              usedLabels.map((item) => {
+                return (
+                  <span
+                    className="badge  p-2 mx-3 my-2 border-1 pos bg-primary fs-6 rounded-4"
+                    onClick={()=>{
+                      getAllUserPostByLabel(item)
+                    }}
+                    value={item}
+                  >
+                    {item}
+                  </span>
+                );
+              })}
+          </div>
+          <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
             <ul className="list-group">
               {posts !== null &&
@@ -78,7 +129,15 @@ function MyBlog() {
                           <h6 className="fw-bold">{item.title}</h6>
                           <p>{}</p>
                           <span>
-                            {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
+                            {item.createdAt == item.updatedAt ? (
+                              <span>
+                                Created : {item.createdAt.split("GMT")[0]}
+                              </span>
+                            ) : (
+                              <span>
+                                Updated : {item.updatedAt.split("GMT")[0]}
+                              </span>
+                            )}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
@@ -120,7 +179,11 @@ function MyBlog() {
                             <h6 className="m-0">{user.username}</h6>
                             {/* <i class="fa-solid fa-trash"></i> */}
                             <div className="profile_pic broder border-2 rounded-circle">
-                              <img src={profilePic} alt="U" className="img-fluid" />
+                              <img
+                                src={profilePic}
+                                alt="U"
+                                className="img-fluid"
+                              />
                             </div>
                           </div>
                           <div className="stats d-flex gap-0 p-2">

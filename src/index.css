@@ -9,3 +9,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.all_post_container{
+  padding-top: 90px !important;
+}
+
+.label_container{
+  background-color: #f8f9fa !important;
+}
