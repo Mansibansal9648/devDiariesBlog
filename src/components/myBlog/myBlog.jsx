@@ -2,11 +2,13 @@ import { useAppContext } from "../../contextApi/context";
 import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
 import { getPost, deletePost } from "../common/api/postApi";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
 import { searchPostByTitle } from "../common/api/searchPost";
+import debounce from "../../utils/helper/debounceFunction";
+// import useDebounce from "../../hooks/useDebounce";
 
 function MyBlog({student,postTitle}) {
   const {
@@ -15,6 +17,7 @@ function MyBlog({student,postTitle}) {
   // console.log(user);
 
   const [posts, setPosts] = useState(null);
+  // const debounce = useDebounce()
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken);
@@ -67,7 +70,7 @@ function MyBlog({student,postTitle}) {
     if(!postTitle){
       getmyPost()
     }else{
-      getPostByTitle()
+      debounce(getPostByTitle,500)
     }
   },[postTitle])
   // const extractImage =()=>{
