@@ -16,6 +16,8 @@ function MyBlog() {
 
   const [posts, setPosts] = useState(null);
   const [usedLabels, setUsedLabels] = useState([]);
+  const [active,setActive] = useState("all")
+  // console.log(typeof active)
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken);
@@ -46,11 +48,8 @@ function MyBlog() {
   };
 
   const getAllUserPostByLabel = async (label) => {
-    let res = await getPostByLabel(
-      { label: label },
-      user.accessToken
-    );
-    console.log("labelss", label)
+    let res = await getPostByLabel({ label: label }, user.accessToken);
+    // console.log("labelss", label);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
@@ -61,7 +60,6 @@ function MyBlog() {
       toast.error("Something went wrong..");
     }
   };
-
 
   const removePost = async (postId) => {
     let res = await deletePost(postId, user.accessToken);
@@ -90,15 +88,26 @@ function MyBlog() {
     <>
       {user != null ? (
         <div className="col-10 offset-1">
-          <div className="container label_container position-fixed py-2">
-            <span  className="badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" onClick={getmyPost}>All</span>
+        <div className="outer_label_container position-fixed">
+        <div className="container label_container py-2">
+            <span
+              className={active == "all" ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" : " badge text-dark  py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"}
+              onClick={()=>{
+                getmyPost()
+                setActive("all")
+              }}
+            >
+              All
+            </span>
             {usedLabels.length != 0 &&
               usedLabels.map((item) => {
                 return (
                   <span
-                    className="badge  p-2 mx-3 my-2 border-1 pos bg-primary fs-6 rounded-4"
-                    onClick={()=>{
-                      getAllUserPostByLabel(item)
+                  className={(item ==active) ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" : " badge text-dark py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"}
+                  onClick={() => {
+                    getAllUserPostByLabel(item);
+                    setActive(item)
+                    console.log("item",typeof item)
                     }}
                     value={item}
                   >
@@ -107,6 +116,7 @@ function MyBlog() {
                 );
               })}
           </div>
+        </div>
           <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
             <ul className="list-group">

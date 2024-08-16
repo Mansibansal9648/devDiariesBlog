@@ -16,4 +16,10 @@ code {
 
 .label_container{
   background-color: #f8f9fa !important;
+  display: flex;
+}
+.outer_label_container{
+  width: 1260px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
