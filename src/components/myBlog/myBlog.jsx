@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
+import { searchPostByTitle } from "../common/api/searchPost";
+import debounce from "../../utils/helper/debounceFunction";
+// import useDebounce from "../../hooks/useDebounce";
 import moment from "moment";
-import "moment-timezone";
+import 'moment-timezone';
 
 function MyBlog() {
   const {
@@ -71,28 +74,12 @@ function MyBlog() {
                         </div>
                         <div className="post-detail">
                           <h6 className="fw-bold">{item.title}</h6>
+                          <p>{}</p>
+                          {/* <span>
+                            {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
+                          </span> */}
                           <span>
-                            {item.createdAt === item.updatedAt ? (
-                              <span>
-                                Created At:{" "}
-                                {moment
-                                  .parseZone(item?.createdAt)
-                                  ?.tz("Asia/Kolkata")
-                                  ?.format(
-                                    "ddd MMMM D, YYYY [at] h:mm:ss A"
-                                  )}
-                              </span>
-                            ) : (
-                              <span>
-                                Updated At:{" "}
-                                {moment
-                                  .parseZone(item?.updatedAt)
-                                  ?.tz("Asia/Kolkata")
-                                  ?.format(
-                                    "ddd MMMM D, YYYY [at] h:mm:ss A"
-                                  )}
-                              </span>
-                            )}
+                            {item.createdAt==item.updatedAt?<span>Created At :{ moment.parseZone(item?.createdAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>:<span>Updated At : {moment.parseZone(item?.updatedAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
