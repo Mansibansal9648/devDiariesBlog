@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
-import { usedLabel, getPostByLabel } from "../common/api/usedLabelApi";
+import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
 import moment from "moment";
 import 'moment-timezone';
 
@@ -37,7 +37,7 @@ function MyBlog() {
   };
 
   const allUsedLabels = async () => {
-    let res = await usedLabel(user.accessToken);
+    let res = await labelUsedByUser(user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
