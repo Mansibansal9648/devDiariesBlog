@@ -146,8 +146,8 @@ function MyBlog({student,postTitle}) {
           <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
             <ul className="list-group">
-              {posts !== null &&
-                posts?.map((item) => {
+              {posts !== null && posts.length > 0 ? (
+                posts.map((item) => {
                   return (
                     <li
                       key={item._id}
@@ -231,7 +231,11 @@ function MyBlog({student,postTitle}) {
                       </div>
                     </li>
                   );
-                })}
+                }) ): (
+                  <div className="text-center">
+                    <h5>No Post Available</h5>
+                  </div>
+                )}
             </ul>
           </div>
         </div>
@@ -241,91 +245,5 @@ function MyBlog({student,postTitle}) {
     </>
   );
 }
+
 export default MyBlog;
-
-// import React, { useEffect, useState } from 'react';
-
-// const ImageRenderer = () => {
-//   const [imageSources, setImageSources] = useState([]);
-
-//   useEffect(() => {
-//     // Example HTML string containing image tags with base64 content
-//     const htmlString = `
-//       <html>
-//       <body>
-//           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...">
-//           <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABA...">
-//       </body>
-//       </html>
-//     `;
-
-//     // Parse the HTML string to extract image sources
-//     const tempElement = document.createElement('div');
-//     tempElement.innerHTML = htmlString;
-
-//     const imgElements = tempElement.getElementsByTagName('img');
-//     const sources = [];
-//     for (let i = 0; i < imgElements.length; i++) {
-//       const src = imgElements[i].getAttribute('src');
-//       if (src.startsWith('data:image')) {
-//         sources.push(src);
-//       }
-//     }
-
-//     // Update state with extracted image sources
-//     setImageSources(sources);
-//   }, []); // Empty dependency array ensures this effect runs only once
-
-//   return (
-//     <div>
-//       <h2>Images from HTML String:</h2>
-//       {imageSources.map((src, index) => (
-//         <img key={index} src={src} alt={`Image ${index}`} style={{ maxWidth: '100%' }} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default ImageRenderer;
-
-// import React from 'react';
-
-// const HtmlTagDeleter = ({ htmlString, tagToDelete }) => {
-//   // Function to delete the specified tag from HTML string
-//   const deleteTag = () => {
-//     // Create a temporary element to hold the HTML string
-//     const tempElement = document.createElement('div');
-//     tempElement.innerHTML = htmlString;
-
-//     // Select the tag(s) to delete using querySelectorAll
-//     const elementsToDelete = tempElement.querySelectorAll(tagToDelete);
-
-//     // Remove each selected element from the temporary DOM structure
-//     elementsToDelete.forEach(element => {
-//       element.parentNode.removeChild(element);
-//     });
-
-//     // Get the updated HTML string after deletion
-//     const updatedHtmlString = tempElement.innerHTML;
-
-//     // Display the updated HTML string (for demonstration)
-//     console.log('Updated HTML string:', updatedHtmlString);
-
-//     // You can optionally update state or perform further actions with the updated HTML string
-//   };
-
-//   return (
-//     <div>
-//       <h2>HTML Tag Deleter</h2>
-//       <button onClick={deleteTag}>Delete {tagToDelete} tag</button>
-
-//       {/* Display the original HTML string (for demonstration) */}
-//       <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '10px' }}>
-//         <h3>Original HTML String:</h3>
-//         <pre>{htmlString}</pre>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HtmlTagDeleter;
