@@ -1,12 +1,11 @@
 import { useAppContext } from "../../contextApi/context";
 import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
-import { getPost, deletePost } from "../common/api/postApi";
+import { getPost, deletePost,searchPostByTitle } from "../common/api/postApi";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
-import { searchPostByTitle } from "../common/api/searchPost";
 import debounce from "../../utils/helper/debounceFunction";
 // import useDebounce from "../../hooks/useDebounce";
 import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
@@ -19,7 +18,7 @@ function MyBlog({student,postTitle}) {
   } = useAppContext();
   // console.log(user);
 
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
   // const debounce = useDebounce()
   const [usedLabels, setUsedLabels] = useState([]);
   const [active,setActive] = useState("all")
@@ -90,11 +89,14 @@ function MyBlog({student,postTitle}) {
 
   const getPostByTitle = async ()=>{
     let res = await searchPostByTitle({title:postTitle}, user.accessToken)
-    if(res && res.data.data.length){
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
+    }else if(res && res.data.responseCode === 200){
       setPosts(res.data.data);
-    }else if(res && !res.data.data.length){
-      toast.error("Post dosen't exists")
-      setPosts(null)
+    }else if(res && res.data.responseCode === 400){
+      // toast.error("Post dosen't exists")
+      // setPosts([])
+      toast.error(res.data.errMessage);
     }else{
       toast.error("Something went wrong..");
     }
@@ -146,7 +148,7 @@ function MyBlog({student,postTitle}) {
           <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
             <ul className="list-group">
-              {posts !== null && posts.length > 0 ? (
+              { posts.length ? (
                 posts.map((item) => {
                   return (
                     <li
