@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
+import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
 import moment from "moment";
 import 'moment-timezone';
 
@@ -16,13 +17,43 @@ function MyBlog() {
   // console.log(user);
 
   const [posts, setPosts] = useState(null);
+  const [usedLabels, setUsedLabels] = useState([]);
+  const [active,setActive] = useState("all")
+  // console.log(typeof active)
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    // } else if (res && res.data.responseCode === 403) {
-    //   toast.error(res.data.errMessage);
+      // } else if (res && res.data.responseCode === 403) {
+      //   toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
+      setPosts(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
+    }
+  };
+
+  const allUsedLabels = async () => {
+    let res = await labelUsedByUser(user.accessToken);
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
+    } else if (res && res.data.responseCode === 200) {
+      setUsedLabels(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong..");
+    }
+  };
+
+  const getAllUserPostByLabel = async (label) => {
+    let res = await getPostByLabel({ label: label }, user.accessToken);
+    // console.log("labelss", label);
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
@@ -36,8 +67,8 @@ function MyBlog() {
     let res = await deletePost(postId, user.accessToken);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
-    // } else if (res && res.data.responseCode === 403) {
-    //   toast.error(res.data.errMessage);
+      // } else if (res && res.data.responseCode === 403) {
+      //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
       getmyPost();
@@ -49,6 +80,7 @@ function MyBlog() {
   };
   useEffect(() => {
     getmyPost();
+    allUsedLabels();
   }, []);
 
   // const extractImage =()=>{
@@ -58,7 +90,36 @@ function MyBlog() {
     <>
       {user != null ? (
         <div className="col-10 offset-1">
-          <div className="container my-3 py-3 border border-1">
+        <div className="outer_label_container position-fixed">
+        <div className="container label_container py-2">
+            <span
+              className={active == "all" ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" : " badge text-dark  py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"}
+              onClick={()=>{
+                getmyPost()
+                setActive("all")
+              }}
+            >
+              All
+            </span>
+            {usedLabels.length != 0 &&
+              usedLabels.map((item) => {
+                return (
+                  <span
+                  className={(item ==active) ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4" : " badge text-dark py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"}
+                  onClick={() => {
+                    getAllUserPostByLabel(item);
+                    setActive(item)
+                    console.log("item",typeof item)
+                    }}
+                    value={item}
+                  >
+                    {item}
+                  </span>
+                );
+              })}
+          </div>
+        </div>
+          <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
             <ul className="list-group">
               {posts !== null &&
@@ -83,7 +144,7 @@ function MyBlog() {
                             {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
                           </span> */}
                           <span>
-                            {item.createdAt==item.updatedAt?<span>Created At :{ moment.parseZone(item?.createdAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>:<span>Updated At : {moment.parseZone(item?.updatedAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>}
+                            {item.createdAt==item.updatedAt?<span>Created At : { moment.parseZone(item?.createdAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>:<span>Updated At : {moment.parseZone(item?.updatedAt)?.tz('Asia/Kolkata')?.format('ddd MMMM D, YYYY [at] h:mm:ss A')}</span>}
                           </span>
                         </div>
                         <div className="mid d-flex gap-2 align-self-end">
@@ -125,7 +186,11 @@ function MyBlog() {
                             <h6 className="m-0">{user.username}</h6>
                             {/* <i class="fa-solid fa-trash"></i> */}
                             <div className="profile_pic broder border-2 rounded-circle">
-                              <img src={profilePic} alt="U" className="img-fluid" />
+                              <img
+                                src={profilePic}
+                                alt="U"
+                                className="img-fluid"
+                              />
                             </div>
                           </div>
                           <div className="stats d-flex gap-0 p-2">
