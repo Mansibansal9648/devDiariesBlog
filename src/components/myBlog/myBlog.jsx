@@ -2,7 +2,7 @@ import { useAppContext } from "../../contextApi/context";
 import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
 import { getPost, deletePost,searchPostByTitle } from "../common/api/postApi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect,useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
@@ -12,7 +12,7 @@ import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
 import moment from "moment";
 import 'moment-timezone';
 
-function MyBlog({student,postTitle}) {
+function MyBlog({postTitle}) {
   const {
     store: { user },
   } = useAppContext();
