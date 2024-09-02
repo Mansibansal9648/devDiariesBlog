@@ -6,7 +6,7 @@ import { useState } from "react";
 import demoimg from "../../../assets/images/demo-img.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function NavBar({ handleClick }) {
+function NavBar({ handleClick, handleInputTitle }) {
   const {
     store: { user },
   } = useAppContext();
@@ -18,6 +18,7 @@ function NavBar({ handleClick }) {
   const toggleProfile = () => {
     setIsRightSidebarExpanded((prevState) => !prevState);
   };
+
 
   return (
     <>
@@ -42,6 +43,7 @@ function NavBar({ handleClick }) {
                     type="text"
                     placeholder="Search posts"
                     className="search_input d-none d-lg-flex"
+                    onChange={handleInputTitle}
                   />
                 </div>
               </>
