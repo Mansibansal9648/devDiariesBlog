@@ -13,12 +13,12 @@ export const createNewPost = async (post,accessToken)=>{
     }
 }
 
-export const getPost = async (accessToken)=>{
+export const getPost = async (accessToken,page,limit)=>{
     try {
         const headers = {
             'Authorization': `Bearer ${accessToken}`
         };
-        let res = await axios.get("http://localhost:8080/post/get-post", {headers});
+        let res = await axios.get(`http://localhost:8080/post/get-post?page=${page}&limit=${limit}`, {headers});
         // console.log(res)
         return res;
     } catch (error) {
