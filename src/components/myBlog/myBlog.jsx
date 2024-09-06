@@ -2,7 +2,7 @@ import { useAppContext } from "../../contextApi/context";
 import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
 import { getPost, deletePost, searchPostByTitle } from "../common/api/postApi";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useCallback} from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
@@ -38,21 +38,12 @@ function MyBlog({ postTitle }) {
     } else if (res && res.data.responseCode === 200) {
       setPosts(prevPosts => [...prevPosts, ...res.data.data]);
       let hasMoreData=(limit*page)<res.data.pagination.totalItems
-      console.log(hasMoreData)
-    //   if (hasMoreData) {
-    //     setHasMore(true);
-    // } else {
-    //     setHasMore(false);
-    // }
     setHasMore(hasMoreData);
-debugger
     if (hasMoreData) {
       setPage(page + 1);
-      console.log("page: " ,page)
     }
      
-      // setPage(page + 1);
-      // setPosts(res.data.data);
+    
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -73,12 +64,18 @@ debugger
   };
 
   const getAllUserPostByLabel = async (label) => {
-    let res = await getPostByLabel({ label: label }, user.accessToken);
+    let res = await getPostByLabel(label, user.accessToken,page,limit);
     // console.log("labelss", label);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      setPosts(res.data.data);
+      // setPosts(res.data.data);
+      setPosts(prevPosts => [...prevPosts, ...res.data.data]);
+      let hasMoreData=(limit*page)<res.data.pagination.totalItems
+    setHasMore(hasMoreData);
+    if (hasMoreData) {
+      setPage(page + 1);
+    }
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -107,11 +104,24 @@ debugger
   }, []);
 
   const getPostByTitle = async () => {
-    let res = await searchPostByTitle({ title: postTitle }, user.accessToken);
+    let res = await searchPostByTitle(postTitle, user.accessToken,page,limit);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      setPosts(res.data.data);
+      // console.log(res.data.data)
+      // if(page==1){
+      //   setPosts(res.data.data)
+      // }else{
+        setPosts(prevPosts => [...prevPosts, ...res.data.data]);
+
+      // }
+   
+      let hasMoreData=(limit*page)<res.data.pagination.totalItems
+    setHasMore(hasMoreData);
+    if (hasMoreData) {
+      setPage(page + 1);
+    }
+      // setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
       // toast.error("Post dosen't exists")
       // setPosts([])
@@ -121,13 +131,26 @@ debugger
     }
   };
 
+  // const debouncedGetPostByTitle=()=>{debounce(getPostByTitle,800)}
+  const debouncedGetPostByTitle = () => {
+    debounce(() => {
+        getPostByTitle();
+    }, 800); // Delay of 800ms
+};;
+
   useEffect(() => {
-    if (!postTitle) {
-      getmyPost();
+    setPage(1);
+     setPosts([]); 
+     if (!postTitle) {
+      if (active === "all") {
+        getmyPost(); // Load all posts if no search title
+      } else {
+        getAllUserPostByLabel(active); // If a label is active, load label posts
+      }
     } else {
-      debounce(getPostByTitle, 800);
+      debouncedGetPostByTitle(); // Fetch posts by title
     }
-  }, [postTitle]);
+  }, [postTitle,active]);
   // const extractImage =()=>{
 
   // }
@@ -160,9 +183,11 @@ debugger
                           : " badge text-dark py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"
                       }
                       onClick={() => {
+                        setPage(1);
+                        setPosts([]);
                         getAllUserPostByLabel(item);
                         setActive(item);
-                        console.log("item", typeof item);
+                        // console.log("item", typeof item);
                       }}
                       value={item}
                     >
@@ -176,7 +201,15 @@ debugger
             <h4>All Posts</h4>
             <InfiniteScroll
               dataLength={posts.length}
-              next={getmyPost}
+              next={() => {
+                if (postTitle) {
+                  debouncedGetPostByTitle(); // If searching by title
+                } else if (active === "all") {
+                  getmyPost(); // If viewing all posts
+                } else {
+                  getAllUserPostByLabel(active); // If filtering by label
+                }
+              }}
               hasMore={hasMore}
               loader={<h4>Loading...</h4>}
               endMessage={
