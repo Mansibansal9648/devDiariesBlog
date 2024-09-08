@@ -91,7 +91,10 @@ function MyBlog({ postTitle }) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
-      getmyPost();
+      // getmyPost();
+      let result=posts.filter(post => post._id != postId)
+      setPosts(result)
+      allUsedLabels()
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -167,7 +170,7 @@ function MyBlog({ postTitle }) {
                     : " badge text-dark  py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"
                 }
                 onClick={() => {
-                  getmyPost();
+                  // getmyPost();
                   setActive("all");
                 }}
               >
@@ -185,7 +188,7 @@ function MyBlog({ postTitle }) {
                       onClick={() => {
                         setPage(1);
                         setPosts([]);
-                        getAllUserPostByLabel(item);
+                        // getAllUserPostByLabel(item);
                         setActive(item);
                         // console.log("item", typeof item);
                       }}
