@@ -2,7 +2,7 @@ import { useAppContext } from "../../contextApi/context";
 import profilePic from "../../assets/images/profile.png";
 import "./myBlog.css";
 import { getPost, deletePost, searchPostByTitle } from "../common/api/postApi";
-import { useEffect, useState ,useCallback} from "react";
+import { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
@@ -30,20 +30,18 @@ function MyBlog({ postTitle }) {
   // console.log(typeof active)
 
   const getmyPost = async () => {
-    let res = await getPost(user.accessToken,page,limit);
+    let res = await getPost(user.accessToken, page, limit);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
       // } else if (res && res.data.responseCode === 403) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      setPosts(prevPosts => [...prevPosts, ...res.data.data]);
-      let hasMoreData=(limit*page)<res.data.pagination.totalItems
-    setHasMore(hasMoreData);
-    if (hasMoreData) {
-      setPage(page + 1);
-    }
-     
-    
+      setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+      let hasMoreData = limit * page < res.data.pagination.totalItems;
+      setHasMore(hasMoreData);
+      if (hasMoreData) {
+        setPage(page + 1);
+      }
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -64,18 +62,18 @@ function MyBlog({ postTitle }) {
   };
 
   const getAllUserPostByLabel = async (label) => {
-    let res = await getPostByLabel(label, user.accessToken,page,limit);
+    let res = await getPostByLabel(label, user.accessToken, page, limit);
     // console.log("labelss", label);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
       // setPosts(res.data.data);
-      setPosts(prevPosts => [...prevPosts, ...res.data.data]);
-      let hasMoreData=(limit*page)<res.data.pagination.totalItems
-    setHasMore(hasMoreData);
-    if (hasMoreData) {
-      setPage(page + 1);
-    }
+      setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+      let hasMoreData = limit * page < res.data.pagination.totalItems;
+      setHasMore(hasMoreData);
+      if (hasMoreData) {
+        setPage(page + 1);
+      }
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -92,9 +90,9 @@ function MyBlog({ postTitle }) {
     } else if (res && res.data.responseCode === 200) {
       toast.success(res.data.resMessage);
       // getmyPost();
-      let result=posts.filter(post => post._id != postId)
-      setPosts(result)
-      allUsedLabels()
+      let result = posts.filter((post) => post._id != postId);
+      setPosts(result);
+      allUsedLabels();
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -107,7 +105,7 @@ function MyBlog({ postTitle }) {
   }, []);
 
   const getPostByTitle = async () => {
-    let res = await searchPostByTitle(postTitle, user.accessToken,page,limit);
+    let res = await searchPostByTitle(postTitle, user.accessToken, page, limit);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
@@ -115,15 +113,15 @@ function MyBlog({ postTitle }) {
       // if(page==1){
       //   setPosts(res.data.data)
       // }else{
-        setPosts(prevPosts => [...prevPosts, ...res.data.data]);
+      setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
 
       // }
-   
-      let hasMoreData=(limit*page)<res.data.pagination.totalItems
-    setHasMore(hasMoreData);
-    if (hasMoreData) {
-      setPage(page + 1);
-    }
+
+      let hasMoreData = limit * page < res.data.pagination.totalItems;
+      setHasMore(hasMoreData);
+      if (hasMoreData) {
+        setPage(page + 1);
+      }
       // setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
       // toast.error("Post dosen't exists")
@@ -137,14 +135,14 @@ function MyBlog({ postTitle }) {
   // const debouncedGetPostByTitle=()=>{debounce(getPostByTitle,800)}
   const debouncedGetPostByTitle = () => {
     debounce(() => {
-        getPostByTitle();
+      getPostByTitle();
     }, 800); // Delay of 800ms
-};;
+  };
 
   useEffect(() => {
     setPage(1);
-     setPosts([]); 
-     if (!postTitle) {
+    setPosts([]);
+    if (!postTitle) {
       if (active === "all") {
         getmyPost(); // Load all posts if no search title
       } else {
@@ -153,7 +151,7 @@ function MyBlog({ postTitle }) {
     } else {
       debouncedGetPostByTitle(); // Fetch posts by title
     }
-  }, [postTitle,active]);
+  }, [postTitle, active]);
   // const extractImage =()=>{
 
   // }
@@ -202,28 +200,28 @@ function MyBlog({ postTitle }) {
           </div>
           <div className="container all_post_container py-3 border border-1">
             <h4>All Posts</h4>
-            <InfiniteScroll
-              dataLength={posts.length}
-              next={() => {
-                if (postTitle) {
-                  debouncedGetPostByTitle(); // If searching by title
-                } else if (active === "all") {
-                  getmyPost(); // If viewing all posts
-                } else {
-                  getAllUserPostByLabel(active); // If filtering by label
+            {posts.length ? (
+              <InfiniteScroll
+                dataLength={posts.length}
+                next={() => {
+                  if (postTitle) {
+                    debouncedGetPostByTitle(); // If searching by title
+                  } else if (active === "all") {
+                    getmyPost(); // If viewing all posts
+                  } else {
+                    getAllUserPostByLabel(active); // If filtering by label
+                  }
+                }}
+                hasMore={hasMore}
+                loader={<h4>Loading...</h4>}
+                endMessage={
+                  <p style={{ textAlign: "center" }}>
+                    <b>Yipee! You have seen all posts</b>
+                  </p>
                 }
-              }}
-              hasMore={hasMore}
-              loader={<h4>Loading...</h4>}
-              endMessage={
-                <p style={{ textAlign: "center" }}>
-                  <b>Yipee! You have seen all posts</b>
-                </p>
-              }
-            >
-              <ul className="list-group">
-                {posts.length ? (
-                  posts.map((item) => {
+              >
+                <ul className="list-group">
+                  {posts.map((item) => {
                     return (
                       <li
                         key={item._id}
@@ -326,14 +324,14 @@ function MyBlog({ postTitle }) {
                         </div>
                       </li>
                     );
-                  })
-                ) : (
-                  <div className="text-center">
-                    <h5>No Post Available</h5>
-                  </div>
-                )}
-              </ul>
-            </InfiniteScroll>
+                  })}
+                </ul>
+              </InfiniteScroll>
+            ) : (
+              <div className="text-center">
+                <h5>No Post Available</h5>
+              </div>
+            )}
           </div>
         </div>
       ) : (
