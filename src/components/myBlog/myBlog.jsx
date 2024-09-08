@@ -142,15 +142,21 @@ function MyBlog({ postTitle }) {
   useEffect(() => {
     setPage(1);
     setPosts([]);
-    if (!postTitle) {
+    // if (!postTitle) {
       if (active === "all") {
-        getmyPost(); // Load all posts if no search title
+        if(!postTitle){
+          getmyPost(); 
+        }else{
+          debouncedGetPostByTitle(); 
+        }
+      // Load all posts if no search title
       } else {
         getAllUserPostByLabel(active); // If a label is active, load label posts
       }
-    } else {
-      debouncedGetPostByTitle(); // Fetch posts by title
-    }
+    // } else {
+    //   // Fetch posts by title
+    //   debouncedGetPostByTitle(); 
+    // }
   }, [postTitle, active]);
   // const extractImage =()=>{
 
