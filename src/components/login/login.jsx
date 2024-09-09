@@ -125,6 +125,7 @@ function LogIn() {
                 <label className="form-check-label" htmlFor="exampleCheck1">
                   Remember me?
                 </label>
+                {" "}
                 <Link to="/forgotpassword" style={{ textDecoration: "none" }}>
                   Forgot password
                 </Link>

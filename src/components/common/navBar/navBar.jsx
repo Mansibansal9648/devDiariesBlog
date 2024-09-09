@@ -24,7 +24,7 @@ function NavBar({ handleClick, handleInputTitle }) {
     <>
       {user.isLogin ? (
         <div>
-          <div className="navbar z-1 fixed-top">
+          <div className="navbar z-3 fixed-top">
             {pathArr[2] === "post" ? (
               <Link className="btn bg-white rounded-circle d-flex justify-content-center align-items-center" style={{height:"40px", width: "40px"}} to={`/userpage/${pathArr[3]}`}>
                 <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
@@ -66,7 +66,9 @@ function NavBar({ handleClick, handleInputTitle }) {
               <h2 className="text-primary">@{user.username}</h2>
               <button
                 className="btn btn-danger rounded-4"
-                onClick={() => localStorage.clear()}
+                onClick={() => 
+                  localStorage.clear()
+                }
               >
                 Logout{" "}
               </button>
