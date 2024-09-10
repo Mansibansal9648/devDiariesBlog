@@ -110,8 +110,8 @@ function NavBar({ handleClick, handleInputTitle }) {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/political">
-                    Political
+                  <Link className="nav-link text-white" to="/blogs/technology">
+                  technology
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -120,13 +120,13 @@ function NavBar({ handleClick, handleInputTitle }) {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/finance">
-                    Finance
+                  <Link className="nav-link text-white" to="/blogs/science">
+                  science
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/life">
-                    Life
+                  <Link className="nav-link text-white" to="/blogs/general">
+                  general
                   </Link>
                 </li>
                 <li className="nav-item">
