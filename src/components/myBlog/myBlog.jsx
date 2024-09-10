@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import pimg from "../../assets/images/catwallpaper.jpg";
 import debounce from "../../utils/helper/debounceFunction";
-// import useDebounce from "../../hooks/useDebounce";
 import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
 import moment from "moment";
 import "moment-timezone";
@@ -17,7 +16,6 @@ function MyBlog({ postTitle }) {
   const {
     store: { user },
   } = useAppContext();
-  // console.log(user);
 
   const [posts, setPosts] = useState([]);
   // const debounce = useDebounce()
@@ -109,13 +107,7 @@ function MyBlog({ postTitle }) {
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      // console.log(res.data.data)
-      // if(page==1){
-      //   setPosts(res.data.data)
-      // }else{
       setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
-
-      // }
 
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
@@ -124,43 +116,32 @@ function MyBlog({ postTitle }) {
       }
       // setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
-      // toast.error("Post dosen't exists")
-      // setPosts([])
       toast.error(res.data.errMessage);
     } else {
       toast.error("Something went wrong..");
     }
   };
 
-  // const debouncedGetPostByTitle=()=>{debounce(getPostByTitle,800)}
   const debouncedGetPostByTitle = () => {
     debounce(() => {
       getPostByTitle();
-    }, 800); // Delay of 800ms
+    }, 800); 
   };
 
   useEffect(() => {
     setPage(1);
     setPosts([]);
-    // if (!postTitle) {
       if (active === "all") {
         if(!postTitle){
           getmyPost(); 
         }else{
           debouncedGetPostByTitle(); 
         }
-      // Load all posts if no search title
       } else {
-        getAllUserPostByLabel(active); // If a label is active, load label posts
+        getAllUserPostByLabel(active); 
       }
-    // } else {
-    //   // Fetch posts by title
-    //   debouncedGetPostByTitle(); 
-    // }
   }, [postTitle, active]);
-  // const extractImage =()=>{
-
-  // }
+  
   return (
     <>
       {user != null ? (
@@ -194,7 +175,6 @@ function MyBlog({ postTitle }) {
                         setPosts([]);
                         // getAllUserPostByLabel(item);
                         setActive(item);
-                        // console.log("item", typeof item);
                       }}
                       value={item}
                     >
@@ -244,9 +224,7 @@ function MyBlog({ postTitle }) {
                           <div className="post-detail">
                             <h6 className="fw-bold">{item.title}</h6>
                             <p>{}</p>
-                            {/* <span>
-                            {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
-                          </span> */}
+      
                             <span>
                               {item.createdAt == item.updatedAt ? (
                                 <span>
