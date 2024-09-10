@@ -54,11 +54,11 @@ const WithSideBar = ({
               </Link>
             </div>
 
-            <div class="accordion accordion-flush" id="accordionExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
+            <div className="accordion accordion-flush" id="category-accordion">
+              <div className="accordion-item">
+                <h2 className="accordion-header">
                   <button
-                    class="accordion-button"
+                    className="accordion-button"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
@@ -70,10 +70,10 @@ const WithSideBar = ({
                 </h2>
                 <div
                   id="collapseOne"
-                  class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
+                  className="accordion-collapse collapse show"
+                  data-bs-parent="#category-accordion"
                 >
-                  <div class="accordion-body">
+                  <div className="accordion-body">
                     <div className="list-group list-group-flush">
                       <div className="list-group-item">
                         <Link
