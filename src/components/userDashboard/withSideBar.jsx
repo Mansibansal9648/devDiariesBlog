@@ -17,7 +17,7 @@ const WithSideBar = ({
     overflow: "auto ",
     transition: "width 0.3s",
     position: "absolute",
-    top:"66px",
+    top: "66px",
     right: 0,
     display: "inline-block",
   };
@@ -32,7 +32,10 @@ const WithSideBar = ({
             style={{ marginTop: "20px", padding: "10px" }}
           >
             <div className="list-group-item  pt-4 pb-3">
-              <Link to={`/userpage/${user.id}`} className="nav-link text-success fs-4">
+              <Link
+                to={`/userpage/${user.id}`}
+                className="nav-link text-success fs-4"
+              >
                 Hi! @{user.username}
               </Link>
             </div>
@@ -50,41 +53,90 @@ const WithSideBar = ({
                 <b>My Blogs</b>
               </Link>
             </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/sports"} className="nav-link">
-              Development
-              </Link>
+
+            <div class="accordion accordion-flush" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Show Blogs categories
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <div className="list-group list-group-flush">
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/sports"}
+                          className="nav-link"
+                        >
+                          Development
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/health"}
+                          className="nav-link"
+                        >
+                          Programming language
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/technology"}
+                          className="nav-link"
+                        >
+                          Technology
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/business"}
+                          className="nav-link"
+                        >
+                          Devops
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/science"}
+                          className="nav-link"
+                        >
+                          Cloud
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/general"}
+                          className="nav-link"
+                        >
+                          Career & growth
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/entertainment"}
+                          className="nav-link"
+                        >
+                          Tools
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/health"} className="nav-link">
-              Programming language
-              </Link>
-            </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/technology"} className="nav-link">
-              Technology
-              </Link>
-            </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/business"} className="nav-link">
-              Devops
-              </Link>
-            </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/science"} className="nav-link">
-              Cloud
-              </Link>
-            </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/general"} className="nav-link">
-              Career & growth
-              </Link>
-            </div>
-            <div className="list-group-item">
-              <Link to={"/userpage/blogs/entertainment"} className="nav-link">
-                Tools
-              </Link>
-            </div>
+
             <div className="list-group-item">
               <Link to={"/"} className="nav-link">
                 Stats
@@ -110,7 +162,7 @@ const WithSideBar = ({
         </div>
         <div style={mainContentStyle} className="min-vh-100">
           {children}
-        <Footer/>
+          <Footer />
         </div>
       </div>
     </>
