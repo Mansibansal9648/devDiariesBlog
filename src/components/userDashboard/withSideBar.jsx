@@ -64,6 +64,7 @@ const WithSideBar = ({
                     data-bs-target="#collapseOne"
                     aria-expanded="true"
                     aria-controls="collapseOne"
+                    style={{padding: "13px 16px"}}
                   >
                     Show Blogs categories
                   </button>
@@ -73,7 +74,7 @@ const WithSideBar = ({
                   className="accordion-collapse collapse show"
                   data-bs-parent="#category-accordion"
                 >
-                  <div className="accordion-body">
+                  <div className="accordion-body" style={{padding:"10px"}}>
                     <div className="list-group list-group-flush">
                       <div className="list-group-item">
                         <Link
