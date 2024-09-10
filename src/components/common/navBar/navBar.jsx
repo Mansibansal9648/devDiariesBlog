@@ -140,6 +140,14 @@ function NavBar({ handleClick, handleInputTitle }) {
                     Tools
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white"
+                    to="/blogs/general"
+                  >
+                    Others
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="d-flex align-items-center ms-auto d-block">

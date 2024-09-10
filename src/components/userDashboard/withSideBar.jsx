@@ -53,6 +53,11 @@ const WithSideBar = ({
                 <b>My Blogs</b>
               </Link>
             </div>
+            <div className="list-group-item">
+              <Link to={`/userpage/blogs/random`} className="nav-link">
+                All Blogs
+              </Link>
+            </div>
 
             <div className="accordion accordion-flush" id="category-accordion">
               <div className="accordion-item">
@@ -66,7 +71,7 @@ const WithSideBar = ({
                     aria-controls="collapseOne"
                     style={{padding: "13px 16px"}}
                   >
-                    Show Blogs categories
+                    Blogs categories
                   </button>
                 </h2>
                 <div
@@ -130,6 +135,14 @@ const WithSideBar = ({
                           className="nav-link"
                         >
                           Tools
+                        </Link>
+                      </div>
+                      <div className="list-group-item">
+                        <Link
+                          to={"/userpage/blogs/general"}
+                          className="nav-link"
+                        >
+                          others
                         </Link>
                       </div>
                     </div>
