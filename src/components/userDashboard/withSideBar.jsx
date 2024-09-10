@@ -52,22 +52,37 @@ const WithSideBar = ({
             </div>
             <div className="list-group-item">
               <Link to={"/userpage/blogs/sports"} className="nav-link">
-                Sports
+              Development
               </Link>
             </div>
             <div className="list-group-item">
               <Link to={"/userpage/blogs/health"} className="nav-link">
-                Health
+              Programming language
+              </Link>
+            </div>
+            <div className="list-group-item">
+              <Link to={"/userpage/blogs/technology"} className="nav-link">
+              Technology
               </Link>
             </div>
             <div className="list-group-item">
               <Link to={"/userpage/blogs/business"} className="nav-link">
-                Business
+              Devops
+              </Link>
+            </div>
+            <div className="list-group-item">
+              <Link to={"/userpage/blogs/science"} className="nav-link">
+              Cloud
+              </Link>
+            </div>
+            <div className="list-group-item">
+              <Link to={"/userpage/blogs/general"} className="nav-link">
+              Career & growth
               </Link>
             </div>
             <div className="list-group-item">
               <Link to={"/userpage/blogs/entertainment"} className="nav-link">
-                Entertainment
+                Tools
               </Link>
             </div>
             <div className="list-group-item">
