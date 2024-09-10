@@ -65,11 +65,9 @@ function Register() {
     <>
       <NavBar />
       <div className="container text-center register-form-container position-relative z-0">
-        <h1 className="heading"> Let's join DevDiaries</h1>
-        <p className="text-center w-50 p-3 mx-auto">
-          Lorem Ipsum is simply dummy dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown
+        <h1 className="heading mt-4"> Let's join DevDiaries</h1>
+        <p className="text-center w-50 px-3 py-1 mx-auto">
+        Welcome to our vibrant community of readers and writers! By registering for our blog, you'll unlock a world of exclusive content, interactive features, and personalized updates tailored just for you.
         </p>
 
         <form className="container form" onSubmit={formik.handleSubmit}>
@@ -81,7 +79,7 @@ function Register() {
             <label htmlFor="username">User Name</label>
             <input
               type="text"
-              className="border w-100 p-2 "
+              className= {formik.errors.username && formik.touched.username ? "border border-danger register_input  w-100 p-2 " : " border register_input  w-100 p-2" }
               id="username"
               name="username"
               placeholder="Enter your User Name"
@@ -91,14 +89,14 @@ function Register() {
             />
           </div>
           {formik.errors.username && formik.touched.username ? (
-            <p className="form-error">{formik.errors.username}</p>
+            <p className="form-error mt-0">{formik.errors.username}</p>
           ) : null}
 
           <div>
             <label htmlFor="name">Name</label>
             <input
               type="text"
-              className="border w-100 p-2 "
+              className= {formik.errors.name && formik.touched.name ? "border border-danger register_input  w-100 p-2 " : " border register_input  w-100 p-2" }
               id="name"
               name="name"
               placeholder="Enter your Name"
@@ -108,14 +106,14 @@ function Register() {
             />
           </div>
           {formik.errors.name && formik.touched.name ? (
-            <p className="form-error">{formik.errors.name}</p>
+            <p className="form-error mt-0">{formik.errors.name}</p>
           ) : null}
 
           <div>
             <label htmlFor="email">Email address</label>
             <input
               type="email"
-              className="border  w-100 p-2 "
+              className= {formik.errors.email && formik.touched.email ? "border border-danger register_input  w-100 p-2 " : " border register_input  w-100 p-2" }
               id="email"
               name="email"
               placeholder="Enter your email"
@@ -125,7 +123,7 @@ function Register() {
             />
           </div>
           {formik.errors.email && formik.touched.email ? (
-            <p className="form-error">{formik.errors.email}</p>
+            <p className="form-error mt-0">{formik.errors.email}</p>
           ) : null}
 
           <div>
@@ -134,7 +132,7 @@ function Register() {
               <input
                 type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
-                className="border  w-100 p-2  "
+                className= {formik.errors.password && formik.touched.password ? "border border-danger register_input  w-100 p-2 " : " border register_input  w-100 p-2" }
                 id="password"
                 name="password"
                 placeholder="Enter your password"
@@ -150,7 +148,7 @@ function Register() {
             </div>
           </div>
           {formik.errors.password && formik.touched.password ? (
-            <p className="form-error">{formik.errors.password}</p>
+            <p className="form-error mt-0">{formik.errors.password}</p>
           ) : null}
 
           <div>
@@ -158,7 +156,7 @@ function Register() {
 
             <input
               type="password"
-              className="border  w-100 p-2 "
+              className= {formik.errors.confirmPassword && formik.touched.confirmPassword ? "border border-danger register_input  w-100 p-2 " : " border register_input  w-100 p-2" }
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm your password"
@@ -168,7 +166,7 @@ function Register() {
             />
           </div>
           {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
-            <p className="form-error">{formik.errors.confirmPassword}</p>
+            <p className="form-error mt-0">{formik.errors.confirmPassword}</p>
           ) : null}
 
           <button type="submit" className="btn btn-primary button">
