@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../contextApi/context";
 import Footer from "../common/footer/footer";
+import "./withSideBar.css"
 
 const WithSideBar = ({
   children,
@@ -21,6 +22,10 @@ const WithSideBar = ({
     right: 0,
     display: "inline-block",
   };
+
+  let listStyle = {
+    padding: "8px 26px"
+  }
   return (
     <>
       <div className="row sidebar-con">
@@ -42,18 +47,18 @@ const WithSideBar = ({
             <div className="newpost">
               <Link
                 to={`/userpage/post/${user.id}`}
-                className="nav-link list-group-item"
+                className="nav-link list-group-item list-group-hover"
                 style={{ color: "orange" }}
               >
                 + NEW POST
               </Link>
             </div>
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={`/userpage/${user.id}`} className="nav-link">
                 <b>My Blogs</b>
               </Link>
             </div>
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={`/userpage/blogs/random`} className="nav-link">
                 All Blogs
               </Link>
@@ -63,7 +68,7 @@ const WithSideBar = ({
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
-                    className="accordion-button"
+                    className="accordion-button collapsed list-group-hover"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
@@ -76,12 +81,12 @@ const WithSideBar = ({
                 </h2>
                 <div
                   id="collapseOne"
-                  className="accordion-collapse collapse show"
+                  className="accordion-collapse collapse"
                   data-bs-parent="#category-accordion"
                 >
-                  <div className="accordion-body" style={{padding:"10px"}}>
+                  <div className="accordion-body" style={{padding:"0px"}}>
                     <div className="list-group list-group-flush">
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/sports"}
                           className="nav-link"
@@ -89,7 +94,7 @@ const WithSideBar = ({
                           Development
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/health"}
                           className="nav-link"
@@ -97,7 +102,7 @@ const WithSideBar = ({
                           Programming language
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/technology"}
                           className="nav-link"
@@ -105,7 +110,7 @@ const WithSideBar = ({
                           Technology
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/business"}
                           className="nav-link"
@@ -113,7 +118,7 @@ const WithSideBar = ({
                           Devops
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/science"}
                           className="nav-link"
@@ -121,7 +126,7 @@ const WithSideBar = ({
                           Cloud
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/general"}
                           className="nav-link"
@@ -129,7 +134,7 @@ const WithSideBar = ({
                           Career & growth
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/entertainment"}
                           className="nav-link"
@@ -137,7 +142,7 @@ const WithSideBar = ({
                           Tools
                         </Link>
                       </div>
-                      <div className="list-group-item">
+                      <div className="list-group-item list-group-item-action" style={listStyle}>
                         <Link
                           to={"/userpage/blogs/general"}
                           className="nav-link"
@@ -151,23 +156,23 @@ const WithSideBar = ({
               </div>
             </div>
 
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={"/"} className="nav-link">
                 Stats
               </Link>
             </div>
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={"/"} className="nav-link">
                 Comments
               </Link>
             </div>
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={"/"} className="nav-link">
                 Pages
               </Link>
             </div>
 
-            <div className="list-group-item">
+            <div className="list-group-item list-group-hover">
               <Link to={"/"} className="nav-link">
                 Setting
               </Link>
