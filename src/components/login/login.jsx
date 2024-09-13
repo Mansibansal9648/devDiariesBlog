@@ -70,7 +70,7 @@ function LogIn() {
 
         <div className="login">
           <form onSubmit={formik.handleSubmit}>
-            <h1 className="text-center mb-5">Login</h1>
+            <h1 className="text-center mb-5" style={{color: "#1E4682"}}>Login</h1>
             <div className="mb-3">
               <label htmlFor="username_email" className="form-label">
                 Email address or User Name

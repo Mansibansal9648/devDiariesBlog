@@ -1,11 +1,27 @@
 .navbar {
-  background-color: #2b2d42;
+  background-color: #EBF3FF;
   position: fixed;
   margin-bottom: 30px;
   width: 100%;
   z-index: 1;
 }
-
+.logo {
+    color: #401CEB;
+}
+.nav-item .categories {
+  color: #1E4682 !important;
+ 
+}
+.btn-create-blog {
+  color : #1BB9BE;
+  border: 1px solid #1BB9BE;
+  padding: 5px;
+  border-radius: 6px;
+}
+.btn-create-blog:hover{
+  background-color: #1BB9BE;
+  color : #FFFDFB;
+}
 .button {
   background-color: white;
   border: 0px;

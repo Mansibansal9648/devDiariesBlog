@@ -1,5 +1,5 @@
 .heading{
-    color: #2b2d42;
+    color: #1E4682;
 }
 .register-form-container{
     display: flex;
@@ -15,14 +15,14 @@
     padding: 50px 100px ;
     text-align: left;
 }
-.contactus{
+ .contactus{
     padding-bottom: 50px;
     text-align: center;
-    color: black;
+     color: #1E4682; 
     font-weight: bold;
 }
 .contactus h4{
-    color: black;
+    color: #1E4682;
     font-weight: 600;
     font-size: 36px;
 }
@@ -44,12 +44,7 @@ label {
     margin-top: 10px;
     text-align: center;
 }
-.eye-position{
-    position: absolute;
-  top: 15px;
-  right: 10px;
 
-}
 .register_input{
     margin-bottom: 10px;
 }

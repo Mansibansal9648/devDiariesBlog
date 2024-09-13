@@ -4,7 +4,7 @@
 }
 .login{
     width: 45%;
-    border: 1px solid black;
+    border: 1px solid #1E4682;
     padding: 45px;
     margin: 55px 0px;
 }
@@ -15,11 +15,11 @@
 .btn-submit{
   width:100%;
   display: block;
-  background-color: #2B2D42;
+  background-color: #55c360;
   color: white;
 }
 .btn-submit:hover{
-  background-color: #33b249;
+  background-color: #55c360;
   color: white;
 }
 .eye-position{

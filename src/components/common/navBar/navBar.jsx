@@ -1,6 +1,6 @@
 import "./navbar.css";
 import { Link, useLocation } from "react-router-dom";
-import search from "../../../assets/images/search-icon.png";
+//import search from "../../../assets/images/search-icon.png";
 import { useAppContext } from "../../../contextApi/context";
 import { useState } from "react";
 import demoimg from "../../../assets/images/demo-img.jpg";
@@ -90,7 +90,7 @@ function NavBar({ handleClick, handleInputTitle }) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <Link className="navbar-brand text-white d-none d-lg-block" to="/">
+            <Link className="navbar-brand logo d-none d-lg-block" to="/">
               DevDiaries
             </Link>
             <div
@@ -100,40 +100,40 @@ function NavBar({ handleClick, handleInputTitle }) {
               <ul className="navbar-nav mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link
-                    className="nav-link active text-white"
+                    className="nav-link active categories"
                     to="/blogs/sport"
                   >
                     Sport
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/health">
+                  <Link className="nav-link categories " to="/blogs/health">
                     Health
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/political">
+                  <Link className="nav-link categories" to="/blogs/political">
                     Political
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/business">
+                  <Link className="nav-link categories" to="/blogs/business">
                     Business
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/finance">
+                  <Link className="nav-link categories" to="/blogs/finance">
                     Finance
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-white" to="/blogs/life">
+                  <Link className="nav-link categories" to="/blogs/life">
                     Life
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link text-white"
+                    className="nav-link categories"
                     to="/blogs/entertainment"
                   >
                     Entertainment
@@ -141,31 +141,26 @@ function NavBar({ handleClick, handleInputTitle }) {
                 </li>
               </ul>
             </div>
-            <div className="d-flex align-items-center ms-auto d-block">
-              <img
-                src={search}
-                alt="search-icon"
-                style={{ width: "20px", height: "20px" }}
-                className="mx-2 my-1  d-lg-block"
-              />
-              <span className="text-white mx-2 fw-light ">|</span>
+            <div className="d-flex align-items-center ms-auto d-block categories">
+            <FontAwesomeIcon icon="fas fa-search" style={{color: "#1E4682"}} />
+              <span className="categories mx-2  ">|</span>
 
               <Link
-                className="text-white mx-2 fw-light text-decoration-none fs-6"
+                className="mx-2 fw-light text-decoration-none fs-6" style={{color : "#1BB9BE"}}
                 to="/login"
               >
                 Login
               </Link>
               <Link
-                className="text-white mx-2 fw-light text-decoration-none fs-6"
+                className="mx-2 fw-light text-decoration-none fs-6" style={{color : "#1BB9BE"}}
                 to="/register"
               >
                 Register
               </Link>
             </div>
-            <div className=" ms-3">
+            <div className="ms-2">
               <button
-                className="btn btn-outline-primary text-white "
+                className=" btn-create-blog "
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >

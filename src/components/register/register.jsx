@@ -72,7 +72,7 @@ function Register() {
 
         <form className="container form" onSubmit={formik.handleSubmit}>
           <div className="contactus">
-            <h4>Registration</h4>
+          <h1 className="text-center" style={{color: "#1E4682"}}>Register</h1>
           </div>
 
           <div>
