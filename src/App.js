@@ -89,12 +89,13 @@ function App() {
             }
           ></Route>
           <Route
-            path="/userpage/:userId/post/blogdetailpage"
+            path="/userpage/post/:userId/blogdetailpage"
             element={
               <PrivateRoute>
-                <UserLayoutPage>
+                <div>
+                  <NavBar/>
                   <BlogDetailPage />
-                </UserLayoutPage>
+                  </div>
               </PrivateRoute>
             }
           ></Route>

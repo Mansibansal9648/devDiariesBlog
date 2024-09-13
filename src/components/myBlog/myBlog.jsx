@@ -297,7 +297,7 @@ function MyBlog({ postTitle }) {
                               <i className="fa-solid fa-pen edit_btn  fs-5"></i>
                             </Link>
                             <Link
-                              to={`/userpage/${user.id}/post/blogdetailpage`}
+                              to={`/userpage/post/${user.id}/blogdetailpage`}
                               state={item}
                               className="nav-link d-inline-block"
                             >
