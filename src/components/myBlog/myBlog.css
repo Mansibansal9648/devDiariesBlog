@@ -15,3 +15,14 @@
 .edit_btn:hover{
   color:rgb(24, 149, 53);
 }
+
+/* label CSS */
+/* styles.css */
+.label-badge {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+

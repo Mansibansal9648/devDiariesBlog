@@ -1,63 +1,65 @@
-.heading{
-    color: #1E4682;
+.heading {
+  color: #1e4682;
 }
-.register-form-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    padding-top: 60px;
-    margin-bottom: 20px;
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding-top: 60px;
+  margin-bottom: 20px;
 }
-.form{
-    border: 1px solid #2b2d42;
-    width: 50%;
-    padding: 50px 100px ;
-    text-align: left;
+.form {
+  border: 1px solid #2b2d42;
+  width: 50%;
+  padding: 50px 100px;
+  text-align: left;
 }
- .contactus{
-    padding-bottom: 50px;
-    text-align: center;
-     color: #1E4682; 
-    font-weight: bold;
+.contactus {
+  padding-bottom: 50px;
+  text-align: center;
+  color: #1e4682;
+  font-weight: bold;
 }
-.contactus h4{
-    color: #1E4682;
-    font-weight: 600;
-    font-size: 36px;
+.contactus h4 {
+  color: #1e4682;
+  font-weight: 600;
+  font-size: 36px;
 }
-.button{
-    background-color: #2b2d42;
-    width: 100%;
+.btn-submit {
+  background-color: #55c360;
+  color: white;
+  width: 100%;
 }
-.button:hover{
-    background-color: #33b249;
+.btn-submit:hover {
+  background-color: #55c360;
+  color: white;
 }
 input {
-    margin-bottom: 0px;
-    border-radius: 5px ;
+  margin-bottom: 0px;
+  border-radius: 5px;
 }
 label {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-.para{
-    margin-top: 10px;
-    text-align: center;
-}
-
-.register_input{
-    margin-bottom: 10px;
+.para {
+  margin-top: 10px;
+  text-align: center;
 }
 
-.form-error{
-    color: red;
+.register_input {
+  margin-bottom: 10px;
 }
 
-@media only screen and (max-device-width: 1080px){
-    .form{
-        border: 1px solid #2b2d42;
-        width: 90%;
-        padding: 50px 20px ;
-        text-align: left;
-    }
+.form-error {
+  color: red;
+}
+
+@media only screen and (max-device-width: 1080px) {
+  .form {
+    border: 1px solid #2b2d42;
+    width: 90%;
+    padding: 50px 20px;
+    text-align: left;
+  }
 }

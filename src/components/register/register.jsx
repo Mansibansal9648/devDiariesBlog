@@ -65,7 +65,7 @@ function Register() {
     <>
       <NavBar />
       <div className="container text-center register-form-container position-relative z-0">
-        <h1 className="heading mt-4"> Let's join DevDiaries</h1>
+        <h1 className="heading mt-4" style={{color : "#2B3654"}}> Let's join DevDiaries</h1>
         <p className="text-center w-50 px-3 py-1 mx-auto">
         Welcome to our vibrant community of readers and writers! By registering for our blog, you'll unlock a world of exclusive content, interactive features, and personalized updates tailored just for you.
         </p>
@@ -169,7 +169,7 @@ function Register() {
             <p className="form-error mt-0">{formik.errors.confirmPassword}</p>
           ) : null}
 
-          <button type="submit" className="btn btn-primary button">
+          <button type="submit" className="btn btn-submit mt-3">
             Register
           </button>
           <div className="para">

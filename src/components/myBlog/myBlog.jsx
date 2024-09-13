@@ -167,7 +167,7 @@ function MyBlog({ postTitle }) {
         <div className="col-10 offset-1">
           <div className="outer_label_container position-fixed">
             <div className="container label_container py-2">
-              <span
+              {/* <span
                 className={
                   active == "all"
                     ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4"
@@ -179,15 +179,16 @@ function MyBlog({ postTitle }) {
                 }}
               >
                 All
-              </span>
+              </span> */}
+              <button type="button" className={active == "all" ? "btn inactive-label" : "btn active-label"} onClick={() => setActive("all")}>All</button>
               {usedLabels.length != 0 &&
                 usedLabels.map((item) => {
                   return (
                     <span
                       className={
                         item == active
-                          ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4"
-                          : " badge text-dark py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"
+                          ? "btn inactive-label"
+                          : "btn active-label"
                       }
                       onClick={() => {
                         setPage(1);
