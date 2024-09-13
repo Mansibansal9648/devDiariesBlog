@@ -23,7 +23,7 @@ function NavBar({ handleClick, handleInputTitle }) {
     <>
       {user.isLogin ? (
         <div>
-          <div className="navbar z-1 fixed-top">
+          <div className="navbar z-3 fixed-top">
             {pathArr[2] === "post" ? (
               <Link
                 className="btn bg-white rounded-circle d-flex justify-content-center align-items-center"
@@ -69,7 +69,9 @@ function NavBar({ handleClick, handleInputTitle }) {
               <h2 className="text-primary">@{user.username}</h2>
               <button
                 className="btn btn-danger rounded-4"
-                onClick={() => localStorage.clear()}
+                onClick={() => 
+                  localStorage.clear()
+                }
               >
                 Logout{" "}
               </button>

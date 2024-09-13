@@ -13,12 +13,12 @@ export const createNewPost = async (post,accessToken)=>{
     }
 }
 
-export const getPost = async (accessToken)=>{
+export const getPost = async (accessToken,page,limit)=>{
     try {
         const headers = {
             'Authorization': `Bearer ${accessToken}`
         };
-        let res = await axios.get("http://localhost:8080/post/get-post", {headers});
+        let res = await axios.get(`http://localhost:8080/post/get-post?page=${page}&limit=${limit}`, {headers});
         // console.log(res)
         return res;
     } catch (error) {
@@ -63,24 +63,24 @@ export const labelUsedByUser = async (accessToken) => {
     }
 }
 
-export const getPostByLabel = async (data, accessToken) => {
+export const getPostByLabel = async (label, accessToken,page,limit) => {
     try {
         const headers = {
             "Authorization": `Bearer ${accessToken}`
         }
-        let res = await axios.post("http://localhost:8080/post/get-post-label", data, { headers })
+        let res = await axios.post(`http://localhost:8080/post/get-post-label?page=${page}&limit=${limit}`, { label: label }, { headers })
         return res;
     } catch (error) {
         return error.response
     }
 }
 
-export const searchPostByTitle = async (data, accessToken) => {
+export const searchPostByTitle = async (postTitle, accessToken,page,limit) => {
     try {
         const headers = {
             'Authorization': `Bearer ${accessToken}`
         };
-        let res = await axios.post("http://localhost:8080/post/get-post-title", data, { headers });
+        let res = await axios.post(`http://localhost:8080/post/get-post-title?page=${page}&limit=${limit}`, { title: postTitle }, { headers });
         return res;
     } catch (error) {
         return error.response;
