@@ -22,7 +22,7 @@ function NavBar({ handleClick, handleInputTitle }) {
   return (
     <>
       {user.isLogin ? (
-        <div>
+        <div>                                                                                        
           <div className="navbar z-3 fixed-top">
             {pathArr[2] === "post" ? (
               <Link

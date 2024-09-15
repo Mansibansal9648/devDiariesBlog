@@ -1,17 +1,15 @@
 import { useAppContext } from "../../contextApi/context";
-import profilePic from "../../assets/images/profile.png";
-import "./myBlog.css";
-import { getPost, deletePost, searchPostByTitle } from "../common/api/postApi";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
-import pimg from "../../assets/images/catwallpaper.jpg";
 import debounce from "../../utils/helper/debounceFunction";
-// import useDebounce from "../../hooks/useDebounce";
-import { labelUsedByUser, getPostByLabel } from "../common/api/postApi";
+import { getPost, deletePost, searchPostByTitle, labelUsedByUser, getPostByLabel } from "../common/api/postApi";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment-timezone";
 import InfiniteScroll from "react-infinite-scroll-component";
+import "./myBlog.css";
+import pimg from "../../assets/images/catwallpaper.jpg";
+import profilePic from "../../assets/images/profile.png";
 
 function MyBlog({ postTitle }) {
   const {
@@ -20,14 +18,11 @@ function MyBlog({ postTitle }) {
   // console.log(user);
 
   const [posts, setPosts] = useState([]);
-  // const debounce = useDebounce()
   const [usedLabels, setUsedLabels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
-
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
   const [active, setActive] = useState("all");
-  // console.log(typeof active)
 
   const getmyPost = async () => {
     let res = await getPost(user.accessToken, page, limit);
@@ -36,7 +31,8 @@ function MyBlog({ postTitle }) {
       // } else if (res && res.data.responseCode === 403) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+    // setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+     setPosts( [...posts, ...res.data.data]);
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
       if (hasMoreData) {
@@ -132,7 +128,6 @@ function MyBlog({ postTitle }) {
     }
   };
 
-  // const debouncedGetPostByTitle=()=>{debounce(getPostByTitle,800)}
   const debouncedGetPostByTitle = () => {
     debounce(() => {
       getPostByTitle();
@@ -143,24 +138,22 @@ function MyBlog({ postTitle }) {
     setPage(1);
     setPosts([]);
     // if (!postTitle) {
-      if (active === "all") {
-        if(!postTitle){
-          getmyPost(); 
-        }else{
-          debouncedGetPostByTitle(); 
-        }
-      // Load all posts if no search title
+    if (active === "all") {
+      if (!postTitle) {
+        getmyPost();
       } else {
-        getAllUserPostByLabel(active); // If a label is active, load label posts
+        debouncedGetPostByTitle();
       }
+      // Load all posts if no search title
+    } else {
+      getAllUserPostByLabel(active); // If a label is active, load label posts
+    }
     // } else {
     //   // Fetch posts by title
-    //   debouncedGetPostByTitle(); 
+    //   debouncedGetPostByTitle();
     // }
   }, [postTitle, active]);
-  // const extractImage =()=>{
-
-  // }
+ 
   return (
     <>
       {user != null ? (
@@ -180,7 +173,17 @@ function MyBlog({ postTitle }) {
               >
                 All
               </span> */}
-              <button type="button " className={active == "all" ? "btn btn-label btn-inactive" : "btn btn-label btn-active"} onClick={() => setActive("all")}>All</button>
+              <button
+                type="button "
+                className={
+                  active == "all"
+                    ? "btn btn-label btn-inactive"
+                    : "btn btn-label btn-active"
+                }
+                onClick={() => setActive("all")}
+              >
+                All
+              </button>
               {usedLabels.length != 0 &&
                 usedLabels.map((item) => {
                   return (
@@ -333,7 +336,6 @@ function MyBlog({ postTitle }) {
                     );
                   })}
                 </ul>
-
               </InfiniteScroll>
             ) : (
               <div className="text-center">

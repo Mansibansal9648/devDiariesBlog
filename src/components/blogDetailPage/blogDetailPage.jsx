@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import "./blogDetailPage.css";
-import profilePic from '../../assets/images/profile.png'
 import { useAppContext } from "../../contextApi/context";
+
 
 function BlogDetailPage() {
  const location = useLocation()
@@ -11,41 +11,42 @@ function BlogDetailPage() {
 
   return (
     <>
-      <div className="container">
+      <div className="container blogDetail_container">
         <div className="row">
-          <div className="col-md-8 mt-5">
+          <div className="col-md-8 blogdetail_box">
+            <div className="category">
             <h1>
               {post.title}
             </h1>
-            <h5 className="text-secondary">
-              From expanding access to quality mental health care to fostering
-              community and peer support to avoiding burnout through early
-              intervention, there is much we can do to foster mental wellbeing
-            </h5>
+            
+            </div>
+            <div className="bg-danger ">
+            <h2 className="mt-3">
+              {post.title}
+            </h2>
+             
+            
             <hr />
             <div className="user_details">
-              <div className="bd_profile_pic">
-                <img src={profilePic} className="img-fluid" alt="" />
-              </div>
+              
               <div className="blog_details">
-                <h6 className="fs-5 pb-3"> BY {user.name.toUpperCase()}</h6>
-                <h6>UPDATED: {post.updatedAt.split("GMT")[0]}</h6>
+                <p className="fs-5 "> By {user.name}</p>
+                <p>UPDATED: {post.updatedAt.split("GMT")[0]}</p>
               </div>
               </div>
               <hr />
 
-              <div className="content mt-5">
-                <img
-                  src="https://www.forbesindia.com/fbimages/900x600/proportional/jpeg/blog/wp-content/uploads/2024/06/shutterstock_1945115515_BG.jpg"
-                  alt=""
-                  className="img-fluid"
-                />
+              <div className="content mt-2">
+                
 
-                <div dangerouslySetInnerHTML={{__html:post.content}} className="my-5"/>
+                <div dangerouslySetInnerHTML={{__html:post.content}} className="my-3"/>
+              </div>
               </div>
           </div>
         </div>
+       
       </div>
+      
     </>
   );
 }

@@ -115,8 +115,9 @@ function App() {
             path="/userpage/post/:postId/edit"
             element={
               <PrivateRoute>
-                <div>
+                
                   <NavBar />
+                  <div>
                   <CreatePost />
                 </div>
               </PrivateRoute>

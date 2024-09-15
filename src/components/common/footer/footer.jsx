@@ -3,9 +3,10 @@ function Footer() {
   // console.log('footer is called')
   return (
     <>
-      <div className="footer">
-        <div className="container ">
-          <footer className="py-5">
+    
+      <div className="footer  ">
+      <div className="container ">
+          <footer className="py-2">
             <div className="row ">
               <div className="col-md-12 col-lg-5  mb-3">
                 <h5 className="heading">DevDiaries</h5>
@@ -32,22 +33,7 @@ function Footer() {
                       Politics
                     </a>
                   </li>
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Health
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Business
-                    </a>
-                  </li>
+                 
                   <li className="nav-item mb-2">
                     <a
                       href="#"
@@ -69,14 +55,7 @@ function Footer() {
               <div className="col col-lg-1 mb-3 footer-column">
                 <h5 className="heading">Tech</h5>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Siance
-                    </a>
-                  </li>
+                 
                   <li className="nav-item mb-2">
                     <a
                       href="#"
@@ -112,30 +91,7 @@ function Footer() {
               >
                 <h5 style={{ marginBottom: "22px", color: "white" }}>Life</h5>
                 <ul className="nav flex-column">
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Food
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Style
-                    </a>
-                  </li>
-                  <li className="nav-item mb-2">
-                    <a
-                      href="#"
-                      className="nav-link p-0 text-white text-opacity-75"
-                    >
-                      Sport
-                    </a>
-                  </li>
+                  
                   <li className="nav-item mb-2">
                     <a
                       href="#"
@@ -230,7 +186,7 @@ function Footer() {
               </div>
             </div>
 
-            <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <div className="d-flex flex-column flex-sm-row justify-content-between py-1 my-0 border-top">
               <p className=" text-white ">
                 © 2024 Company, Inc. All rights reserved.
               </p>
