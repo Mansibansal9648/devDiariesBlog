@@ -19,14 +19,17 @@ function NavBar({ handleClick, handleInputTitle }) {
     setIsRightSidebarExpanded((prevState) => !prevState);
   };
 
-
   return (
     <>
       {user.isLogin ? (
         <div>
           <div className="navbar z-3 fixed-top">
             {pathArr[2] === "post" ? (
-              <Link className="btn bg-white rounded-circle d-flex justify-content-center align-items-center" style={{height:"40px", width: "40px"}} to={`/userpage/${pathArr[3]}`}>
+              <Link
+                className="btn bg-white rounded-circle d-flex justify-content-center align-items-center"
+                style={{ height: "40px", width: "40px" }}
+                to={`/userpage/${pathArr[3]}`}
+              >
                 <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
               </Link>
             ) : (
@@ -42,7 +45,7 @@ function NavBar({ handleClick, handleInputTitle }) {
                   <input
                     type="text"
                     placeholder="Search posts"
-                    className="search_input d-none d-lg-flex"
+                    className="search_input icon-button d-none d-lg-flex"
                     onChange={handleInputTitle}
                   />
                 </div>
@@ -103,32 +106,38 @@ function NavBar({ handleClick, handleInputTitle }) {
                     className="nav-link active categories"
                     to="/blogs/sport"
                   >
-                    Sport
+                    Development
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link categories " to="/blogs/health">
-                    Health
+                    Programming language
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link categories" to="/blogs/political">
-                    Political
+                    
+                
+                    Technology
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link categories" to="/blogs/business">
-                    Business
+                    Devops
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link categories" to="/blogs/finance">
-                    Finance
+                  
+                
+                    Cloud
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link categories" to="/blogs/life">
-                    Life
+                  
+                 
+                    Career & growth
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -136,7 +145,15 @@ function NavBar({ handleClick, handleInputTitle }) {
                     className="nav-link categories"
                     to="/blogs/entertainment"
                   >
-                    Entertainment
+                    Tools
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-white"
+                    to="/blogs/general"
+                  >
+                    Others
                   </Link>
                 </li>
               </ul>

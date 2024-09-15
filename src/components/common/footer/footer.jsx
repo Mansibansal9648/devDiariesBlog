@@ -3,7 +3,7 @@ function Footer() {
   // console.log('footer is called')
   return (
     <>
-      <div className="bg-black">
+      <div className="footer">
         <div className="container ">
           <footer className="py-5">
             <div className="row ">

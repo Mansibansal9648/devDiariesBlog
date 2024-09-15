@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #EBF3FF;
+  /* background-color: #EBF3FF; */
   position: fixed;
   margin-bottom: 30px;
   width: 100%;
@@ -96,12 +96,11 @@ input:focus {
 }
 
 .search_input {
-  width: 800px;
-  height: 50px;
-  background-color: #ebe8e8;
+  width: 600px;
+  height: 42px;
   border: none;
   outline: none;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 0 10px;
   margin: 0;
 }

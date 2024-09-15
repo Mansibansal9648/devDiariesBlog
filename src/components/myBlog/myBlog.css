@@ -16,13 +16,40 @@
   color:rgb(24, 149, 53);
 }
 
+.btn-label {
+  padding: 3px  15px ;
+  margin: 10px 10px;
+  background-color: var(--primary-color);
+  
+}
+.btn-label:hover {
+  background-color: var(--hover-color); /* Slightly lighter shade on hover */
+  color: var(--text-color); /* Ensure text remains visible */
+  opacity: 1; /* Remove transparency on hover for inactive buttons */
+}
 /* label CSS */
-/* styles.css */
-.label-badge {
+.list-group-items {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  /* border: 1px solid var(--secondary-color); */
+  border-radius: 10px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+.list-group-items:hover {
+  background-color: var(--hover-color); /* Lighter shade on hover */
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 15px var(--box-shadow-color); /* Box shadow on hover */
+  transform: translateY(-5px); /* Lift the item slightly */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* .label-badge {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   border-radius: 1rem;
   font-size: 1rem;
-}
+}  */
+
 
 

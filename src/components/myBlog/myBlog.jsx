@@ -164,9 +164,9 @@ function MyBlog({ postTitle }) {
   return (
     <>
       {user != null ? (
-        <div className="col-10 offset-1">
-          <div className="outer_label_container position-fixed">
-            <div className="container label_container py-2">
+        <div className="col-10 offset-1 body-color">
+          <div className="outer_label_container  position-fixed">
+            <div className="container  label_container py-2">
               {/* <span
                 className={
                   active == "all"
@@ -180,15 +180,15 @@ function MyBlog({ postTitle }) {
               >
                 All
               </span> */}
-              <button type="button" className={active == "all" ? "btn inactive-label" : "btn active-label"} onClick={() => setActive("all")}>All</button>
+              <button type="button " className={active == "all" ? "btn btn-label btn-inactive" : "btn btn-label btn-active"} onClick={() => setActive("all")}>All</button>
               {usedLabels.length != 0 &&
                 usedLabels.map((item) => {
                   return (
-                    <span
+                    <button
                       className={
                         item == active
-                          ? "btn inactive-label"
-                          : "btn active-label"
+                          ? "btn btn-label btn-active"
+                          : "btn btn-label btn-inactive"
                       }
                       onClick={() => {
                         setPage(1);
@@ -200,13 +200,13 @@ function MyBlog({ postTitle }) {
                       value={item}
                     >
                       {item}
-                    </span>
+                    </button>
                   );
                 })}
             </div>
           </div>
-          <div className="container all_post_container py-3 border border-1">
-            <h4>All Posts</h4>
+          <div className="container all_post_container py-3">
+            <h4 className="heading">All Posts</h4>
             {posts.length ? (
               <InfiniteScroll
                 dataLength={posts.length}
@@ -232,7 +232,7 @@ function MyBlog({ postTitle }) {
                     return (
                       <li
                         key={item._id}
-                        className="list-group-items border border-1 d-flex justify-content-between align-items-center rounded-0 p-3 my-2"
+                        className="list-group-items  d-flex justify-content-between align-items-center rounded-3 p-3 my-2"
                       >
                         <div className="start d-flex align-items-center">
                           <div className="thumbnail img-fluid m-2 border border-2 rounded">
@@ -333,6 +333,7 @@ function MyBlog({ postTitle }) {
                     );
                   })}
                 </ul>
+
               </InfiniteScroll>
             ) : (
               <div className="text-center">
