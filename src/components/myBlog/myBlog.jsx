@@ -233,11 +233,11 @@ function MyBlog({ postTitle }) {
                 <ul className="list-group">
                   {posts.map((item) => {
                     return (
-                      // <Link
-                      //         to={`/userpage/post/${user.id}/blogdetailpage`}
-                      //         state={item}
-                      //         className="nav-link d-inline-block"
-                      //       >
+                      <Link
+                              to={`/userpage/post/${user.id}/blogdetailpage`}
+                              state={item}
+                              className="nav-link d-inline-block"
+                            >
                       <li 
                         key={item._id}
                         className="list-group-items  d-flex justify-content-between align-items-center rounded-3 p-3 my-2"
@@ -338,7 +338,7 @@ function MyBlog({ postTitle }) {
                           </div>
                         </div>
                       </li>
-                     // </Link>
+                      </Link>
                     );
                   })}
                 </ul>
