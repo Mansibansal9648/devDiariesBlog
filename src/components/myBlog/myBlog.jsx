@@ -31,8 +31,8 @@ function MyBlog({ postTitle }) {
       // } else if (res && res.data.responseCode === 403) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-    // setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
-     setPosts( [...posts, ...res.data.data]);
+     setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+    // setPosts( [...posts, ...res.data.data]);
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
       if (hasMoreData) {
@@ -195,10 +195,10 @@ function MyBlog({ postTitle }) {
                       }
                       onClick={() => {
                         setPage(1);
-                        setPosts([]);
+                        setPosts((prevPosts) => [...prevPosts]);
                         // getAllUserPostByLabel(item);
                         setActive(item);
-                        // console.log("item", typeof item);
+                         console.log("item",  item);
                       }}
                       value={item}
                     >
