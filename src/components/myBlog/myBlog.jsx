@@ -159,7 +159,7 @@ function MyBlog({ postTitle }) {
       {user != null ? (
         <div className="col-10 offset-1 body-color">
           <div className="outer_label_container  position-fixed">
-            <div className="container  label_container py-2">
+            <div className="container  label_container py-2 sticky-top ">
               {/* <span
                 className={
                   active == "all"
@@ -295,7 +295,9 @@ function MyBlog({ postTitle }) {
                             <i
                               className="fa-solid fa-trash me-5 fs-5 del_btn"
                               onClick={() => {
+                                
                                 removePost(item._id);
+                                
                               }}
                             ></i>
                             <Link

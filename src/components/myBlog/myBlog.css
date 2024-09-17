@@ -25,6 +25,8 @@
   padding: 3px  15px ;
   margin: 10px 10px;
   background-color: var(--primary-color);
+  color: aliceblue;
+  z-index: 5;
   
 }
 .btn-label:hover {
@@ -34,18 +36,18 @@
 }
 /* label CSS */
 .list-group-items {
-  background-color: var(--background-color);
+  background-color: #FFFFFF;
   color: var(--text-color);
   transition: all 0.3s ease;
   /* border: 1px solid var(--secondary-color); */
   border-radius: 10px;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .list-group-items:hover {
   background-color: var(--hover-color); /* Lighter shade on hover */
   border-color: var(--primary-color);
-  box-shadow: 0 8px 15px var(--box-shadow-color); /* Box shadow on hover */
-  transform: translateY(-5px); /* Lift the item slightly */
+  box-shadow: var(--box-shadow-color) 0px 2px 8px 0px; ; /* Box shadow on hover */
+  transform: translateY(-5px);
   transition: all 0.3s ease; /* Smooth transition */
 }
 
@@ -55,6 +57,9 @@
   border-radius: 1rem;
   font-size: 1rem;
 }  */
+  .label_container {
+    background-color: var(--background-color);
+  }
 
 
 

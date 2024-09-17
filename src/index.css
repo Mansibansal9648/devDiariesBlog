@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #999; 
-  --secondary-color: #1c1c1c; 
-  /* --background-color: #0f0f0f; */
-  --text-color: black; 
-  --hover-color: #999; 
-  --box-shadow-color: rgba(0, 0, 0, 0.3);
+  --primary-color:   #13a64b; 
+  --secondary-color: #7860CC; 
+   --background-color: #F2F6FE; 
+  --text-color:#212529; 
+  --hover-color: #F5F1FE; 
+  --box-shadow-color: rgb(120, 96, 204, 0.2);
 }
 
 body {
