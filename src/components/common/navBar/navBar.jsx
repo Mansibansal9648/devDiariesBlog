@@ -79,7 +79,7 @@ function NavBar({ handleClick, handleInputTitle }) {
                 className="btn btn-danger rounded-4"
                 data-bs-toggle="modal"
                 data-bs-target="#logoutModal" // Unique ID for logout modal
-                onClick={handleLogout}
+                
               >
                 Logout
               </button>
@@ -181,7 +181,7 @@ function NavBar({ handleClick, handleInputTitle }) {
               <button
                 type="button"
                 className="btn btn-primary"
-                data-bs-dismiss="modal"
+                data-bs-dismiss="modal" onClick={handleLogout}
               >
                 Logout
               </button>
