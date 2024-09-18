@@ -315,56 +315,55 @@ function MyBlog({ postTitle }) {
                             </div>
                           </div>
 
-                          <div className="last d-flex gap-4">
-                            <div className="end_btn me-4">
-                              <i
-                                className="fa-solid fa-trash me-5 fs-5 del_btn"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  removePost(item._id);
-                                }}
-                              ></i>
-                              <Link
-                                to={`/userpage/post/${item._id}/edit`}
-                                state={item}
-                                className="nav-link d-inline-block me-5"
-                              >
-                                <i className="fa-solid fa-pen edit_btn  fs-5"></i>
-                              </Link>
-                              <Link
-                                to={`/userpage/post/${user.id}/blogdetailpage`}
-                                state={item}
-                                className="nav-link d-inline-block"
-                              >
-                                <i className="fa-regular fa-eye edit_btn  fs-5"></i>
-                              </Link>
-                            </div>
-                            <div className="end_icons">
-                              <div className="username d-flex align-items-center gap-1">
-                                <h6 className="m-0">{user.username}</h6>
-                                {/* <i class="fa-solid fa-trash"></i> */}
-                                <div className="profile_pic broder border-2 rounded-circle">
-                                  <img
-                                    src={profilePic}
-                                    alt="U"
-                                    className="img-fluid"
-                                  />
-                                </div>
+                        <div className="last d-flex gap-4">
+                          <div className="end_btn me-4">
+                            <i
+                              className="fa-solid fa-trash me-5 fs-5 del_btn"
+                              onClick={(event) => {
+                                event.preventDefault();
+                                removePost(item._id);
+                              }}
+                            ></i>
+                            <Link
+                              to={`/userpage/post/${item._id}/edit`}
+                              state={item}
+                              className="nav-link d-inline-block me-5"
+                            >
+                              <i className="fa-solid fa-pen edit_btn  fs-5"></i>
+                            </Link>
+                            <Link
+                              to={`/userpage/post/${user.id}/blogdetailpage`}
+                              state={item}
+                              className="nav-link d-inline-block"
+                            >
+                              <i className="fa-regular fa-eye edit_btn  fs-5"></i>
+                            </Link>
+                          </div>
+                          <div className="end_icons">
+                            <div className="username d-flex align-items-center gap-1">
+                              <h6 className="m-0">{user.username}</h6>
+                              {/* <i class="fa-solid fa-trash"></i> */}
+                              <div className="profile_pic broder border-2 rounded-circle">
+                                <img
+                                  src={profilePic}
+                                  alt="U"
+                                  className="img-fluid"
+                                />
                               </div>
-                              <div className="stats d-flex gap-0 p-2">
-                                <div className="comment">
-                                  <span className="p-2">4</span>
-                                  <i className="fa-regular fa-comment"></i>
-                                </div>
-                                <div className="count">
-                                  <span className="p-2">3</span>
-                                  <i className="fa-solid fa-chart-simple"></i>
-                                </div>
+                            </div>
+                            <div className="stats d-flex gap-0 p-2">
+                              <div className="comment">
+                                <span className="p-2">4</span>
+                                <i className="fa-regular fa-comment"></i>
+                              </div>
+                              <div className="count">
+                                <span className="p-2">3</span>
+                                <i className="fa-solid fa-chart-simple"></i>
                               </div>
                             </div>
                           </div>
-                        </li>
+                        </div>
+                      </li>
                       </Link>
                     );
                   })}
