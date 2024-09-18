@@ -107,7 +107,7 @@ function LogIn() {
                   onBlur={formik.handleBlur}
                 />
                 <FontAwesomeIcon
-                  icon={showpassword ? faEye : faEyeSlash}
+                  icon={showpassword ? faEyeSlash : faEye }
                   className="eye-position"
                   onClick={togglepasswordVisibility}
                 />
