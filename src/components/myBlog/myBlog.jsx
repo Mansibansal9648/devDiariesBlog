@@ -294,10 +294,9 @@ function MyBlog({ postTitle }) {
                           <div className="end_btn me-4">
                             <i
                               className="fa-solid fa-trash me-5 fs-5 del_btn"
-                              onClick={() => {
-                                
+                              onClick={(event) => {
+                                event.preventDefault();
                                 removePost(item._id);
-                                
                               }}
                             ></i>
                             <Link
