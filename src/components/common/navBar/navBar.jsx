@@ -105,10 +105,58 @@ function NavBar({ handleClick, handleInputTitle }) {
             </Link>
             <div
               className="collapse navbar-collapse justify-content-center"
-              id="navbarText"
+              id=""
             >
               <ul className="navbar-nav mb-2 mb-lg-0">
-                {/* ... Navigation Links ... */}
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active button_text"
+                    to="/blogs/sport"
+                  >
+                    Development
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link button_text " to="/blogs/health">
+                    Programming language
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link button_text" to="/blogs/technology">
+                    Technology
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link button_text" to="/blogs/business">
+                    Devops
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link button_text" to="/blogs/science">
+                    Cloud
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link button_text" to="/blogs/general">
+                    Career & growth
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link button_text"
+                    to="/blogs/entertainment"
+                  >
+                    Tools
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link button_text"
+                    to="/blogs/general"
+                  >
+                    Others
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="d-flex align-items-center ms-auto d-block categories">

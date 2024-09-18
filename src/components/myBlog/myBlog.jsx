@@ -2,7 +2,13 @@ import { useAppContext } from "../../contextApi/context";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import debounce from "../../utils/helper/debounceFunction";
-import { getPost, deletePost, searchPostByTitle, labelUsedByUser, getPostByLabel } from "../common/api/postApi";
+import {
+  getPost,
+  deletePost,
+  searchPostByTitle,
+  labelUsedByUser,
+  getPostByLabel,
+} from "../common/api/postApi";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment-timezone";
@@ -23,16 +29,21 @@ function MyBlog({ postTitle }) {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
   const [active, setActive] = useState("all");
+  const [Loading, setLoading] = useState (true);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   const getmyPost = async () => {
+    setLoading(true);
     let res = await getPost(user.accessToken, page, limit);
+    setLoading(false);
+    setIsFirstLoad(false);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
       // } else if (res && res.data.responseCode === 403) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-     setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
-    // setPosts( [...posts, ...res.data.data]);
+      setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
+      // setPosts( [...posts, ...res.data.data]);
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
       if (hasMoreData) {
@@ -44,6 +55,7 @@ function MyBlog({ postTitle }) {
       toast.error("Something went wrong..");
     }
   };
+
   const allUsedLabels = async () => {
     let res = await labelUsedByUser(user.accessToken);
     if (res && res.data.responseCode === 401) {
@@ -95,13 +107,17 @@ function MyBlog({ postTitle }) {
       toast.error("Something went wrong..");
     }
   };
+
   useEffect(() => {
     // getmyPost();
     allUsedLabels();
   }, []);
 
   const getPostByTitle = async () => {
+    setLoading(true);
     let res = await searchPostByTitle(postTitle, user.accessToken, page, limit);
+    setLoading(false);
+    setIsFirstLoad(false);
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
@@ -137,6 +153,7 @@ function MyBlog({ postTitle }) {
   useEffect(() => {
     setPage(1);
     setPosts([]);
+    setIsFirstLoad(true);
     // if (!postTitle) {
     if (active === "all") {
       if (!postTitle) {
@@ -153,7 +170,7 @@ function MyBlog({ postTitle }) {
     //   debouncedGetPostByTitle();
     // }
   }, [postTitle, active]);
- 
+
   return (
     <>
       {user != null ? (
@@ -198,7 +215,7 @@ function MyBlog({ postTitle }) {
                         setPosts((prevPosts) => [...prevPosts]);
                         // getAllUserPostByLabel(item);
                         setActive(item);
-                         console.log("item",  item);
+                        console.log("item", item);
                       }}
                       value={item}
                     >
@@ -210,7 +227,11 @@ function MyBlog({ postTitle }) {
           </div>
           <div className="container all_post_container py-3">
             <h4 className="heading">All Posts</h4>
-            {posts.length ? (
+            {Loading ? (
+              <div className="text-center">
+                <h5>Fetching Posts...</h5>
+              </div>
+            ):  posts.length > 0 ? (
               <InfiniteScroll
                 dataLength={posts.length}
                 next={() => {
@@ -234,122 +255,129 @@ function MyBlog({ postTitle }) {
                   {posts.map((item) => {
                     return (
                       <Link
-                              to={`/userpage/post/${user.id}/blogdetailpage`}
-                              state={item}
-                              className="nav-link d-inline-block"
-                            >
-                      <li 
-                        key={item._id}
-                        className="list-group-items  d-flex justify-content-between align-items-center rounded-3 p-3 my-2"
+                        to={`/userpage/post/${user.id}/blogdetailpage`}
+                        state={item}
+                        className="nav-link d-inline-block"
                       >
-                        <div className="start d-flex align-items-center">
-                          <div className="thumbnail img-fluid m-2 border border-2 rounded">
-                            <img
-                              src={pimg}
-                              alt="U"
-                              className="img-fluid h-100"
-                            ></img>
-                          </div>
-                          <div className="post-detail">
-                            <h6 className="fw-bold">{item.title}</h6>
-                            <p>{}</p>
-                            {/* <span>
+                        <li
+                          key={item._id}
+                          className="list-group-items  d-flex justify-content-between align-items-center rounded-3 p-3 my-2"
+                        >
+                          <div className="start d-flex align-items-center">
+                            <div className="thumbnail img-fluid m-2 border border-2 rounded">
+                              <img
+                                src={pimg}
+                                alt="U"
+                                className="img-fluid h-100"
+                              ></img>
+                            </div>
+                            <div className="post-detail">
+                              <h6 className="fw-bold">{item.title}</h6>
+                              <p>{}</p>
+                              {/* <span>
                             {item.createdAt == item.updatedAt?<span>Created : {item.createdAt.split("GMT")[0]}</span>:<span>Updated : {item.updatedAt.split("GMT")[0]}</span>}
                           </span> */}
-                            <span>
-                              {item.createdAt == item.updatedAt ? (
-                                <span>
-                                  Created At :{" "}
-                                  {moment
-                                    .parseZone(item?.createdAt)
-                                    ?.tz("Asia/Kolkata")
-                                    ?.format("ddd MMMM D, YYYY [at] h:mm:ss A")}
-                                </span>
-                              ) : (
-                                <span>
-                                  Updated At :{" "}
-                                  {moment
-                                    .parseZone(item?.updatedAt)
-                                    ?.tz("Asia/Kolkata")
-                                    ?.format("ddd MMMM D, YYYY [at] h:mm:ss A")}
-                                </span>
-                              )}
-                            </span>
+                              <span>
+                                {item.createdAt == item.updatedAt ? (
+                                  <span>
+                                    Created At :{" "}
+                                    {moment
+                                      .parseZone(item?.createdAt)
+                                      ?.tz("Asia/Kolkata")
+                                      ?.format(
+                                        "ddd MMMM D, YYYY [at] h:mm:ss A"
+                                      )}
+                                  </span>
+                                ) : (
+                                  <span>
+                                    Updated At :{" "}
+                                    {moment
+                                      .parseZone(item?.updatedAt)
+                                      ?.tz("Asia/Kolkata")
+                                      ?.format(
+                                        "ddd MMMM D, YYYY [at] h:mm:ss A"
+                                      )}
+                                  </span>
+                                )}
+                              </span>
+                            </div>
+                            <div className="mid d-flex gap-2 align-self-end">
+                              {item.labels.map((label) => {
+                                return (
+                                  <div
+                                    className="label border border-3 rounded-4 px-2"
+                                    key={label}
+                                  >
+                                    {label}
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
-                          <div className="mid d-flex gap-2 align-self-end">
-                            {item.labels.map((label) => {
-                              return (
-                                <div
-                                  className="label border border-3 rounded-4 px-2"
-                                  key={label}
-                                >
-                                  {label}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
 
-                        <div className="last d-flex gap-4">
-                          <div className="end_btn me-4">
-                            <i
-                              className="fa-solid fa-trash me-5 fs-5 del_btn"
-                              onClick={() => {
-                                
-                                removePost(item._id);
-                                
-                              }}
-                            ></i>
-                            <Link
-                              to={`/userpage/post/${item._id}/edit`}
-                              state={item}
-                              className="nav-link d-inline-block me-5"
-                            >
-                              <i className="fa-solid fa-pen edit_btn  fs-5"></i>
-                            </Link>
-                            <Link
-                              to={`/userpage/post/${user.id}/blogdetailpage`}
-                              state={item}
-                              className="nav-link d-inline-block"
-                            >
-                              <i className="fa-regular fa-eye edit_btn  fs-5"></i>
-                            </Link>
-                          </div>
-                          <div className="end_icons">
-                            <div className="username d-flex align-items-center gap-1">
-                              <h6 className="m-0">{user.username}</h6>
-                              {/* <i class="fa-solid fa-trash"></i> */}
-                              <div className="profile_pic broder border-2 rounded-circle">
-                                <img
-                                  src={profilePic}
-                                  alt="U"
-                                  className="img-fluid"
-                                />
+                          <div className="last d-flex gap-4">
+                            <div className="end_btn me-4">
+                              <i
+                                className="fa-solid fa-trash me-5 fs-5 del_btn"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  removePost(item._id);
+                                }}
+                              ></i>
+                              <Link
+                                to={`/userpage/post/${item._id}/edit`}
+                                state={item}
+                                className="nav-link d-inline-block me-5"
+                              >
+                                <i className="fa-solid fa-pen edit_btn  fs-5"></i>
+                              </Link>
+                              <Link
+                                to={`/userpage/post/${user.id}/blogdetailpage`}
+                                state={item}
+                                className="nav-link d-inline-block"
+                              >
+                                <i className="fa-regular fa-eye edit_btn  fs-5"></i>
+                              </Link>
+                            </div>
+                            <div className="end_icons">
+                              <div className="username d-flex align-items-center gap-1">
+                                <h6 className="m-0">{user.username}</h6>
+                                {/* <i class="fa-solid fa-trash"></i> */}
+                                <div className="profile_pic broder border-2 rounded-circle">
+                                  <img
+                                    src={profilePic}
+                                    alt="U"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                              </div>
+                              <div className="stats d-flex gap-0 p-2">
+                                <div className="comment">
+                                  <span className="p-2">4</span>
+                                  <i className="fa-regular fa-comment"></i>
+                                </div>
+                                <div className="count">
+                                  <span className="p-2">3</span>
+                                  <i className="fa-solid fa-chart-simple"></i>
+                                </div>
                               </div>
                             </div>
-                            <div className="stats d-flex gap-0 p-2">
-                              <div className="comment">
-                                <span className="p-2">4</span>
-                                <i className="fa-regular fa-comment"></i>
-                              </div>
-                              <div className="count">
-                                <span className="p-2">3</span>
-                                <i className="fa-solid fa-chart-simple"></i>
-                              </div>
-                            </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
                       </Link>
                     );
                   })}
                 </ul>
               </InfiniteScroll>
-            ) : (
-              <div className="text-center">
-                <h5>No Post Available</h5>
-              </div>
+            ) :  (
+              !isFirstLoad && ( 
+                <div className="text-center">
+                  <h5>No Post Available</h5>
+                </div>
+              )
             )}
+            
           </div>
         </div>
       ) : (

@@ -26,7 +26,9 @@
   background-color: white;
   border: 0px;
 }
-
+.button_text {
+  color: var(--primary-text-color);
+}
 /**/
 svg {
   width: 25px;
