@@ -41,7 +41,7 @@
   transition: all 0.3s ease;
   /* border: 1px solid var(--secondary-color); */
   border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(142, 142, 142, 0.1) 0px 2px 8px 0px;
 }
 .list-group-items:hover {
   background-color: var(--hover-color); /* Lighter shade on hover */
