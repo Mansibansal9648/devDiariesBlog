@@ -4,9 +4,12 @@
 }
 .login{
     width: 45%;
-    border: 1px solid #1E4682;
+    /* border: 1px solid #1E4682; */
     padding: 45px;
     margin: 55px 0px;
+    border-radius: 12px;
+    background-color: rgb(228, 246, 251);
+    box-shadow:15px 10px 1px #aec8f0;
 }
 .login-page{
   /* margin-top: 60px; */
