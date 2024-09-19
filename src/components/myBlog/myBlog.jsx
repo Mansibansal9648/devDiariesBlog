@@ -16,6 +16,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "./myBlog.css";
 import pimg from "../../assets/images/catwallpaper.jpg";
 import profilePic from "../../assets/images/profile.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 
 function MyBlog({ postTitle }) {
   const {
@@ -175,56 +177,68 @@ function MyBlog({ postTitle }) {
     <>
       {user != null ? (
         <div className="col-10 offset-1 body-color">
-          <div className="outer_label_container  position-fixed">
-            <div className="container  label_container py-2 sticky-top ">
-              {/* <span
-                className={
-                  active == "all"
-                    ? "badge  py-2 px-4 mx-3 my-2 border-1 pos bg-success fs-6 rounded-4"
-                    : " badge text-dark  py-2 px-4 mx-3 my-2 border border-3 pos fs-6 rounded-4"
-                }
-                onClick={() => {
-                  // getmyPost();
-                  setActive("all");
-                }}
-              >
-                All
-              </span> */}
-              <button
-                type="button "
-                className={
-                  active == "all"
-                    ? "btn btn-label btn-inactive"
-                    : "btn btn-label btn-active"
-                }
-                onClick={() => setActive("all")}
-              >
-                All
-              </button>
-              {usedLabels.length != 0 &&
-                usedLabels.map((item) => {
-                  return (
-                    <button
-                      className={
-                        item == active
-                          ? "btn btn-label btn-active"
-                          : "btn btn-label btn-inactive"
-                      }
-                      onClick={() => {
-                        setPage(1);
-                        setPosts((prevPosts) => [...prevPosts]);
-                        // getAllUserPostByLabel(item);
-                        setActive(item);
-                        console.log("item", item);
-                      }}
-                      value={item}
-                    >
-                      {item}
-                    </button>
-                  );
-                })}
-            </div>
-          </div>
+         <div className="outer_label_container position-fixed">
+  <div className="container label_container py-2 sticky-top d-flex align-items-center position-relative">
+    {/* Left Button */}
+    <button
+      type="button"
+      className="btn scroll-btn-left"
+      onClick={() => {
+        document.querySelector(".label_list").scrollLeft -= 150;
+      }}
+    >
+      <FontAwesomeIcon icon={faCircleLeft} style={{width: "29px", height: "29px"}} />
+    </button>
+
+    {/* Label List with Horizontal Scroll */}
+    <div className="label_list d-flex align-items-center overflow-auto">
+      <button
+        type="button"
+        className={
+          active == "all" ? "btn btn-label btn-active" : "btn btn-label btn-inactive"
+        }
+        onClick={() => setActive("all")}
+      >
+        All
+      </button>
+
+      {usedLabels.length !== 0 &&
+        usedLabels.map((item, index) => {
+          return (
+            <button
+              key={index}
+              className={
+                item == active
+                  ? "btn btn-label btn-active"
+                  : "btn btn-label btn-inactive"
+              }
+              onClick={() => {
+                setPage(1);
+                setPosts((prevPosts) => [...prevPosts]);
+                setActive(item);
+                console.log("item", item);
+              }}
+              value={item}
+            >
+              {item}
+            </button>
+          );
+        })}
+    </div>
+
+    {/* Right Button */}
+    <button
+      type="button"
+      className="btn scroll-btn-right"
+      onClick={() => {
+        document.querySelector(".label_list").scrollLeft += 150;
+      }}
+    >
+      <FontAwesomeIcon icon={faCircleRight} style={{width: "29px", height: "29px"}} />
+    </button>
+  </div>
+</div>
+
           <div className="container all_post_container py-3">
             <h4 className="heading">All Posts</h4>
             {Loading ? (
@@ -257,7 +271,7 @@ function MyBlog({ postTitle }) {
                       <Link
                         to={`/userpage/post/${user.id}/blogdetailpage`}
                         state={item}
-                        className="nav-link d-inline-block"
+                        className="nav-link d-inline-block mb-2"
                       >
                         <li
                           key={item._id}
@@ -316,9 +330,9 @@ function MyBlog({ postTitle }) {
                           </div>
 
                         <div className="last d-flex gap-4">
-                          <div className="end_btn me-4">
+                          <div className="end_btn me-4 d-flex justify-content-around">
                             <i
-                              className="fa-solid fa-trash me-5 fs-5 del_btn"
+                              className="fa-solid fa-trash fs-5 del_btn p-2"
                               onClick={(event) => {
                                 event.preventDefault();
                                 removePost(item._id);
@@ -327,14 +341,14 @@ function MyBlog({ postTitle }) {
                             <Link
                               to={`/userpage/post/${item._id}/edit`}
                               state={item}
-                              className="nav-link d-inline-block me-5"
+                              className="nav-link p-2"
                             >
                               <i className="fa-solid fa-pen edit_btn  fs-5"></i>
                             </Link>
                             <Link
                               to={`/userpage/post/${user.id}/blogdetailpage`}
                               state={item}
-                              className="nav-link d-inline-block"
+                              className="nav-link d-inline-block p-2"
                             >
                               <i className="fa-regular fa-eye edit_btn  fs-5"></i>
                             </Link>
