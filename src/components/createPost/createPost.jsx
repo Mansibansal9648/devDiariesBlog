@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "./createPost.css";
 import "react-quill/dist/quill.snow.css";
@@ -13,10 +13,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createNewPost, updatePost } from "../common/api/postApi";
 import { useAppContext } from "../../contextApi/context";
-import { useLocation, useNavigate } from "react-router-dom"; 
+import { useLocation, useNavigate } from "react-router-dom";
 
 function CreatePost() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const postdata = location.state;
   const initialState = () => {
@@ -25,11 +25,13 @@ function CreatePost() {
       title: postdata?.title ?? "",
       content: postdata?.content ?? "",
       labels: postdata?.labels ?? [],
-      comment_options: postdata?.comment_options??"allow",
+      comment_options: postdata?.comment_options ?? "allow",
     };
   };
 
-  const {store: {user}} = useAppContext();
+  const {
+    store: { user },
+  } = useAppContext();
 
   const [post, setPost] = useState(initialState);
   const [allLabels, setAllLabels] = useState([]);
@@ -37,19 +39,23 @@ function CreatePost() {
   const [myLabel, setMyLabel] = useState(postdata?.labels ?? []);
   const [searchedLabel, setSearchedLAbel] = useState({ name: undefined });
 
-
+  // const selectedLabel = (label) => {
+  //   setMyLabel((preVal) => {
+  //     return [...preVal, label.name];
+  //   });
+  // };
   const selectedLabel = (label) => {
     setMyLabel((preVal) => {
       return [...preVal, label.name];
     });
   };
 
-  useEffect(()=>{
-    setPost((preVal)=>{
-      return {...preVal, labels:myLabel}
-    })
-  },[myLabel])
-  
+  useEffect(() => {
+    setPost((preVal) => {
+      return { ...preVal, labels: myLabel };
+    });
+  }, [myLabel]);
+
   const removeSelectedLabel = (label) => {
     const filteredLabel = myLabel.filter((myLab) => {
       return myLab !== label;
@@ -76,10 +82,10 @@ function CreatePost() {
   useEffect(() => {
     if (searchedLabel.name === "") {
       getAllLabelData();
-    }else{
+    } else {
       getLabelName();
     }
-  },[searchedLabel]);
+  }, [searchedLabel]);
 
   const onChangeHandler = (value, e) => {
     if (flag) return;
@@ -93,7 +99,6 @@ function CreatePost() {
   const onChangeHandlerLabel = (event) => {
     setSearchedLAbel({ [event.target.name]: event.target.value });
   };
-  
 
   const addNewLabel = async () => {
     const res = await createNewLabel(searchedLabel.name);
@@ -120,23 +125,22 @@ function CreatePost() {
       setTimeout(() => {
         setFlag(false);
       }, 1000);
-      
-    }else{
-     editPost({...post, postId:postdata._id})
+    } else {
+      editPost({ ...post, postId: postdata._id });
     }
   };
 
   const createPost = async () => {
     let res = await createNewPost(post, user.accessToken);
-    if(res && res.data.responseCode ===401){
-      toast.error(res.data.errMessage)
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
     }
     // else if(res && res.data.responseCode ===403){
     //   toast.error(res.data.errMessage)
     // }
     else if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
-      navigate(`/userpage/${user.id}`)
+      navigate(`/userpage/${user.id}`);
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
@@ -146,20 +150,18 @@ function CreatePost() {
 
   const editPost = async (data) => {
     let res = await updatePost(data, user.accessToken);
-    if(res && res.data.responseCode ===401){
-      toast.error(res.data.errMessage)
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
     }
     // else if(res && res.data.responseCode ===403){
     //   toast.error(res.data.errMessage)
     // }
-    else if(res.data.responseCode ===200){
-        toast.success(res.data.resMessage)
-     navigate(`/userpage/${user.id}`)
-    }
-    else if (res && res.data.responseCode === 400) {
+    else if (res.data.responseCode === 200) {
+      toast.success(res.data.resMessage);
+      navigate(`/userpage/${user.id}`);
+    } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
-    }
-    else {
+    } else {
       toast.error("Something went wrong! ");
     }
   };
@@ -249,10 +251,137 @@ function CreatePost() {
                 <FontAwesomeIcon icon={faChevronCircleRight} />
                 Publish
               </button>
+              <div className="post_setting p-2">
+                <h5>Post Settings</h5>
+              </div>
+
               <div className="accordion-item">
-                <div className="post_setting p-2">
-                  <h6>Post Settings</h6>
+                <h2
+                  className="accordion-header"
+                  id="panelsStayOpen-headingFour"
+                >
+                  <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFour"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFour"
+                  >
+                    Post category
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseFour"
+                  className="accordion-collapse collapse"
+                  aria-labelledby="panelsStayOpen-headingFour"
+                >
+                  <div className="accordion-body">
+                    <h6 className="mb-4 fw-bold">Select</h6>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="development_ctgy"
+                        value={"development"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+
+                      <label htmlFor="development_ctgy">Development</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="prog_lang_ctgy"
+                        value={"programming_language"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+                      <label htmlFor="prog_lang_ctgy">
+                        Programming Language
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="technology_ctgy"
+                        value={"technology"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+
+                      <label htmlFor="technology_ctgy">Technology</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="devops_ctgy"
+                        value={"devops"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+                      <label htmlFor="devops_ctgy">DevOps</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="cloud_ctgy"
+                        value={"cloud"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+                      <label htmlFor="cloud_ctgy">Cloud</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="career_growth_ctgy"
+                        value={"career_growth"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+                      <label htmlFor="career_growth_ctgy">Career & Growth</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="tools_ctgy"
+                        value={"tools"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={false}
+                      />
+                      <label htmlFor="tools_ctgy">Tools</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        name="post_category"
+                        id="other_ctgy"
+                        value={"others"}
+                        className="me-2"
+                        onChange={(e) => {}}
+                        defaultChecked={true}
+                      />
+                      <label htmlFor="other_ctgy">Others</label>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className="accordion-item">
                 <h2 className="accordion-header" id="panelsStayOpen-headingOne">
                   <button
                     className="accordion-button"
@@ -382,8 +511,16 @@ function CreatePost() {
                         id="allow"
                         value={"allow"}
                         className="me-2"
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="allow"?true:postdata?false:true}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={
+                          postdata?.comment_options === "allow"
+                            ? true
+                            : postdata
+                            ? false
+                            : true
+                        }
                       />
 
                       <label htmlFor="allow">Allow</label>
@@ -395,8 +532,14 @@ function CreatePost() {
                         id="show_existing"
                         value={"show_existing"}
                         className="me-2"
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="show_existing"?true:false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={
+                          postdata?.comment_options === "show_existing"
+                            ? true
+                            : false
+                        }
                       />
                       <label htmlFor="show_existing">Show Existing</label>
                     </div>
@@ -406,8 +549,14 @@ function CreatePost() {
                         name="comment_options"
                         id="hide_existing"
                         value={"hide_existing"}
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="hide_existing"?true:false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={
+                          postdata?.comment_options === "hide_existing"
+                            ? true
+                            : false
+                        }
                         className="me-2"
                       />
 
