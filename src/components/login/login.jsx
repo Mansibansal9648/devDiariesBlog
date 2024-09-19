@@ -64,8 +64,10 @@ function LogIn() {
     <>
       <NavBar />
       <div className="container  login-page position-relative z-0">
-        <div className="left">
-          <h1>this is left side with width 60%</h1>
+        <div className="left text-center mt-5">
+        <h6 className="fs-1 fw-bold mt-5 mb-4">Welcome back, Developer!</h6>
+            <p className="fs-4">We’re excited to see you again! </p>
+            <p className="me-5 ms-5 text-muted mt-3">"Let’s continue building the future of tech together—log in to share your latest discoveries and explore new ideas. Ready to dive into your next coding adventure? Log in to keep sharing your insights, learn from fellow developers, and contribute to the <span className="text-warning fs-5">DevDiaries</span> community. Your next big breakthrough is just a login away, so share your programming tips, tricks, and experiences with the community!"</p>
         </div>
 
         <div className="login">
