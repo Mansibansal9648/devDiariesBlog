@@ -27,7 +27,7 @@ export default function BlogPage({ isLayout }) {
     <>
       {isLayout && <NavBar />}
 
-      <div className="blog-container">
+      <div className="blog-container body-height">
         <div className="main-post">
           {data !== null &&
             data.map((article) => (

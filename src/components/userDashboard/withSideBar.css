@@ -1,4 +1,4 @@
-.list-group-hover:hover{
-background-color: rgb(192, 253, 209);
+ .hover-element:hover{
+background-color: #dbcdfc;
 /* background-color: #f8f9fa; */
-}
+ }

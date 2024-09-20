@@ -33,13 +33,13 @@ const WithSideBar = ({
         {/**style={{ margin: "0" }} */}
         <div className={`sidebar ${isSidebarExpanded ? "expanded" : ""}`}>
           <div
-            className="list-group mb-2"
+            className="list-group mb-2 body-color"
             style={{ marginTop: "20px", padding: "10px" }}
           >
             <div className="list-group-item  pt-4 pb-3">
               <Link
                 to={`/userpage/${user.id}`}
-                className="nav-link text-success fs-4"
+                className="heading text-decoration-none text-success fs-4"
               >
                 Hi! @{user.username}
               </Link>
@@ -47,19 +47,19 @@ const WithSideBar = ({
             <div className="newpost">
               <Link
                 to={`/userpage/post/${user.id}`}
-                className="nav-link list-group-item list-group-hover"
+                className="heading mb-0 text-decoration-none list-group-item hover-element"
                 style={{ color: "orange" }}
               >
                 + NEW POST
               </Link>
             </div>
-            <div className="list-group-item list-group-hover">
-              <Link to={`/userpage/${user.id}`} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={`/userpage/${user.id}`} className="heading text-decoration-none">
                 <b>My Blogs</b>
               </Link>
             </div>
-            <div className="list-group-item list-group-hover">
-              <Link to={`/userpage/blogs/random`} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={`/userpage/blogs/random`} className="heading text-decoration-none">
                 All Blogs
               </Link>
             </div>
@@ -68,7 +68,7 @@ const WithSideBar = ({
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
-                    className="accordion-button collapsed list-group-hover"
+                    className="accordion-button collapsed hover-element"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseOne"
@@ -86,66 +86,66 @@ const WithSideBar = ({
                 >
                   <div className="accordion-body" style={{padding:"0px"}}>
                     <div className="list-group list-group-flush">
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element" >
                         <Link
                           to={"/userpage/blogs/sports"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Development
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element">
                         <Link
                           to={"/userpage/blogs/health"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Programming language
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element">
                         <Link
                           to={"/userpage/blogs/technology"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Technology
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element" >
                         <Link
                           to={"/userpage/blogs/business"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Devops
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element" >
                         <Link
                           to={"/userpage/blogs/science"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Cloud
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element">
                         <Link
                           to={"/userpage/blogs/general"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Career & growth
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element" >
                         <Link
                           to={"/userpage/blogs/entertainment"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           Tools
                         </Link>
                       </div>
-                      <div className="list-group-item list-group-item-action" style={listStyle}>
+                      <div className="list-group-item list-group-item-action hover-element" >
                         <Link
                           to={"/userpage/blogs/general"}
-                          className="nav-link"
+                          className="heading text-decoration-none"
                         >
                           others
                         </Link>
@@ -156,24 +156,24 @@ const WithSideBar = ({
               </div>
             </div>
 
-            <div className="list-group-item list-group-hover">
-              <Link to={"/"} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={"/"} className="heading text-decoration-none">
                 Stats
               </Link>
             </div>
-            <div className="list-group-item list-group-hover">
-              <Link to={"/"} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={"/"} className="heading text-decoration-none">
                 Comments
               </Link>
             </div>
-            <div className="list-group-item list-group-hover">
-              <Link to={"/"} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={"/"} className="heading text-decoration-none">
                 Pages
               </Link>
             </div>
 
-            <div className="list-group-item list-group-hover">
-              <Link to={"/"} className="nav-link">
+            <div className="list-group-item hover-element">
+              <Link to={"/"} className="heading text-decoration-none">
                 Setting
               </Link>
             </div>

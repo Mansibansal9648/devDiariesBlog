@@ -176,7 +176,7 @@ function MyBlog({ postTitle }) {
   return (
     <>
       {user != null ? (
-        <div className="col-10 offset-1 body-color">
+        <div className="col-10 offset-1 body-height">
          <div className="outer_label_container position-fixed">
   <div className="container label_container py-2 sticky-top d-flex align-items-center position-relative">
     {/* Left Button */}
@@ -341,14 +341,14 @@ function MyBlog({ postTitle }) {
                             <Link
                               to={`/userpage/post/${item._id}/edit`}
                               state={item}
-                              className="nav-link p-3 pt-1"
+                              className="heading p-3 pt-1"
                             >
                               <i className="fa-solid fa-pen edit_btn  fs-5 "></i>
                             </Link>
                             <Link
                               to={`/userpage/post/${user.id}/blogdetailpage`}
                               state={item}
-                              className="nav-link d-inline-block p-3 pt-1"
+                              className="heading d-inline-block p-3 pt-1"
                             >
                               <i className="fa-regular fa-eye edit_btn  fs-5"></i>
                             </Link>
