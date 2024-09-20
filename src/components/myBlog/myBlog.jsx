@@ -332,7 +332,7 @@ function MyBlog({ postTitle }) {
                         <div className="last d-flex gap-4">
                           <div className="end_btn me-4 d-flex justify-content-around">
                             <i
-                              className="fa-solid fa-trash fs-5 del_btn p-2"
+                              className="fa-solid fa-trash fs-5 del_btn p-3  pt-1"
                               onClick={(event) => {
                                 event.preventDefault();
                                 removePost(item._id);
@@ -341,14 +341,14 @@ function MyBlog({ postTitle }) {
                             <Link
                               to={`/userpage/post/${item._id}/edit`}
                               state={item}
-                              className="nav-link p-2"
+                              className="nav-link p-3 pt-1"
                             >
-                              <i className="fa-solid fa-pen edit_btn  fs-5"></i>
+                              <i className="fa-solid fa-pen edit_btn  fs-5 "></i>
                             </Link>
                             <Link
                               to={`/userpage/post/${user.id}/blogdetailpage`}
                               state={item}
-                              className="nav-link d-inline-block p-2"
+                              className="nav-link d-inline-block p-3 pt-1"
                             >
                               <i className="fa-regular fa-eye edit_btn  fs-5"></i>
                             </Link>
