@@ -392,7 +392,7 @@ function CreatePost() {
                         onChange={(e) => {
                           onChangeHandler("", e);
                         }}
-                        defaultChecked={postdata?.category=="others"? true: false}
+                        defaultChecked={postdata?.category=="others"? true: postdata? false: true}
                       />
                       <label htmlFor="other_ctgy">Others</label>
                     </div>
