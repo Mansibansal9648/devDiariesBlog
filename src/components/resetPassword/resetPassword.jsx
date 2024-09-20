@@ -1,9 +1,9 @@
 // import Footer from "../common/footer/footer";
 // import NavBar from "../common/navBar/navBar";
 import { Link } from "react-router-dom";
-import "./updatePassword.css";
+import "./resetPassword.css";
 
-function UpdatePassword() {
+function ResetPassword() {
   return (
     <>
       {/* <NavBar /> */}
@@ -25,18 +25,7 @@ function UpdatePassword() {
             <h1 className="heading ps-2 text-center">DevDiaries</h1>
             <div className="mb-3">
               {" "}
-              <label for="exampleInputPassword1">Current Password</label>
-              <input
-                type="password"
-                autoComplete="new-password"
-                className="form-control "
-                id="exampleInputPassword1"
-                placeholder="Enter your password"
-              />
-            </div>
-            <div className="mb-3">
-              {" "}
-              <label for="exampleInputPassword1">New Password</label>
+              <label for="exampleInputPassword1">Password</label>
               <input
                 type="password"
                 autoComplete="new-password"
@@ -72,4 +61,4 @@ function UpdatePassword() {
     </>
   );
 }
-export default UpdatePassword;
+export default ResetPassword;

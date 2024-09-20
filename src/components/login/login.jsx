@@ -85,7 +85,7 @@ function LogIn() {
                 <input
                   type="text"
                   className= {formik.touched.username_email &&
-                    formik.errors.username_email ? "border border-danger register_input  d-block w-100 p-2" : "border register_input  d-block w-100 p-2" }
+                    formik.errors.username_email ? "border border-danger login_input  d-block w-100 p-2" : "border login_input  d-block w-100 p-2" }
                   id="username_email"
                   placeholder="Enter your email or username"
                   value={formik.values.username_email}
@@ -105,7 +105,7 @@ function LogIn() {
               <div className=" position-relative">
                 <input
                   type={showpassword ? "text" : "password"}
-                  className={formik.touched.password && formik.errors.password ? "border border-danger  w-100 p-2 d-flex mb-0" : "border  w-100 p-2 d-flex mb-0" }
+                  className={formik.touched.password && formik.errors.password ? "border border-danger login_input w-100 p-2 d-flex mb-0" : "border login_input w-100 p-2 d-flex mb-0" }
                   id="password"
                   placeholder="Enter your password"
                   value={formik.values.password}

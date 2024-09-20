@@ -16,7 +16,7 @@ function PrivateRoute({ children }) {
       case "/login":
       case "/register":
       case "/forgotpassword":
-      case "/updatepassword":
+      
         return children;
       default:
         return <Navigate to="/" />;

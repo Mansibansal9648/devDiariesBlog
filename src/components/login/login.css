@@ -1,15 +1,14 @@
 
 .left{
-  width: 60%;
+  width: 55%;
 }
 .login{
-    width: 45%;
-    /* border: 1px solid #1E4682; */
+    width: 32%;
     padding: 45px;
     margin: 55px 0px;
     border-radius: 12px;
     background-color: rgb(228, 246, 251);
-    box-shadow:15px 10px 1px #aec8f0;
+    box-shadow:17px 6px 15px #aec8f0;
 }
 .login-page{
   /* margin-top: 60px; */
@@ -29,6 +28,10 @@
   position: absolute;
   top: 15px;
   right: 10px;
+}
+.login_input{
+  margin-bottom: 10px;
+  border-radius: 7px;
 }
 @media only screen and (min-device-width: 1080px){
   .login-page{
