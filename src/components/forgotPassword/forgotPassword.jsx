@@ -7,24 +7,22 @@ function ForgotPassword() {
   return (
     <>
       <NavBar />
-      <div class="row py-5 ms-0 w-100">
-        <div class="col-lg-7 col-sm-12 my-4">
-          <h1 className="fw-bolder ps-5 text-black">
-            You forgot your password? calm down we will help
+      <div class="row pt-5 w-100">
+        <div class="col-lg-6 col-sm-12 mt-5 text-center py-5 mx-5">
+          <h1 className="fw-bold px-5 pt-5 mx-5">
+            You forgot your password?
           </h1>
-
-          <p className="p-5 pe-4 mt-5 text-secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-            cumque suscipit rem nisi impedit rerum ad. Sed voluptatem tempora
-            delectus unde modi harum nesciunt rerum labore ratione? Ex maiores,
-            tempore officia ea tenetur
+          <p className="fs-3 fw-bold text-muted mt-5">Calm down we will help you !!</p>
+          <p className=" px-5 mt-4 text-secondary mx-5">
+          No worries! Please enter your email address, and we'll send you instructions to reset your password.
           </p>
         </div>
-        <div class="col-lg-5 col-sm-12 my-4 px-1">
-          <form className=" form-container border border-dark p-5 mx-5">
-            <h1 className="heading ps-2 text-center">DevDiaries</h1>
+        <div class="col-lg-4 col-sm-12 my-5 px-1">
+          <form className=" fpass-form-container border border-muted px-5 py-4 mx-5">
+          <i class="fa-solid fa-lock fs-1 mb-5 text-primary text-center lock-icon"></i>
+            <h3 className="text-center">Trouble logging in?</h3>
+            <p className="text-muted text-center">Enter your email and we'll send you a link to get back into your account.</p>
             <div className="mb-3">
-              {" "}
               <label for="exampleInputPassword1">Email</label>
               <input
                 type="email"
@@ -35,12 +33,11 @@ function ForgotPassword() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary button">
+            <button type="submit" className="btn btn-primary reset-button">
               Reset Password
             </button>
             <div className="para pt-3">
               <p>
-                {" "}
                 Do you already have an account??{" "}
                 <Link to="/login" className="text-decoration-none">
                   Login Now
@@ -50,7 +47,7 @@ function ForgotPassword() {
           </form>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
