@@ -26,6 +26,7 @@ function CreatePost() {
       content: postdata?.content ?? "",
       labels: postdata?.labels ?? [],
       comment_options: postdata?.comment_options ?? "allow",
+      category: postdata?.category ?? "others"
     };
   };
 
@@ -121,6 +122,7 @@ function CreatePost() {
         title: "",
         content: "",
         labels: [],
+        category:"",
       });
       setTimeout(() => {
         setFlag(false);
@@ -281,12 +283,14 @@ function CreatePost() {
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="development_ctgy"
                         value={"development"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="development"? true: false}
                       />
 
                       <label htmlFor="development_ctgy">Development</label>
@@ -294,12 +298,14 @@ function CreatePost() {
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="prog_lang_ctgy"
-                        value={"programming_language"}
+                        value={"programming language"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="programming language"? true: false}
                       />
                       <label htmlFor="prog_lang_ctgy">
                         Programming Language
@@ -308,12 +314,14 @@ function CreatePost() {
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="technology_ctgy"
                         value={"technology"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="technology"? true: false}
                       />
 
                       <label htmlFor="technology_ctgy">Technology</label>
@@ -321,60 +329,70 @@ function CreatePost() {
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="devops_ctgy"
-                        value={"devops"}
+                        value={"devOps"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="devOps"? true: false}
                       />
                       <label htmlFor="devops_ctgy">DevOps</label>
                     </div>
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="cloud_ctgy"
                         value={"cloud"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="cloud"? true: false}
                       />
                       <label htmlFor="cloud_ctgy">Cloud</label>
                     </div>
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="career_growth_ctgy"
-                        value={"career_growth"}
+                        value={"career and growth"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="career and growth"? true: false}
                       />
                       <label htmlFor="career_growth_ctgy">Career & Growth</label>
                     </div>
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="tools_ctgy"
                         value={"tools"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={false}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="tools"? true: false}
                       />
                       <label htmlFor="tools_ctgy">Tools</label>
                     </div>
                     <div>
                       <input
                         type="radio"
-                        name="post_category"
+                        name="category"
                         id="other_ctgy"
                         value={"others"}
                         className="me-2"
-                        onChange={(e) => {}}
-                        defaultChecked={true}
+                        onChange={(e) => {
+                          onChangeHandler("", e);
+                        }}
+                        defaultChecked={postdata?.category=="others"? true: false}
                       />
                       <label htmlFor="other_ctgy">Others</label>
                     </div>
