@@ -40,11 +40,6 @@ function CreatePost() {
   const [myLabel, setMyLabel] = useState(postdata?.labels ?? []);
   const [searchedLabel, setSearchedLAbel] = useState({ name: undefined });
 
-  // const selectedLabel = (label) => {
-  //   setMyLabel((preVal) => {
-  //     return [...preVal, label.name];
-  //   });
-  // };
   const selectedLabel = (label) => {
     setMyLabel((preVal) => {
       return [...preVal, label.name];
