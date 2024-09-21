@@ -2,8 +2,23 @@
 // import NavBar from "../common/navBar/navBar";
 import { Link } from "react-router-dom";
 import "./resetPassword.css";
+import {  ResetSchema } from "../../Schema/resetSchema";
+import { useFormik } from "formik";
 
 function ResetPassword() {
+  const initialValues = {
+    password : "",
+    confirmPassword : "",
+  }
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: ResetSchema,
+    onSubmit:  function (values, action) {
+     // await newUser(values);
+      action.resetForm();
+    },
+  });
+ 
   return (
     <>
       {/* <NavBar /> */}
@@ -21,27 +36,55 @@ function ResetPassword() {
           </p>
         </div>
         <div class="custom col-lg-5 col-sm-12 my-4 px-1">
-          <form className=" form-container border border-dark p-5 mx-2">
+          <form
+            className=" form-container border border-dark p-5 mx-2"
+            onSubmit={formik.handleSubmit}
+          >
             <h1 className="heading ps-2 text-center">DevDiaries</h1>
             <div className="mb-3">
               {" "}
-              <label for="exampleInputPassword1">Password</label>
+              <label for="password">Password</label>
               <input
                 type="password"
                 autoComplete="new-password"
-                className="form-control "
-                id="exampleInputPassword1"
+                className={
+                  formik.errors.password && formik.touched.password
+                    ? "border border-danger register_input  w-100 p-2 "
+                    : " border register_input  w-100 p-2"
+                }
+                id="password"
                 placeholder="Enter your password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
             </div>
-            <label for="exampleInputPassword1">Confirm Password</label>
+            {formik.errors.password &&
+              formik.touched.password ? (
+                <p className="form-error mt-0">
+                  {formik.errors.password}
+                </p>
+              ) : null}
+            <label for="confirmPassword"> Password</label>
             <input
               type="password"
-              className="form-control"
-              id="ConfirmPassword"
+              className={
+                formik.errors.confirmPassword && formik.touched.confirmPassword
+                  ? "border border-danger register_input  w-100 p-2 "
+                  : " border register_input  w-100 p-2"
+              }
+              id="confirmPassword"
               placeholder="Confirm your password"
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
-
+            {formik.errors.confirmPassword &&
+              formik.touched.confirmPassword ? (
+                <p className="form-error mt-0">
+                  {formik.errors.confirmPassword}
+                </p>
+              ) : null}
             <button type="submit" className="btn btn-primary button">
               Submit
             </button>

@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import "./updatePassword.css";
+import { UpdateSchema } from "../../Schema/updateScheme";
+import { useFormik } from "formik";
 
 function UpdatePassword() {
+  const initialValues = {
+    currentPassword : "",
+    password: "",
+    confirmPassword: "",
+  };
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: UpdateSchema,
+    onSubmit:  function (values, action) {
+      // await  newUser(values);
+      action.resetForm();
+    },
+  });
   return (
     <>
       <div class="row py-5 ms-0 w-100">
@@ -17,37 +32,60 @@ function UpdatePassword() {
           </p>
         </div>
         <div class="custom col-lg-5 col-sm-12 my-4 px-5">
-          <form className="container upass-form-container border  px-5 py-4">
+          <form className="container upass-form-container border  px-5 py-4" onSubmit={formik.handleSubmit}>
             <h1 className="heading ps-2 text-center">DevDiaries</h1>
             <i class="fa-solid fa-key mb-5 text-center key-icon"></i>
             <div className="">
-              <label for="exampleInputPassword1">Current Password</label>
+              <label for="currentPassword">Current Password</label>
               <input
                 type="password"
                 autoComplete="new-password"
                 className="form-control "
-                id="exampleInputPassword1"
+                id="currentPassword"
                 placeholder="Enter your password"
+                value={formik.values.currentPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
+              {formik.errors.currentPassword && formik.touched.currentPassword ? (
+                <p className="form-error mt-0">{formik.errors.currentPassword}</p>
+              ) : null}
             </div>
             <div className="">
-              <label for="exampleInputPassword1">New Password</label>
+              <label for="password">New Password</label>
               <input
                 type="password"
                 autoComplete="new-password"
-                className="form-control "
-                id="exampleInputPassword1"
+                className={
+                  formik.errors.password && formik.touched.password
+                    ? "border border-danger register_input  w-100 p-2 "
+                    : " border register_input  w-100 p-2"
+                }
+                id="password"
                 placeholder="Enter your password"
+                value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
               />
+              {formik.errors.password && formik.touched.password ? (
+                <p className="form-error mt-0">{formik.errors.password}</p>
+              ) : null}
+
             </div>
             <div className="">
               <label for="exampleInputPassword1">Confirm Password</label>
               <input
-                type="password"
+                type="confirmPassword"
                 className="form-control"
-                id="ConfirmPassword"
+                id="confirmPassword"
                 placeholder="Confirm your password"
+                value={formik.values.confirmPassword}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
               />
+               {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+                <p className="form-error mt-0">{formik.errors.confirmPassword}</p>
+              ) : null}
             </div>
 
             <button type="submit" className="btn btn-primary button">
