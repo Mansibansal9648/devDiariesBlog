@@ -37,17 +37,19 @@ function MyBlog({ postTitle }) {
   const getmyPost = async () => {
     setLoading(true);
     let res = await getPost(user.accessToken, page, limit);
-    setLoading(false);
-    setIsFirstLoad(false);
+    
+
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
       // } else if (res && res.data.responseCode === 403) {
       //   toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
+      
       setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
-      // setPosts( [...posts, ...res.data.data]);
+
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
+      
       if (hasMoreData) {
         setPage(page + 1);
       }
@@ -56,6 +58,8 @@ function MyBlog({ postTitle }) {
     } else {
       toast.error("Something went wrong..");
     }
+    setLoading(false);
+    setIsFirstLoad(false);
   };
 
   const allUsedLabels = async () => {
@@ -72,6 +76,7 @@ function MyBlog({ postTitle }) {
   };
 
   const getAllUserPostByLabel = async (label) => {
+    setLoading(true);
     let res = await getPostByLabel(label, user.accessToken, page, limit);
     // console.log("labelss", label);
     if (res && res.data.responseCode === 401) {
@@ -89,6 +94,8 @@ function MyBlog({ postTitle }) {
     } else {
       toast.error("Something went wrong..");
     }
+    setLoading(false);
+    setIsFirstLoad(false);
   };
 
   const removePost = async (postId) => {
@@ -118,11 +125,12 @@ function MyBlog({ postTitle }) {
   const getPostByTitle = async () => {
     setLoading(true);
     let res = await searchPostByTitle(postTitle, user.accessToken, page, limit);
-    setLoading(false);
-    setIsFirstLoad(false);
+    
+
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
+      
       // console.log(res.data.data)
       // if(page==1){
       //   setPosts(res.data.data)
@@ -144,6 +152,8 @@ function MyBlog({ postTitle }) {
     } else {
       toast.error("Something went wrong..");
     }
+    setLoading(false);
+      setIsFirstLoad(false);
   };
 
   const debouncedGetPostByTitle = () => {
