@@ -79,12 +79,13 @@ const WithSideBar = ({
                     Blogs categories
                   </button>
                 </h2>
+
                 <div
                   id="collapseOne"
                   className="accordion-collapse collapse"
                   data-bs-parent="#category-accordion"
                 >
-                  <div className="accordion-body" style={{padding:"0px"}}>
+                  <div className="accordion-body" style={{ padding: "0px", maxHeight: "200px", overflowY: "auto" }}>
                     <div className="list-group list-group-flush">
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
@@ -115,7 +116,7 @@ const WithSideBar = ({
                           to={"/userpage/blogs/business"}
                           className="heading text-decoration-none"
                         >
-                          Devops
+                          DevOps
                         </Link>
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
@@ -131,7 +132,7 @@ const WithSideBar = ({
                           to={"/userpage/blogs/general"}
                           className="heading text-decoration-none"
                         >
-                          Career & growth
+                          Career & Growth
                         </Link>
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
@@ -147,7 +148,7 @@ const WithSideBar = ({
                           to={"/userpage/blogs/general"}
                           className="heading text-decoration-none"
                         >
-                          others
+                          Others
                         </Link>
                       </div>
                     </div>
