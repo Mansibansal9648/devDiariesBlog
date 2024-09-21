@@ -54,7 +54,7 @@ function CreatePost() {
     } else {
       toast.error("You can select a maximum of 3 labels");
     }
-
+  }
 
   useEffect(() => {
     setPost((preVal) => {
