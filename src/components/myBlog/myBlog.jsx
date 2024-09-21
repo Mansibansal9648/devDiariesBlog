@@ -23,7 +23,6 @@ function MyBlog({ postTitle }) {
   const {
     store: { user },
   } = useAppContext();
-  // console.log(user);
 
   const [posts, setPosts] = useState([]);
   const [usedLabels, setUsedLabels] = useState([]);
@@ -130,14 +129,7 @@ function MyBlog({ postTitle }) {
     if (res && res.data.responseCode === 401) {
       toast.error(res.data.errMessage);
     } else if (res && res.data.responseCode === 200) {
-      
-      // console.log(res.data.data)
-      // if(page==1){
-      //   setPosts(res.data.data)
-      // }else{
       setPosts((prevPosts) => [...prevPosts, ...res.data.data]);
-
-      // }
 
       let hasMoreData = limit * page < res.data.pagination.totalItems;
       setHasMore(hasMoreData);
@@ -146,8 +138,6 @@ function MyBlog({ postTitle }) {
       }
       // setPosts(res.data.data);
     } else if (res && res.data.responseCode === 400) {
-      // toast.error("Post dosen't exists")
-      // setPosts([])
       toast.error(res.data.errMessage);
     } else {
       toast.error("Something went wrong..");
@@ -159,7 +149,7 @@ function MyBlog({ postTitle }) {
   const debouncedGetPostByTitle = () => {
     debounce(() => {
       getPostByTitle();
-    }, 800); // Delay of 800ms
+    }, 800); 
   };
 
   useEffect(() => {
