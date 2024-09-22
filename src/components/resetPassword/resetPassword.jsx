@@ -1,24 +1,48 @@
 // import Footer from "../common/footer/footer";
 // import NavBar from "../common/navBar/navBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./resetPassword.css";
 import {  ResetSchema } from "../../Schema/resetSchema";
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
+import { resetPassword } from "../common/api/authUser";
 
 function ResetPassword() {
+  const location = useLocation();
+  const token = location.pathname.split("/")[2]
+  console.log (token);
   const initialValues = {
-    password : "",
+    newPassword : "",
     confirmPassword : "",
+  }
+
+  const passInfo = async (user_data, token)=> {
+    const res = await resetPassword(user_data, token);
+    if (res && res.data.responseCode === 200) {
+      // console.log("error201", resp.data.data)
+      toast.success(res.data.resMessage);
+
+      
+    } else if (res && res.data.responseCode === 400) {
+      //  console.log("error")
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong...");
+    }
+    return res;
   }
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: ResetSchema,
-    onSubmit:  function (values, action) {
-     // await newUser(values);
+
+   // validationSchema: ResetSchema,
+    onSubmit:  async function (values, action) {
+     await passInfo(values, token);
+      console.log("values", values);
       action.resetForm();
     },
   });
- 
+  
+  
   return (
     <>
       {/* <NavBar /> */}
@@ -43,16 +67,16 @@ function ResetPassword() {
             <h1 className="heading ps-2 text-center">DevDiaries</h1>
             <div className="mb-3">
               {" "}
-              <label for="password">Password</label>
+              <label for="password">New Password</label>
               <input
-                type="password"
+                type="password" name="newPassword"
                 autoComplete="new-password"
                 className={
                   formik.errors.password && formik.touched.password
                     ? "border border-danger register_input  w-100 p-2 "
                     : " border register_input  w-100 p-2"
                 }
-                id="password"
+                id="newPassword"
                 placeholder="Enter your password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -65,7 +89,7 @@ function ResetPassword() {
                   {formik.errors.password}
                 </p>
               ) : null}
-            <label for="confirmPassword"> Password</label>
+            <label for="confirmPassword">Confirm Password</label>
             <input
               type="password"
               className={
@@ -73,7 +97,7 @@ function ResetPassword() {
                   ? "border border-danger register_input  w-100 p-2 "
                   : " border register_input  w-100 p-2"
               }
-              id="confirmPassword"
+              id="confirmPassword" name="confirmPassword"
               placeholder="Confirm your password"
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}

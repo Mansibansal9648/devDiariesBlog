@@ -72,7 +72,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/resetpassword"
+            path="/reset-password/:token"
             element={
 
               <UserLayoutPage>

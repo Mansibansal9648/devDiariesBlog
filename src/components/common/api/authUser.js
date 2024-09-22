@@ -30,5 +30,32 @@ export const loginUser = async (user_data) => {
   }
 };
 
+export const forgotPassword = async (user_data) => {
+  try {
+    const response = await axios.post("http://localhost:8080/api/forgot-password", {
+      email : user_data.email
+    })
+    return response;
+
+  }
+  catch (error) {
+    return error.response;
+  }
+};
+
+export const resetPassword = async (user_data, token) => {
+  try {
+    const response = await axios.post(`http://localhost:8080/api/reset-password?accessToken=${token}`, {
+      newPassword : user_data.newPassword
+
+    })
+
+    return response;
+
+  }
+  catch (error) {
+    return error.response;
+  }
+}
 
 

@@ -2,8 +2,45 @@ import Footer from "../common/footer/footer";
 import NavBar from "../common/navBar/navBar";
 import { Link } from "react-router-dom";
 import "./forgotPassword.css";
+import { useFormik } from "formik";
+import { forgotPassword } from "../common/api/authUser";
+import { toast } from "react-toastify";
 
 function ForgotPassword() {
+
+  const initialValues = {
+    email: "",
+  };
+
+ 
+
+  const forgotUserPassword = async (user_data) => {
+    const resp = await forgotPassword(user_data)
+    console.log("error", resp);
+    if (resp && resp.data.responseCode === 200) {
+     //  console.log("error201", resp.data.data)
+      toast.success(resp.data.resMessage);
+
+    } else if (resp && resp.data.responseCode === 400) {
+      //  console.log("error")
+      toast.error(resp.data.errMessage);
+    } else {
+      toast.error("Something went wrong...");
+    }
+    return resp
+
+  }
+  const formik = useFormik({
+    initialValues: initialValues,
+   // validationSchema: loginSchema,
+    onSubmit: async function (values, action) {
+      await forgotUserPassword(values);
+
+      console.log("Values: ", values);
+      action.resetForm();
+    },
+  });
+
   return (
     <>
       <NavBar />
@@ -30,10 +67,14 @@ function ForgotPassword() {
                 className="form-control "
                 id="exampleInputPassword1"
                 placeholder="Enter your email"
+                name="email"
+                value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
               />
             </div>
 
-            <button type="submit" className="btn btn-primary reset-button">
+            <button type="button" className="btn btn-primary reset-button" onClick={formik.handleSubmit}>
               Reset Password
             </button>
             <div className="para pt-3">
