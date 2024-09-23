@@ -2,7 +2,8 @@ import "./navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../../contextApi/context";
 import { useState } from "react";
-import demoimg from "../../../assets/images/demo-img.jpg";
+// import demoimg from "../../../assets/images/demo-img.jpg";
+import icon from "../../../assets/images/unnamed.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
@@ -60,7 +61,7 @@ function NavBar({ handleClick, handleInputTitle }) {
             )}
 
             <div className="end" onClick={toggleProfile}>
-              <img src={demoimg} alt="Profile" className="profile bg-white" />
+              <img src={icon} alt="Profile" className="profile bg-white" />
             </div>
 
             {/* Right Sidebar */}
@@ -70,7 +71,7 @@ function NavBar({ handleClick, handleInputTitle }) {
               } z-2`}
             >
               <img
-                src={demoimg}
+                src={icon}
                 alt=""
                 className="bg-white  rounded-circle"
                 style={{ width: "100px", height: "100px", objectFit: "cover" }}

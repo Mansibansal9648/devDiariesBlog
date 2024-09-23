@@ -6,9 +6,11 @@ import { useFormik } from "formik";
 import { forgotPassword } from "../common/api/authUser";
 import { toast } from "react-toastify";
 import { forgotSchema } from "../../Schema/forgotSchema";
+import { useState } from "react";
 
 function ForgotPassword() {
-
+  const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useState(0)
   const initialValues = {
     email: "",
   };
@@ -16,11 +18,13 @@ function ForgotPassword() {
  
 
   const forgotUserPassword = async (user_data) => {
+    setLoading(true);
     const resp = await forgotPassword(user_data)
     console.log("error", resp);
     if (resp && resp.data.responseCode === 200) {
      //  console.log("error201", resp.data.data)
       toast.success(resp.data.resMessage);
+      startTimer();
 
     } else if (resp && resp.data.responseCode === 400) {
       //  console.log("error")
@@ -28,9 +32,23 @@ function ForgotPassword() {
     } else {
       toast.error("Something went wrong...");
     }
+    setLoading(false);
     return resp
+    
 
   }
+  const startTimer = () => {
+    setTimer(60); // Set timer for 60 seconds
+    const interval = setInterval(() => {
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0; // Stop at 0
+        }
+        return prev - 1; // Decrease timer
+      });
+    }, 1000); // Decrease every second
+  };
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: forgotSchema,
@@ -80,9 +98,11 @@ function ForgotPassword() {
                   {formik.errors.email}
                 </p>
               ) : null}
-            <button type="button" className="btn btn-primary reset-button" onClick={formik.handleSubmit}>
-              Reset Password
+            <button type="button" className="btn btn-primary reset-button" disabled={loading || timer > 0} onClick={formik.handleSubmit}>
+             {loading ? "Loading..." : "Reset Password"}
+            
             </button>
+            <p style={{textAlign: "center", marginTop: '5px'}} className="text-success"> { timer > 0 ? `Wait ${timer}s` : ""} {/* Show countdown */}</p>
             <div className="para pt-3">
               <p>
                 Do you already have an account??{" "}

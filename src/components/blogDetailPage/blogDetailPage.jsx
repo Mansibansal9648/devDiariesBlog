@@ -21,9 +21,9 @@ function BlogDetailPage() {
             
             </div>
             <div className="blog_content ">
-            <h2 className="mt-3">
+            <h3 className="mt-3">
               {post.title}
-            </h2>
+            </h3>
              
             
         
