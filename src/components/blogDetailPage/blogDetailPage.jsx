@@ -7,7 +7,7 @@ function BlogDetailPage() {
  const location = useLocation()
  const {store:{user}}=useAppContext();
  const post = location.state
-//  console.log("postd", post)
+  console.log("postd", post)
 
   return (
     <>
@@ -15,26 +15,26 @@ function BlogDetailPage() {
         <div className="row">
           <div className="col-md-8 blogdetail_box">
             <div className="category">
-            <h1>
-              {post.title}
-            </h1>
+            <p className="fw-bolder fs-2">
+              {post.category}
+            </p>
             
             </div>
-            <div className="bg-danger ">
+            <div className="blog_content ">
             <h2 className="mt-3">
               {post.title}
             </h2>
              
             
-            <hr />
+        
             <div className="user_details">
               
               <div className="blog_details">
-                <p className="fs-5 "> By {user.name}</p>
-                <p>UPDATED: {post.updatedAt.split("GMT")[0]}</p>
+                <p className="fs-6 username mb-0"> By <span style={{fontStyle: "italic"}}>{user.name}</span></p>
+                <p className="text-danger">UPDATED: {post.updatedAt.split("GMT")[0]}</p>
               </div>
               </div>
-              <hr />
+             
 
               <div className="content mt-2">
                 

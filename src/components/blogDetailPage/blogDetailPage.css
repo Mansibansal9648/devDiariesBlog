@@ -3,7 +3,13 @@
     height: 100vh;
     
 }
-
+.blog_content {
+    background-color: var(--primary-text-color);
+    padding: 25px 20px;
+}
+.username {
+    color: var(--primary-color);
+}
 
 .bd_profile_pic{
     height: 60px;
