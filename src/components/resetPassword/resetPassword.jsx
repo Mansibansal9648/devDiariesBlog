@@ -34,7 +34,7 @@ function ResetPassword() {
   const formik = useFormik({
     initialValues: initialValues,
 
-   // validationSchema: ResetSchema,
+    validationSchema: ResetSchema,
     onSubmit:  async function (values, action) {
      await passInfo(values, token);
       console.log("values", values);
@@ -72,21 +72,21 @@ function ResetPassword() {
                 type="password" name="newPassword"
                 autoComplete="new-password"
                 className={
-                  formik.errors.password && formik.touched.password
+                  formik.errors.newPassword && formik.touched.newPassword
                     ? "border border-danger register_input  w-100 p-2 "
                     : " border register_input  w-100 p-2"
                 }
                 id="newPassword"
                 placeholder="Enter your password"
-                value={formik.values.password}
+                value={formik.values.newPassword}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
             </div>
-            {formik.errors.password &&
-              formik.touched.password ? (
+            {formik.errors.newPassword &&
+              formik.touched.newPassword ? (
                 <p className="form-error mt-0">
-                  {formik.errors.password}
+                  {formik.errors.newPassword}
                 </p>
               ) : null}
             <label for="confirmPassword">Confirm Password</label>

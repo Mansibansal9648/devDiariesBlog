@@ -5,6 +5,7 @@ import "./forgotPassword.css";
 import { useFormik } from "formik";
 import { forgotPassword } from "../common/api/authUser";
 import { toast } from "react-toastify";
+import { forgotSchema } from "../../Schema/forgotSchema";
 
 function ForgotPassword() {
 
@@ -32,7 +33,7 @@ function ForgotPassword() {
   }
   const formik = useFormik({
     initialValues: initialValues,
-   // validationSchema: loginSchema,
+    validationSchema: forgotSchema,
     onSubmit: async function (values, action) {
       await forgotUserPassword(values);
 
@@ -67,13 +68,18 @@ function ForgotPassword() {
                 className="form-control "
                 id="exampleInputPassword1"
                 placeholder="Enter your email"
-                name="email"
-                value={formik.values.email}
+                 name="email"
+                 value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
               />
             </div>
-
+            {formik.errors.email &&
+              formik.touched.email ? (
+                <p className="form-error mt-0">
+                  {formik.errors.email}
+                </p>
+              ) : null}
             <button type="button" className="btn btn-primary reset-button" onClick={formik.handleSubmit}>
               Reset Password
             </button>
