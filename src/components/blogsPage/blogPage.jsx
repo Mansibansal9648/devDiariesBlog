@@ -64,7 +64,7 @@ export default function BlogPage({ isLayout }) {
                   <h2>{posts.title}</h2>
                   <p
                   dangerouslySetInnerHTML={{
-                    __html: limitText(posts.content, 150) // Limiting content
+                    __html: limitText(posts.content, 300) // Limiting content
                   }}
                   className="my-3"
                 />

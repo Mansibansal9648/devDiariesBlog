@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { createNewPost, updatePost } from "../common/api/postApi";
 import { useAppContext } from "../../contextApi/context";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getAllCategories } from "../common/api/categoryApi";
 
 function CreatePost() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function CreatePost() {
       content: postdata?.content ?? "",
       labels: postdata?.labels ?? [],
       comment_options: postdata?.comment_options ?? "allow",
-      category: postdata?.category ?? "others"
+      category: postdata?.category ?? "others",
     };
   };
 
@@ -39,7 +40,7 @@ function CreatePost() {
   const [flag, setFlag] = useState(false);
   const [myLabel, setMyLabel] = useState(postdata?.labels ?? []);
   const [searchedLabel, setSearchedLAbel] = useState({ name: undefined });
-
+  const [category, setCategory] = useState([]);
 
   // const selectedLabel = (label) => {
   //   setMyLabel((preVal) => {
@@ -54,13 +55,17 @@ function CreatePost() {
     } else {
       toast.error("You can select a maximum of 3 labels");
     }
-  }
+  };
 
   useEffect(() => {
     setPost((preVal) => {
       return { ...preVal, labels: myLabel };
     });
   }, [myLabel]);
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const removeSelectedLabel = (label) => {
     const filteredLabel = myLabel.filter((myLab) => {
@@ -85,6 +90,19 @@ function CreatePost() {
     }
   };
 
+  const getCategories = async () => {
+    let res = await getAllCategories();
+    if (res && res.data.responseCode === 200) {
+      // toast.success(res.data.resMessage);
+      // navigate(`/userpage/${user.id}`);
+      setCategory(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong! ");
+    }
+  };
+
   useEffect(() => {
     if (searchedLabel.name === "") {
       getAllLabelData();
@@ -95,12 +113,14 @@ function CreatePost() {
 
   const onChangeHandler = (value, e) => {
     if (flag) return;
-    if (e) {
+    if (e && e.target.name==="category") {
+      setPost({ ...post, categoryId: e.target.id });
+      // console.log("E", e);
+    } else if(e){
       setPost({ ...post, [e.target.name]: e.target.value });
-     // console.log("E", e);
-    } else {
+    }else {
       setPost({ ...post, content: value });
-     // console.log("content: value",  value)
+      // console.log("content: value",  value)
     }
   };
 
@@ -287,122 +307,24 @@ function CreatePost() {
                 >
                   <div className="accordion-body">
                     <h6 className="mb-4 fw-bold">Select</h6>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="development_ctgy"
-                        value={"Development"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="development"? true: false}
-                      />
-
-                      <label htmlFor="development_ctgy">Development</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="prog_lang_ctgy"
-                        value={"Programming language"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="programming language"? true: false}
-                      />
-                      <label htmlFor="prog_lang_ctgy">
-                        Programming Language
-                      </label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="technology_ctgy"
-                        value={"Technology"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="technology"? true: false}
-                      />
-
-                      <label htmlFor="technology_ctgy">Technology</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="devops_ctgy"
-                        value={"DevOps"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="DevOps"? true: false}
-                      />
-                      <label htmlFor="devops_ctgy">DevOps</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="cloud_ctgy"
-                        value={"Cloud"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="cloud"? true: false}
-                      />
-                      <label htmlFor="cloud_ctgy">Cloud</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="career_growth_ctgy"
-                        value={"Career & Growth"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="Career & Growth"? true: false}
-                      />
-                      <label htmlFor="career_growth_ctgy">Career & Growth</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="tools_ctgy"
-                        value={"Tools"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="tools"? true: false}
-                      />
-                      <label htmlFor="tools_ctgy">Tools</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        name="category"
-                        id="other_ctgy"
-                        value={"Others"}
-                        className="me-2"
-                        onChange={(e) => {
-                          onChangeHandler("", e);
-                        }}
-                        defaultChecked={postdata?.category=="others"? true: postdata? false: true}
-                      />
-                      <label htmlFor="other_ctgy">Others</label>
-                    </div>
+                    {category?.map((category) => (
+                      <div key={category._id}>
+                        <input
+                          type="radio"
+                          name="category"
+                          id={`${category.key}`}
+                          value={category.name}
+                          className="me-2"
+                          onChange={(e) => {
+                            onChangeHandler("", e);
+                          }}
+                          defaultChecked={postdata?.categoryId === category.key}
+                        />
+                        <label htmlFor={`${category.key}`}>
+                          {category.name}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
