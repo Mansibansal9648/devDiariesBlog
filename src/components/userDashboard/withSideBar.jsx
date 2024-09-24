@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useAppContext } from "../../contextApi/context";
 import Footer from "../common/footer/footer";
 import "./withSideBar.css"
@@ -11,6 +11,28 @@ const WithSideBar = ({
   const {
     store: { user },
   } = useAppContext();
+
+ // const {category} = useParams();
+
+  // useEffect (()=> {
+  //   if (category) {
+  //     fetchPostsByCategory (category);
+  //   }
+  // }, [category]);
+
+  // const fetchPostsByCategory = async (category) => {
+  // //  setLoading(true);
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/post/get-post-category?category=${category}`);
+  //     const data = await response.json();
+  //   //  setPosts(data);
+  //   } catch (error) {
+  //     console.error("Error fetching posts:", error);
+  //   } finally {
+  //    // setLoading(false);
+  //   }
+  // };
+
   const mainContentStyle = {
     width: isFullWidth ? "100%" : "calc(100% - 300px)",
      minHeight: "100vh -66px",
@@ -89,7 +111,7 @@ const WithSideBar = ({
                     <div className="list-group list-group-flush">
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
-                          to={"/userpage/blogs/sports"}
+                          to={"/userpage/blogs/development"}
                           className="heading text-decoration-none"
                         >
                           Development
@@ -97,7 +119,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element">
                         <Link
-                          to={"/userpage/blogs/health"}
+                          to={"/userpage/blogs/programminglanguage"}
                           className="heading text-decoration-none"
                         >
                           Programming language
@@ -113,7 +135,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
-                          to={"/userpage/blogs/business"}
+                          to={"/userpage/blogs/devops"}
                           className="heading text-decoration-none"
                         >
                           DevOps
@@ -121,7 +143,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
-                          to={"/userpage/blogs/science"}
+                          to={"/userpage/blogs/cloud"}
                           className="heading text-decoration-none"
                         >
                           Cloud
@@ -129,7 +151,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element">
                         <Link
-                          to={"/userpage/blogs/general"}
+                          to={"/userpage/blogs/career&growth"}
                           className="heading text-decoration-none"
                         >
                           Career & Growth
@@ -137,7 +159,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
-                          to={"/userpage/blogs/entertainment"}
+                          to={"/userpage/blogs/tools"}
                           className="heading text-decoration-none"
                         >
                           Tools
@@ -145,7 +167,7 @@ const WithSideBar = ({
                       </div>
                       <div className="list-group-item list-group-item-action hover-element" >
                         <Link
-                          to={"/userpage/blogs/general"}
+                          to={"/userpage/blogs/others"}
                           className="heading text-decoration-none"
                         >
                           Others

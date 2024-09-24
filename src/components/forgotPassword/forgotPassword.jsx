@@ -76,14 +76,14 @@ function ForgotPassword() {
         <div class="col-lg-4 col-sm-12 my-5 px-1">
           <form className=" fpass-form-container border border-muted px-5 py-4 mx-5">
           <i class="fa-solid fa-lock fs-1 mb-5 text-primary text-center lock-icon"></i>
-            <h3 className="text-center">Trouble logging in?</h3>
+            <h3 className="text-center mb-3" style={{color: "#1E4682"}}>Trouble logging in?</h3>
             <p className="text-muted text-center">Enter your email and we'll send you a link to get back into your account.</p>
-            <div className="mb-3">
+            <div className="">
               <label for="exampleInputPassword1">Email</label>
               <input
                 type="email"
                 autoComplete="new-password"
-                className="form-control "
+                className="form-control mb-2"
                 id="exampleInputPassword1"
                 placeholder="Enter your email"
                  name="email"
@@ -94,11 +94,11 @@ function ForgotPassword() {
             </div>
             {formik.errors.email &&
               formik.touched.email ? (
-                <p className="form-error mt-0">
+                <p className="form-error mt-0 mb-1 p-1">
                   {formik.errors.email}
                 </p>
               ) : null}
-            <button type="button" className="btn btn-primary reset-button" disabled={loading || timer > 0} onClick={formik.handleSubmit}>
+            <button type="button" className="btn btn-submit mt-2"  disabled={loading || timer > 0} onClick={formik.handleSubmit}>
              {loading ? "Loading..." : "Reset Password"}
             
             </button>

@@ -87,3 +87,12 @@ export const searchPostByTitle = async (postTitle, accessToken,page,limit) => {
 
     }
 }
+
+export const getPostByCategory = async (category, page, limit) => {
+    try {
+        let res = await axios.post(`http://localhost:8080/post/get-post-category?page=${page}&limit=${limit}`, {category : category} );
+        return res;
+    } catch (error) {
+        return error.response;
+    }
+}

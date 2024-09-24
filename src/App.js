@@ -74,13 +74,14 @@ function App() {
           <Route
             path="/reset-password/:token"
             element={
-
-              <UserLayoutPage>
-                <ResetPassword />
-              </UserLayoutPage>
+              <ResetPassword />
+              // <UserLayoutPage>
+              //   <ResetPassword />
+              // </UserLayoutPage>
 
             }
           ></Route>
+          
           <Route
             path="/forgotpassword"
             element={
@@ -108,6 +109,17 @@ function App() {
                   <BlogDetailPage />
                 </div>
               </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/userpage/blogs/:userId/:category"
+            element={
+              <UserLayoutPage>
+              
+                  
+                  <BlogDetailPage isLayout= {false} />
+        
+              </UserLayoutPage>
             }
           ></Route>
           <Route

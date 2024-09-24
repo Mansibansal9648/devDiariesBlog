@@ -1,5 +1,5 @@
 // import Footer from "../common/footer/footer";
-// import NavBar from "../common/navBar/navBar";
+ import NavBar from "../common/navBar/navBar";
 import { Link, useLocation } from "react-router-dom";
 import "./resetPassword.css";
 import {  ResetSchema } from "../../Schema/resetSchema";
@@ -45,37 +45,32 @@ function ResetPassword() {
   
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <div class="row py-5 ms-0 w-100">
-        <div class="col-lg-7 col-sm-12 my-4">
-          <h1 className="fw-bolder ps-5 text-black">
-            Enter your new password to update the old password
+      <div class="col-lg-6 col-sm-12 mt-5 text-center py-5 mx-5">
+          <h1 className="fw-bold px-5 pt-5 mx-5">
+          A New Start, a New Password!
           </h1>
-
-          <p className="p-5 pe-4 mt-5 text-secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-            cumque suscipit rem nisi impedit rerum ad. Sed voluptatem tempora
-            delectus unde modi harum nesciunt rerum labore ratione? Ex maiores,
-            tempore officia ea tenetur
+          <p className="fs-3 fw-bold text-muted mt-5">Strengthen Your Shield!</p>
+          <p className=" px-5 mt-4 text-secondary mx-5">
+          A strong password is your best defense. Make sure it’s unique and hard to guess. Enter and confirm your new password, and you’ll be back on track to explore the latest in technology, tools, and career tips.
           </p>
         </div>
-        <div class="custom col-lg-5 col-sm-12 my-4 px-1">
+        <div class="col-lg-4 col-sm-12 my-5 px-1">
           <form
-            className=" form-container border border-dark p-5 mx-2"
+            className=" fpass-form-container border border-muted px-5 py-4 mx-5"
             onSubmit={formik.handleSubmit}
           >
-            <h1 className="heading ps-2 text-center">DevDiaries</h1>
-            <div className="mb-3">
+            <i class="fa-solid fa-key fs-1 mb-5 text-primary text-center lock-icon"></i>
+            <h3 className="text-center mb-3"  style={{color: "#1E4682"}}>Reset Your Key</h3>
+            <div className="mb-1">
               {" "}
               <label for="password">New Password</label>
               <input
                 type="password" name="newPassword"
                 autoComplete="new-password"
-                className={
-                  formik.errors.newPassword && formik.touched.newPassword
-                    ? "border border-danger register_input  w-100 p-2 "
-                    : " border register_input  w-100 p-2"
-                }
+                className={formik.touched.newPassword &&
+                  formik.errors.newPassword ? "border border-danger login_input  d-block w-100 p-2" : "border login_input  d-block w-100 p-2" }
                 id="newPassword"
                 placeholder="Enter your password"
                 value={formik.values.newPassword}
@@ -85,18 +80,15 @@ function ResetPassword() {
             </div>
             {formik.errors.newPassword &&
               formik.touched.newPassword ? (
-                <p className="form-error mt-0">
+                <p className="form-error mt-0 mb-2">
                   {formik.errors.newPassword}
                 </p>
               ) : null}
             <label for="confirmPassword">Confirm Password</label>
             <input
               type="password"
-              className={
-                formik.errors.confirmPassword && formik.touched.confirmPassword
-                  ? "border border-danger register_input  w-100 p-2 "
-                  : " border register_input  w-100 p-2"
-              }
+              className={formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? "border border-danger login_input  d-block w-100 p-2" : "border login_input  d-block w-100 p-2" }
               id="confirmPassword" name="confirmPassword"
               placeholder="Confirm your password"
               value={formik.values.confirmPassword}
@@ -105,11 +97,11 @@ function ResetPassword() {
             />
             {formik.errors.confirmPassword &&
               formik.touched.confirmPassword ? (
-                <p className="form-error mt-0">
+                <p className="form-error mt-0 mb-2">
                   {formik.errors.confirmPassword}
                 </p>
               ) : null}
-            <button type="submit" className="btn btn-primary button">
+            <button type="submit" className="btn btn-submit mt-2">
               Submit
             </button>
             <div className="para pt-3">
