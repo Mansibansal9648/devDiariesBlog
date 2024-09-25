@@ -96,3 +96,12 @@ export const getPostByCategory = async (category, page, limit) => {
         return error.response;
     }
 }
+
+export const getAllPost = async (page, limit) => {
+    try {
+        let res = await axios.get(`http://localhost:8080/post/get-all-post?page=${page}&limit=${limit}`)
+        return res;
+    } catch (error) {
+        return error.response;
+    }
+}

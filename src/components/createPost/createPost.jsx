@@ -28,6 +28,7 @@ function CreatePost() {
       labels: postdata?.labels ?? [],
       comment_options: postdata?.comment_options ?? "allow",
       category: postdata?.category ?? "others",
+      categoryId : postdata?.categoryId ?? "",
     };
   };
 
@@ -318,7 +319,7 @@ function CreatePost() {
                           onChange={(e) => {
                             onChangeHandler("", e);
                           }}
-                          defaultChecked={postdata?.categoryId === category.key}
+                          defaultChecked={postdata?.categoryId === category.key || post.categoryId === category.key}
                         />
                         <label htmlFor={`${category.key}`}>
                           {category.name}

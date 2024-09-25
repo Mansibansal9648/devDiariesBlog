@@ -1,10 +1,12 @@
 import "./navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAppContext } from "../../../contextApi/context";
-import { useState } from "react";
+ import { useAppContext } from "../../../contextApi/context";
+import { useEffect, useState } from "react";
 // import demoimg from "../../../assets/images/demo-img.jpg";
 import icon from "../../../assets/images/unnamed.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getAllCategories } from "../api/categoryApi";
+import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 
 function NavBar({ handleClick, handleInputTitle }) {
@@ -16,7 +18,24 @@ function NavBar({ handleClick, handleInputTitle }) {
 
   const navigate = useNavigate();
   const [isRightSidebarExpanded, setIsRightSidebarExpanded] = useState(false);
+  const [category, setCategory] = useState([]);
 
+  useEffect(()=> {
+    getCategories();
+  }, [])
+
+  const getCategories = async () => {
+    let res = await getAllCategories();
+    if (res && res.data.responseCode === 200) {
+      // toast.success(res.data.resMessage);
+      // navigate(`/userpage/${user.id}`);
+      setCategory(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong! ");
+    }
+  };
   const toggleProfile = () => {
     setIsRightSidebarExpanded((prevState) => !prevState);
   };
@@ -110,55 +129,14 @@ function NavBar({ handleClick, handleInputTitle }) {
               id=""
             >
               <ul className="navbar-nav mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink
-                    className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button_text"}
-                    to="/blogs/sport"
-                  >
-                    Development
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button_text"} to="/blogs/health">
-                    Programming language
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" } to="/blogs/technology">
-                    Technology
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" } to="/blogs/business">
-                    Devops
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" } to="/blogs/science">
-                    Cloud
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" } to="/blogs/general">
-                    Career & growth
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" }
-                    to="/blogs/entertainment"
-                  >
-                    Tools
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button-text" }
-                    to="/blogs/general"
-                  >
-                    Others
-                  </NavLink>
-                </li>
+                {category.map((categoryItem)=> (
+                  <li className="nav-item" key={categoryItem._id}>
+                    <NavLink className={({isActive})=> isActive ? "nav-link active button_text" : "nav-link button_text"} to={`/blogs/${categoryItem.key}`}>
+                      {categoryItem.name}
+                    </NavLink>
+                  </li>
+                ))}
+                
               </ul>
             </div>
             <div className="d-flex align-items-center ms-auto d-block common_text_color">

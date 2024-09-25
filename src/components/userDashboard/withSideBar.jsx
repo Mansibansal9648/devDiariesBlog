@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppContext } from "../../contextApi/context";
 import Footer from "../common/footer/footer";
+import { getAllCategories } from "../common/api/categoryApi";
+import { toast } from "react-toastify";
 import "./withSideBar.css"
 
 const WithSideBar = ({
@@ -11,6 +13,24 @@ const WithSideBar = ({
   const {
     store: { user },
   } = useAppContext();
+
+  const [category, setCategory] = useState([])
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    let res = await getAllCategories();
+    if (res && res.data.responseCode === 200) {
+      // toast.success(res.data.resMessage);
+      // navigate(`/userpage/${user.id}`);
+      setCategory(res.data.data);
+    } else if (res && res.data.responseCode === 400) {
+      toast.error(res.data.errMessage);
+    } else {
+      toast.error("Something went wrong! ");
+    }
+  };
 
  // const {category} = useParams();
 
@@ -109,70 +129,13 @@ const WithSideBar = ({
                 >
                   <div className="accordion-body" style={{ padding: "0px", maxHeight: "200px", overflowY: "auto" }}>
                     <div className="list-group list-group-flush">
-                      <div className="list-group-item list-group-item-action hover-element" >
-                        <Link
-                          to={"/userpage/blogs/development"}
-                          className="heading text-decoration-none"
-                        >
-                          Development
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element">
-                        <Link
-                          to={"/userpage/blogs/programminglanguage"}
-                          className="heading text-decoration-none"
-                        >
-                          Programming language
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element">
-                        <Link
-                          to={"/userpage/blogs/technology"}
-                          className="heading text-decoration-none"
-                        >
-                          Technology
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element" >
-                        <Link
-                          to={"/userpage/blogs/devops"}
-                          className="heading text-decoration-none"
-                        >
-                          DevOps
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element" >
-                        <Link
-                          to={"/userpage/blogs/cloud"}
-                          className="heading text-decoration-none"
-                        >
-                          Cloud
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element">
-                        <Link
-                          to={"/userpage/blogs/career&growth"}
-                          className="heading text-decoration-none"
-                        >
-                          Career & Growth
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element" >
-                        <Link
-                          to={"/userpage/blogs/tools"}
-                          className="heading text-decoration-none"
-                        >
-                          Tools
-                        </Link>
-                      </div>
-                      <div className="list-group-item list-group-item-action hover-element" >
-                        <Link
-                          to={"/userpage/blogs/others"}
-                          className="heading text-decoration-none"
-                        >
-                          Others
-                        </Link>
-                      </div>
+                      
+                      {category.map((categoryItem)=> (
+                        <div className="list-group-item list-group-item-action hover-element" key={categoryItem._id}>
+                          <Link to={`/userpage/blogs/${categoryItem.key}`} className="heading text-decoration-none">{categoryItem.name}</Link>
+
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
