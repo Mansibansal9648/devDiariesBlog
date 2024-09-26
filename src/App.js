@@ -132,7 +132,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blogs/:category"
+            path="/blogs/:category"
             element={<BlogPage isLayout={true} />}
           ></Route>
 
@@ -146,7 +146,7 @@ function App() {
           ></Route>
 
           <Route
-            path="/stats"
+            path="/userpage/stats"
             element={
               <PrivateRoute>
                  <UserLayoutPage>

@@ -157,7 +157,7 @@ const WithSideBar = ({
             </div>
 
             <div className="list-group-item list-group-hover">
-              <Link to={"/stats"} className="nav-link">
+              <Link to={"/userpage/stats"} className="nav-link">
                 Stats
               </Link>
             </div>
