@@ -143,7 +143,7 @@ const WithSideBar = ({
             </div>
 
             <div className="list-group-item hover-element">
-              <Link to={"/"} className="heading text-decoration-none">
+              <Link to={"/userpage/stats"} className="heading text-decoration-none">
                 Stats
               </Link>
             </div>
