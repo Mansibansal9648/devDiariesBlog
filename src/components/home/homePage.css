@@ -90,3 +90,80 @@ header {
     margin-top: 20px;
     color: red;
 }
+
+/* slider */
+.slider-container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .slide {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 1.5s ease-in-out; /* Fade-in effect */
+  }
+  
+  .slide.active {
+    opacity: 1; /* The active slide is fully visible */
+  }
+  
+  /* Navigation buttons container */
+  .slider-nav {
+    position: absolute;
+    bottom: 10px; /* Positioned at the bottom */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Individual navigation buttons */
+  /* .nav-button {
+    background-color: #ccc;
+    border: none;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  } */
+  
+  /* .nav-button.active {
+    background-color: #f8c800; /* Highlight active button */
+    /* color: white; */
+  
+  
+  /* .nav-button:hover {
+    background-color: #888;
+  } */ 
+  
+  /* Button for creating a blog */
+  .create-blog-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #f8c800;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .create-blog-button:hover {
+    background-color: #ffc107;
+  }
+  

@@ -6,10 +6,11 @@ import { getAllPost } from '../common/api/postApi';
 import { toast } from 'react-toastify';
 import './homePage.css'
 
-function Home() {
+function Home({slides}) {
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,23 +21,11 @@ function Home() {
     }
   }, [])
 
-  // useEffect(() => {
-  //   const fetchBlogPosts = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:8080/category/get-all-categories?category=others');
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch blog posts.');
-  //       }
-  //       const data = await response.json();
-  //       // console.log("aa", data)
-  //       setBlogPosts(data.posts.slice(0, 6));
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setError(error.message);
-  //       setLoading(false);
-  //     }
-  //   };
-
+  useEffect(()=> {
+    setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 3000);
+  }, [slides.length])
   useEffect (()=> {
     getAllPosts();
   }, [])
@@ -59,10 +48,19 @@ function Home() {
   return (
     <>
       <NavBar />
+      <div className='slider-container'
+        >
+          {slides.map((slide, index)=> (
+            <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}
+            style={{ backgroundColor: slide.backgroundColor }}>
+              {slide.content}
+            </div>
+          ))
+
+          }
+        </div>
       <div className="homepage position-relative z-n1 body-height">
-        <header className='mt-5'>
-          <h1>Welcome to Dev Diaries Blog</h1>
-        </header>
+        
         <main>
           {loading ? (
             <div className="loader"></div>

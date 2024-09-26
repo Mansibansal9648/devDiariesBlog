@@ -16,6 +16,7 @@ import UserLayoutPage from "./components/userDashboard/userLayoutPage";
 import NavBar from "./components/common/navBar/navBar";
 import CreatePost from "./components/createPost/createPost";
 import ResetPassword from "./components/resetPassword/resetPassword";
+import slidesContent from "./components/home/slides";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             path="/"
             element={
               <PrivateRoute>
-                <Home />
+                <Home slides={slidesContent} />
               </PrivateRoute>
             }
           ></Route>
@@ -47,7 +48,7 @@ function App() {
             path="/home"
             element={
               <PrivateRoute>
-                <Home />
+                <Home slides={slidesContent} />
               </PrivateRoute>
             }
           ></Route>

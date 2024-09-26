@@ -20,6 +20,7 @@ function CreatePost() {
   const navigate = useNavigate();
   const location = useLocation();
   const postdata = location.state;
+
   const initialState = () => {
     return {
       userId: postdata?.userId ?? "",
@@ -28,7 +29,7 @@ function CreatePost() {
       labels: postdata?.labels ?? [],
       comment_options: postdata?.comment_options ?? "allow",
       category: postdata?.category ?? "others",
-      categoryId : postdata?.categoryId ?? "",
+      // categoryId : postdata?.categoryId ?? "",
     };
   };
 
@@ -113,9 +114,12 @@ function CreatePost() {
   }, [searchedLabel]);
 
   const onChangeHandler = (value, e) => {
+    
     if (flag) return;
+    
     if (e && e.target.name==="category") {
-      setPost({ ...post, categoryId: e.target.id });
+      
+      setPost({ ...post, category: e.target.id });
       // console.log("E", e);
     } else if(e){
       setPost({ ...post, [e.target.name]: e.target.value });
@@ -308,7 +312,12 @@ function CreatePost() {
                 >
                   <div className="accordion-body">
                     <h6 className="mb-4 fw-bold">Select</h6>
-                    {category?.map((category) => (
+                  
+                    {category?.map((category) => {
+                      // console.log("category", category);
+
+                    return (
+                      
                       <div key={category._id}>
                         <input
                           type="radio"
@@ -319,13 +328,13 @@ function CreatePost() {
                           onChange={(e) => {
                             onChangeHandler("", e);
                           }}
-                          defaultChecked={postdata?.categoryId === category.key || post.categoryId === category.key}
+                          defaultChecked={post.category}
                         />
                         <label htmlFor={`${category.key}`}>
                           {category.name}
                         </label>
                       </div>
-                    ))}
+                    )})}
                   </div>
                 </div>
               </div>
