@@ -11,7 +11,7 @@ export default function BlogPage({ isLayout }) {
   
 
   useEffect(() => {
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=5863c9093a5a49d9a09744f99f6cc1c7&page=1&pageSize=8`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=b6274bdcf4c54bd5ac8fb40e8f768a1a&page=1&pageSize=8`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
