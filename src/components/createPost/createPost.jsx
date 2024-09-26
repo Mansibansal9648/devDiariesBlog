@@ -43,6 +43,7 @@ function CreatePost() {
   const [myLabel, setMyLabel] = useState(postdata?.labels ?? []);
   const [searchedLabel, setSearchedLAbel] = useState({ name: undefined });
   const [category, setCategory] = useState([]);
+  // console.log("post",post)
 
   // const selectedLabel = (label) => {
   //   setMyLabel((preVal) => {
@@ -114,9 +115,9 @@ function CreatePost() {
   }, [searchedLabel]);
 
   const onChangeHandler = (value, e) => {
-    
+    // console.log("onChange1",e.target)
     if (flag) return;
-    
+    // console.log("onChange",e.target)
     if (e && e.target.name==="category") {
       
       setPost({ ...post, category: e.target.id });
@@ -314,8 +315,10 @@ function CreatePost() {
                     <h6 className="mb-4 fw-bold">Select</h6>
                   
                     {category?.map((category) => {
-                      // console.log("category", category);
+                      //  console.log("category", category);
 
+                      //  console.log(
+                      //   "test",post.category,category.name,post.category===category.name)
                     return (
                       
                       <div key={category._id}>
@@ -328,7 +331,7 @@ function CreatePost() {
                           onChange={(e) => {
                             onChangeHandler("", e);
                           }}
-                          defaultChecked={post.category}
+                          defaultChecked={post.category===category.key}
                         />
                         <label htmlFor={`${category.key}`}>
                           {category.name}
