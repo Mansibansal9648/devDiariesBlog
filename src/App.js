@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import UserLayoutPage from "./components/userDashboard/userLayoutPage";
 import NavBar from "./components/common/navBar/navBar";
 import CreatePost from "./components/createPost/createPost";
+import Stats from "./components/stats/stats";
 
 function App() {
   return (
@@ -131,7 +132,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="blogs/:category"
+            path="/blogs/:category"
             element={<BlogPage isLayout={true} />}
           ></Route>
 
@@ -140,6 +141,17 @@ function App() {
             element={
               <PrivateRoute>
                 <MyBlog />
+              </PrivateRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/userpage/stats"
+            element={
+              <PrivateRoute>
+                 <UserLayoutPage>
+               <Stats/>
+               </UserLayoutPage>
               </PrivateRoute>
             }
           ></Route>
