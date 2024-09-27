@@ -1,0 +1,37 @@
+ .card-common-height {
+    height: 300px; /* Set the height as desired */
+    overflow: hidden; /* Hide overflowing content */
+    
+     /* Ensures the card body is well spaced */
+  } 
+
+
+    .centered-button-with-line {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        width: 100%;
+      }
+      
+      .centered-button-with-line button {
+        z-index: 1; /* Ensures the button stays above the line */
+        background-color: #f8c800; /* Adjust button styles */
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      
+      .centered-button-with-line::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #ccc; /* Adjust color of the line */
+        z-index: 0;
+      }
+      
+  

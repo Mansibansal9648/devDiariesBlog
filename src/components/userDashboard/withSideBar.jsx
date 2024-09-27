@@ -167,7 +167,7 @@ const WithSideBar = ({
         </div>
         <div style={mainContentStyle} className="min-vh-100 body-color">
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </>

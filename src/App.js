@@ -18,6 +18,7 @@ import CreatePost from "./components/createPost/createPost";
 import Stats from "./components/stats/stats";
 import ResetPassword from "./components/resetPassword/resetPassword";
 import slidesContent from "./components/home/slides";
+import AllBlogs from "./components/allblogs/allBlogs";
 
 function App() {
   return (
@@ -47,6 +48,14 @@ function App() {
 
           <Route
             path="/home"
+            element={
+              <PrivateRoute>
+                <Home slides={slidesContent} />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/home/featuredpost/:userId/blogdetailpage"
             element={
               <PrivateRoute>
                 <Home slides={slidesContent} />
@@ -100,6 +109,15 @@ function App() {
                   <MyBlog />
                 </UserLayoutPage>
               </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="//userpage/blogs/random"
+            element={
+              
+               <UserLayoutPage><AllBlogs />
+                </UserLayoutPage>
+                
             }
           ></Route>
           <Route
