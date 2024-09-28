@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useAppContext } from "../../contextApi/context";
-import Footer from "../common/footer/footer";
-import { getAllCategories } from "../common/api/categoryApi";
-import { toast } from "react-toastify";
-import "./withSideBar.css"
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useAppContext } from '../../contextApi/context';
+import Footer from '../common/footer/footer';
+import { getAllCategories } from '../common/api/categoryApi';
+import { toast } from 'react-toastify';
+import './withSideBar.css';
 
-const WithSideBar = ({
-  children,
-  stateWidth: { isFullWidth, isSidebarExpanded },
-}) => {
+const WithSideBar = ({ children, stateWidth: { isFullWidth, isSidebarExpanded } }) => {
   const {
     store: { user },
   } = useAppContext();
 
-  const [category, setCategory] = useState([])
+  const [category, setCategory] = useState([]);
   useEffect(() => {
     getCategories();
   }, []);
@@ -28,11 +25,11 @@ const WithSideBar = ({
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
-      toast.error("Something went wrong! ");
+      toast.error('Something went wrong! ');
     }
   };
 
- // const {category} = useParams();
+  // const {category} = useParams();
 
   // useEffect (()=> {
   //   if (category) {
@@ -54,35 +51,29 @@ const WithSideBar = ({
   // };
 
   const mainContentStyle = {
-    width: isFullWidth ? "100%" : "calc(100% - 300px)",
-     minHeight: "100vh -66px",
-    height: "100vh -66px",
-    overflow: "auto ",
-    transition: "width 0.3s",
-    position: "absolute",
-    top: "66px",
+    width: isFullWidth ? '100%' : 'calc(100% - 300px)',
+    minHeight: '100vh -66px',
+    height: '100vh -66px',
+    overflow: 'auto ',
+    transition: 'width 0.3s',
+    position: 'absolute',
+    top: '66px',
     right: 0,
-    display: "inline-block",
+    display: 'inline-block',
   };
 
   let listStyle = {
-    padding: "8px 26px"
-  }
+    padding: '8px 26px',
+  };
   return (
     <>
       <div className="row sidebar-con">
-        {" "}
+        {' '}
         {/**style={{ margin: "0" }} */}
-        <div className={`sidebar ${isSidebarExpanded ? "expanded" : ""}`}>
-          <div
-            className="list-group mb-2 body-color"
-            style={{ marginTop: "20px", padding: "10px" }}
-          >
+        <div className={`sidebar ${isSidebarExpanded ? 'expanded' : ''}`}>
+          <div className="list-group mb-2 body-color" style={{ marginTop: '20px', padding: '10px' }}>
             <div className="list-group-item  pt-4 pb-3">
-              <Link
-                to={`/userpage/${user.id}`}
-                className="heading text-decoration-none text-success fs-4"
-              >
+              <Link to={`/userpage/${user.id}`} className="heading text-decoration-none text-success fs-4">
                 Hi! @{user.username}
               </Link>
             </div>
@@ -90,7 +81,7 @@ const WithSideBar = ({
               <Link
                 to={`/userpage/post/${user.id}`}
                 className="heading mb-0 text-decoration-none list-group-item hover-element"
-                style={{ color: "orange" }}
+                style={{ color: 'orange' }}
               >
                 + NEW POST
               </Link>
@@ -116,24 +107,20 @@ const WithSideBar = ({
                     data-bs-target="#collapseOne"
                     aria-expanded="true"
                     aria-controls="collapseOne"
-                    style={{padding: "13px 16px"}}
+                    style={{ padding: '13px 16px' }}
                   >
                     Blogs categories
                   </button>
                 </h2>
 
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#category-accordion"
-                >
-                  <div className="accordion-body" style={{ padding: "0px", maxHeight: "200px", overflowY: "auto" }}>
+                <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#category-accordion">
+                  <div className="accordion-body" style={{ padding: '0px', maxHeight: '200px', overflowY: 'auto' }}>
                     <div className="list-group list-group-flush">
-                      
-                      {category.map((categoryItem)=> (
+                      {category.map((categoryItem) => (
                         <div className="list-group-item list-group-item-action hover-element" key={categoryItem._id}>
-                          <Link to={`/userpage/blogs/${categoryItem.key}`} className="heading text-decoration-none">{categoryItem.name}</Link>
-
+                          <Link to={`/userpage/blogs/${categoryItem.key}`} className="heading text-decoration-none">
+                            {categoryItem.name}
+                          </Link>
                         </div>
                       ))}
                     </div>
@@ -143,23 +130,23 @@ const WithSideBar = ({
             </div>
 
             <div className="list-group-item hover-element">
-              <Link to={"/userpage/stats"} className="heading text-decoration-none">
+              <Link to={'/userpage/stats'} className="heading text-decoration-none">
                 Stats
               </Link>
             </div>
             <div className="list-group-item hover-element">
-              <Link to={"/"} className="heading text-decoration-none">
+              <Link to={'/'} className="heading text-decoration-none">
                 Comments
               </Link>
             </div>
             <div className="list-group-item hover-element">
-              <Link to={"/"} className="heading text-decoration-none">
+              <Link to={'/'} className="heading text-decoration-none">
                 Pages
               </Link>
             </div>
 
             <div className="list-group-item hover-element">
-              <Link to={"/"} className="heading text-decoration-none">
+              <Link to={'/'} className="heading text-decoration-none">
                 Setting
               </Link>
             </div>

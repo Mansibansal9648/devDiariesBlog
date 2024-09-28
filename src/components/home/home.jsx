@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import Footer from "../common/footer/footer";
-import NavBar from "../common/navBar/navBar";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { getAllPost } from "../common/api/postApi";
-import { toast } from "react-toastify";
-import "./homePage.css";
+import { useEffect, useState } from 'react';
+import Footer from '../common/footer/footer';
+import NavBar from '../common/navBar/navBar';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { getAllPost } from '../common/api/postApi';
+import { toast } from 'react-toastify';
+import './homePage.css';
 
 function Home({ slides }) {
   const [post, setPost] = useState([]);
@@ -18,8 +18,8 @@ function Home({ slides }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      navigate("/home");
+    if (location.pathname === '/') {
+      navigate('/home');
     }
   }, []);
 
@@ -42,23 +42,21 @@ function Home({ slides }) {
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
-      toast.error("Something went wrong! ");
+      toast.error('Something went wrong! ');
     }
   };
   const limitText = (text, limit) => {
-    return text.length > limit ? text.substring(0, limit) + "..." : text;
+    return text.length > limit ? text.substring(0, limit) + '...' : text;
   };
 
   const handlePrev = () => {
-    setPostIndex((prevIndex) => (prevIndex === 0 ? "" : prevIndex - 1));
+    setPostIndex((prevIndex) => (prevIndex === 0 ? '' : prevIndex - 1));
   };
 
   // Function to handle next button click
   const handleNext = () => {
-    console.log("right button");
-    setPostIndex((prevIndex) =>
-      prevIndex === post.length ? "" : prevIndex + 1
-    );
+    console.log('right button');
+    setPostIndex((prevIndex) => (prevIndex === post.length ? '' : prevIndex + 1));
   };
 
   return (
@@ -68,7 +66,7 @@ function Home({ slides }) {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`slide ${index === currentIndex ? "active" : ""}`}
+            className={`slide ${index === currentIndex ? 'active' : ''}`}
             style={{ backgroundColor: slide.backgroundColor }}
           >
             {slide.content}
@@ -87,10 +85,7 @@ function Home({ slides }) {
                 <h2>Featured Posts</h2>
                 <div className="post-container">
                   {/* Left button */}
-                  <button
-                    className="navigation-button left"
-                    onClick={handlePrev}
-                  >
+                  <button className="navigation-button left" onClick={handlePrev}>
                     &#8249;
                   </button>
 
@@ -99,17 +94,11 @@ function Home({ slides }) {
                     <div
                       className="posts-slider"
                       style={{
-                        transform: `translateX(-${
-                          postIndex * (100 / postsPerSlide)
-                        }%)`,
+                        transform: `translateX(-${postIndex * (100 / postsPerSlide)}%)`,
                       }}
                     >
                       {post.map((post) => (
-                        <div
-                          className="post"
-                          key={post.id}
-                          style={{ margin: "10px" }}
-                        >
+                        <div className="post" key={post.id} style={{ margin: '10px' }}>
                           <div className="post-content">
                             <h3>{post.title}</h3>
                             <p
@@ -118,11 +107,7 @@ function Home({ slides }) {
                               }}
                               className="my-3"
                             />
-                            <Link
-                              to={`/post/blogdetailpage`}
-                              state={post}
-                              className="nav-link d-inline-block mb-2"
-                            >
+                            <Link to={`/post/blogdetailpage`} state={post} className="nav-link d-inline-block mb-2">
                               Read More
                             </Link>
                           </div>
@@ -133,10 +118,7 @@ function Home({ slides }) {
 
                   {/* Right button */}
 
-                  <button
-                    className="navigation-button right"
-                    onClick={handleNext}
-                  >
+                  <button className="navigation-button right" onClick={handleNext}>
                     &#8250;
                   </button>
                 </div>

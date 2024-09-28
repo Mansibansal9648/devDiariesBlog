@@ -1,23 +1,22 @@
 :root {
   --primary-color: #13a64b;
   --secondary-color: #7860cc;
-  --common-text-color:#f8c800;
+  --common-text-color: #f8c800;
   --background-color: #f2f6fe;
   --text-color: #212529;
   --hover-color: #dbcdfc;
-  --primary-text-color : #FFFEFF;
+  --primary-text-color: #fffeff;
   --box-shadow-color: rgb(120, 96, 204, 0.2);
 }
 
-.hover_element:hover{
+.hover_element:hover {
   background-color: var(--hover-color);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
@@ -28,7 +27,7 @@ body {
 .body-height {
   min-height: 100vh;
 }
-.common_text_color{
+.common_text_color {
   color: var(--common-text-color);
 }
 .navbar,
@@ -56,8 +55,7 @@ body {
   background-color: var(--background-color);
 } */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .all_post_container {

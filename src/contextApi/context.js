@@ -6,13 +6,13 @@ const AppContext = createContext();
 
 const initialState = {
   user: {
-    id: "",
-    username: "",
-    name:"",
-    email: "",
-    isLogin:false,
-    accessToken:""
-  }
+    id: '',
+    username: '',
+    name: '',
+    email: '',
+    isLogin: false,
+    accessToken: '',
+  },
 };
 
 const AppProvider = ({ children }) => {

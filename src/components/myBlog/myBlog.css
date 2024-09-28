@@ -1,7 +1,6 @@
 .body-height {
-  min-height: 100vh; 
+  min-height: 100vh;
 }
-
 
 .thumbnail {
   height: 80px;
@@ -14,20 +13,19 @@
   width: 25px;
 }
 
-.del_btn:hover{
+.del_btn:hover {
   color: red;
 }
-.edit_btn:hover{
-  color:rgb(24, 149, 53);
+.edit_btn:hover {
+  color: rgb(24, 149, 53);
 }
 
 .btn-label {
-  padding: 3px  15px ;
+  padding: 3px 15px;
   margin: 10px 10px;
   background-color: var(--primary-color);
   color: aliceblue;
   z-index: 5;
-  
 }
 .btn-label:hover {
   background-color: var(--hover-color); /* Slightly lighter shade on hover */
@@ -36,7 +34,7 @@
 }
 /* label CSS */
 .list-group-items {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: var(--text-color);
   transition: all 0.3s ease;
   /* border: 1px solid var(--secondary-color); */
@@ -46,14 +44,13 @@
 .list-group-items:hover {
   background-color: var(--hover-color); /* Lighter shade on hover */
   border-color: var(--primary-color);
-  box-shadow: var(--box-shadow-color) 0px 2px 8px 0px; ; /* Box shadow on hover */
+  box-shadow: var(--box-shadow-color) 0px 2px 8px 0px; /* Box shadow on hover */
   transform: translateY(-5px);
   transition: all 0.3s ease; /* Smooth transition */
 }
 /* .outer_label_container {
  
   overflow: hidden; /* Ensure no overflow outside the container */
- 
 
 .label_container {
   display: flex;
@@ -63,10 +60,8 @@
 }
 
 .label_list {
-
   scroll-behavior: smooth;
   width: 92%;
- 
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -76,7 +71,7 @@
 
 .btn-label {
   margin: 8px;
-  
+
   border: 1px solid #ccc;
   cursor: pointer;
 }
@@ -86,34 +81,25 @@
   color: white;
 }
 
+.label_container {
+  background-color: var(--background-color);
+}
 
+.scroll-btn-left,
+.scroll-btn-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
 
+  cursor: pointer;
+}
 
-  .label_container {
-    background-color: var(--background-color);
-    
-  }
+.scroll-btn-left {
+  left: 10px;
+}
 
-
-  
-  .scroll-btn-left,
-  .scroll-btn-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    
-    cursor: pointer;
-  }
-  
-  .scroll-btn-left {
-    left: 10px;
-  }
-  
-  .scroll-btn-right {
-    right: 10px;
-  }
-  
-
-
+.scroll-btn-right {
+  right: 10px;
+}

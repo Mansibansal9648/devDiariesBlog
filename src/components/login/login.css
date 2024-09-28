@@ -1,53 +1,52 @@
-
-.left{
+.left {
   width: 55%;
 }
-.login{
-    width: 32%;
-    padding: 45px;
-    margin: 55px 0px;
-    border-radius: 12px;
-    background-color: rgb(228, 246, 251);
-    box-shadow:17px 6px 15px #aec8f0;
+.login {
+  width: 32%;
+  padding: 45px;
+  margin: 55px 0px;
+  border-radius: 12px;
+  background-color: rgb(228, 246, 251);
+  box-shadow: 17px 6px 15px #aec8f0;
 }
-.login-page{
+.login-page {
   /* margin-top: 60px; */
   padding-top: 60px;
 }
-.btn-submit{
-  width:100%;
+.btn-submit {
+  width: 100%;
   display: block;
   background-color: #55c360;
   color: white;
 }
-.btn-submit:hover{
+.btn-submit:hover {
   background-color: #55c360;
   color: white;
 }
-.eye-position{
+.eye-position {
   position: absolute;
   top: 15px;
   right: 10px;
 }
-.login_input{
+.login_input {
   margin-bottom: 10px;
   border-radius: 7px;
 }
-@media only screen and (min-device-width: 1080px){
-  .login-page{
+@media only screen and (min-device-width: 1080px) {
+  .login-page {
     display: flex;
   }
 }
-@media only screen and (max-device-width: 1079px){ 
-  .login{
+@media only screen and (max-device-width: 1079px) {
+  .login {
     display: block;
     width: 100%;
   }
-  .left{
+  .left {
     display: block;
     width: 100%;
   }
-  .form-error{
+  .form-error {
     color: red;
+  }
 }
- }

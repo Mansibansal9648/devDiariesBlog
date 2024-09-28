@@ -1,29 +1,27 @@
 .footer {
   width: 100%;
-  position: relative; 
+  position: relative;
   bottom: 0;
   left: 0;
 }
 
 .heading {
-    margin-bottom: 22px;
-    color: white;
-  }
+  margin-bottom: 22px;
+  color: white;
+}
 
-  .text {
-    margin-top: 20px;
-    line-height: 2.5;
+.text {
+  margin-top: 20px;
+  line-height: 2.5;
+}
+
+.footer-column {
+  width: 11.33333%;
+  font-size: 1rem;
+}
+
+@media only screen and (min-device-width: 1080px) {
+  .col-lg-5 {
+    padding-right: 200px;
   }
-  
-  .footer-column {
-    width: 11.33333%;
-    font-size: 1rem;
-   
-  }
-  
-  @media only screen and (min-device-width: 1080px) {
-    .col-lg-5 {
-      padding-right: 200px;
-    }
-  }
-  
+}

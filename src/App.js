@@ -1,24 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/home/home";
-import MyBlog from "./components/myBlog/myBlog";
-import Register from "./components/register/register";
-import "./App.css";
-import NotFound from "./components/notFound/notFound";
-import LogIn from "./components/login/login";
-import PrivateRoute from "./components/common/privateRoute/privateRoute";
-import { AppProvider } from "./contextApi/context";
-import BlogDetailPage from "./components/blogDetailPage/blogDetailPage";
-import UpdatePassword from "./components/updatePassword/updatePassword";
-import ForgotPassword from "./components/forgotPassword/forgotPassword";
-import BlogPage from "./components/blogsPage/blogPage";
-import { ToastContainer } from "react-toastify";
-import UserLayoutPage from "./components/userDashboard/userLayoutPage";
-import NavBar from "./components/common/navBar/navBar";
-import CreatePost from "./components/createPost/createPost";
-import Stats from "./components/stats/stats";
-import ResetPassword from "./components/resetPassword/resetPassword";
-import slidesContent from "./components/home/slides";
-import AllBlogs from "./components/allblogs/allBlogs";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/home/home';
+import MyBlog from './components/myBlog/myBlog';
+import Register from './components/register/register';
+import './App.css';
+import NotFound from './components/notFound/notFound';
+import LogIn from './components/login/login';
+import PrivateRoute from './components/common/privateRoute/privateRoute';
+import { AppProvider } from './contextApi/context';
+import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
+import UpdatePassword from './components/updatePassword/updatePassword';
+import ForgotPassword from './components/forgotPassword/forgotPassword';
+import BlogPage from './components/blogsPage/blogPage';
+import { ToastContainer } from 'react-toastify';
+import UserLayoutPage from './components/userDashboard/userLayoutPage';
+import NavBar from './components/common/navBar/navBar';
+import CreatePost from './components/createPost/createPost';
+import Stats from './components/stats/stats';
+import ResetPassword from './components/resetPassword/resetPassword';
+import slidesContent from './components/home/slides';
+import AllBlogs from './components/allblogs/allBlogs';
 
 function App() {
   return (
@@ -54,14 +54,7 @@ function App() {
               </PrivateRoute>
             }
           ></Route>
-          <Route
-            path="/post/blogdetailpage"
-            element={
-
-              <BlogDetailPage />
-
-            }
-          ></Route>
+          <Route path="/post/blogdetailpage" element={<BlogDetailPage />}></Route>
 
           <Route
             path="/register"
@@ -89,7 +82,6 @@ function App() {
               // <UserLayoutPage>
               //   <ResetPassword />
               // </UserLayoutPage>
-
             }
           ></Route>
 
@@ -114,19 +106,12 @@ function App() {
           <Route
             path="/userpage/allblogs/random"
             element={
-
-              <UserLayoutPage><AllBlogs />
+              <UserLayoutPage>
+                <AllBlogs />
               </UserLayoutPage>
-
             }
           ></Route>
-          <Route
-            path="/userpage/allblogs/blogdetailpage"
-            element={
-
-              <BlogDetailPage />
-            }
-          ></Route>
+          <Route path="/userpage/allblogs/blogdetailpage" element={<BlogDetailPage />}></Route>
           <Route
             path="/userpage/post/:userId/blogdetailpage"
             element={
@@ -162,7 +147,6 @@ function App() {
             path="/userpage/post/:postId/edit"
             element={
               <PrivateRoute>
-
                 <NavBar />
                 <div>
                   <CreatePost />
@@ -179,10 +163,7 @@ function App() {
               </UserLayoutPage>
             }
           ></Route>
-          <Route
-            path="/blogs/:category"
-            element={<BlogPage isLayout={true} />}
-          ></Route>
+          <Route path="/blogs/:category" element={<BlogPage isLayout={true} />}></Route>
 
           <Route
             path="/myblog"

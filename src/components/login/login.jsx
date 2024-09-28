@@ -1,27 +1,27 @@
-import NavBar from "../common/navBar/navBar";
-import Footer from "../common/footer/footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/fontawesome-free-solid";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useFormik } from "formik";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { loginSchema } from "../../Schema/loginSchema";
-import useCustomDispatch from "../../hooks/useCustomDispatch";
-import "./login.css";
-import { useNavigate } from "react-router-dom";
-import { loginUser } from "../common/api/authUser";
-import strings from "../../utils/constant/stringConstant";
-import { useContext } from "react";
-import { AppContext } from "../../contextApi/context";
+import NavBar from '../common/navBar/navBar';
+import Footer from '../common/footer/footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { loginSchema } from '../../Schema/loginSchema';
+import useCustomDispatch from '../../hooks/useCustomDispatch';
+import './login.css';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../common/api/authUser';
+import strings from '../../utils/constant/stringConstant';
+import { useContext } from 'react';
+import { AppContext } from '../../contextApi/context';
 
 function LogIn() {
   const [showpassword, setShowpassword] = useState(false);
   const { dispatch } = useContext(AppContext);
   const initialValues = {
-    username_email: "",
-    password: "",
+    username_email: '',
+    password: '',
   };
 
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function LogIn() {
       //  console.log("error")
       toast.error(resp.data.errMessage);
     } else {
-      toast.error("Something went wrong...");
+      toast.error('Something went wrong...');
     }
     return resp;
   };
@@ -51,7 +51,7 @@ function LogIn() {
     onSubmit: async function (values, action) {
       await loginInfo(values);
 
-      console.log("Values: ", values);
+      console.log('Values: ', values);
       action.resetForm();
     },
   });
@@ -65,18 +65,26 @@ function LogIn() {
       <NavBar />
       <div className="container  login-page position-relative z-0">
         <div className="left text-center mt-5">
-        <div className="pt-5">
-        <h6 className="fs-1 fw-bold mt-5 mb-5">Welcome back, Developer!</h6>
+          <div className="pt-5">
+            <h6 className="fs-1 fw-bold mt-5 mb-5">Welcome back, Developer!</h6>
             <p className="fs-4">We’re excited to see you again! </p>
             <div className="me-5 ms-5">
-            <p className="me-5 ms-5 text-muted mt-3">"Let’s continue building the future of tech together—log in to share your latest discoveries and explore new ideas. Ready to dive into your next coding adventure? Log in to keep sharing your insights, learn from fellow developers, and contribute to the <span className="text-warning fs-5">DevDiaries</span> community. Your next big breakthrough is just a login away, so share your programming tips, tricks, and experiences with the community!"</p>
+              <p className="me-5 ms-5 text-muted mt-3">
+                "Let’s continue building the future of tech together—log in to share your latest discoveries and explore
+                new ideas. Ready to dive into your next coding adventure? Log in to keep sharing your insights, learn
+                from fellow developers, and contribute to the <span className="text-warning fs-5">DevDiaries</span>{' '}
+                community. Your next big breakthrough is just a login away, so share your programming tips, tricks, and
+                experiences with the community!"
+              </p>
             </div>
-        </div>
+          </div>
         </div>
 
         <div className="login">
           <form onSubmit={formik.handleSubmit}>
-            <h1 className="text-center mb-5" style={{color: "#1E4682"}}>Login</h1>
+            <h1 className="text-center mb-5" style={{ color: '#1E4682' }}>
+              Login
+            </h1>
             <div className="mb-3">
               <label htmlFor="username_email" className="form-label">
                 Email address or User Name
@@ -84,16 +92,18 @@ function LogIn() {
               <div>
                 <input
                   type="text"
-                  className= {formik.touched.username_email &&
-                    formik.errors.username_email ? "border border-danger login_input  d-block w-100 p-2" : "border login_input  d-block w-100 p-2" }
+                  className={
+                    formik.touched.username_email && formik.errors.username_email
+                      ? 'border border-danger login_input  d-block w-100 p-2'
+                      : 'border login_input  d-block w-100 p-2'
+                  }
                   id="username_email"
                   placeholder="Enter your email or username"
                   value={formik.values.username_email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.username_email &&
-                formik.errors.username_email ? (
+                {formik.touched.username_email && formik.errors.username_email ? (
                   <p className="form-error mt-0">{formik.errors.username_email}</p>
                 ) : null}
               </div>
@@ -104,8 +114,12 @@ function LogIn() {
               </label>
               <div className=" position-relative">
                 <input
-                  type={showpassword ? "text" : "password"}
-                  className={formik.touched.password && formik.errors.password ? "border border-danger login_input w-100 p-2 d-flex mb-0" : "border login_input w-100 p-2 d-flex mb-0" }
+                  type={showpassword ? 'text' : 'password'}
+                  className={
+                    formik.touched.password && formik.errors.password
+                      ? 'border border-danger login_input w-100 p-2 d-flex mb-0'
+                      : 'border login_input w-100 p-2 d-flex mb-0'
+                  }
                   id="password"
                   placeholder="Enter your password"
                   value={formik.values.password}
@@ -113,7 +127,7 @@ function LogIn() {
                   onBlur={formik.handleBlur}
                 />
                 <FontAwesomeIcon
-                  icon={showpassword ? faEyeSlash : faEye }
+                  icon={showpassword ? faEyeSlash : faEye}
                   className="eye-position"
                   onClick={togglepasswordVisibility}
                 />
@@ -124,16 +138,11 @@ function LogIn() {
             </div>
             <div className="mb-3 form-check">
               <div>
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
+                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <label className="form-check-label" htmlFor="exampleCheck1">
                   Remember me?
-                </label>
-                {" "}
-                <Link to="/forgotpassword" style={{ textDecoration: "none" }}>
+                </label>{' '}
+                <Link to="/forgotpassword" style={{ textDecoration: 'none' }}>
                   Forgot password
                 </Link>
               </div>
@@ -143,8 +152,8 @@ function LogIn() {
             </button>
             <div className="para">
               <p>
-                Don't have an account?{" "}
-                <Link to="/register" style={{ textDecoration: "none" }}>
+                Don't have an account?{' '}
+                <Link to="/register" style={{ textDecoration: 'none' }}>
                   Register here
                 </Link>
               </p>

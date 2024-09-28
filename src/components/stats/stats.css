@@ -1,10 +1,10 @@
-.stats-page{
-    padding-top: 60px;
+.stats-page {
+  padding-top: 60px;
 }
-.main_stats{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 10px;
-    gap: 20px;
+.main_stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  gap: 20px;
 }

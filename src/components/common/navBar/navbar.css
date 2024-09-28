@@ -8,7 +8,6 @@
 
 .nav-item .categories {
   color: white !important;
- 
 }
 .nav-link {
   color: #ffffff; /* Default color */
@@ -29,9 +28,9 @@
   padding: 5px;
   border-radius: 6px;
 }
-.btn-create-blog:hover{
+.btn-create-blog:hover {
   background-color: #13a64b;
-  color : #FFFDFB;
+  color: #fffdfb;
 }
 .button {
   background-color: white;
@@ -48,7 +47,7 @@ svg {
 /* App.css */
 .sidebar {
   height: 100vh;
-  
+
   position: fixed;
   top: 66px;
   transition: width 0.3s;
@@ -58,7 +57,7 @@ svg {
 }
 .row.sidebar-con {
   --bs-gutter-x: 0rem !important;
-    flex-wrap: nowrap
+  flex-wrap: nowrap;
 }
 
 .sidebar.expanded {
@@ -105,7 +104,7 @@ input:focus {
   width: 50px;
   border: 1px solid black;
   border-radius: 50%;
-  object-fit:cover;
+  object-fit: cover;
 }
 
 .search_input {
@@ -118,7 +117,7 @@ input:focus {
   margin: 0;
 }
 
-.modal-backdrop.show{
+.modal-backdrop.show {
   z-index: 0 !important;
 }
 .modal.fade .modal-dialog {

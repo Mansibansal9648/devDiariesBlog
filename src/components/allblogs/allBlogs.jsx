@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { getAllPost } from "../common/api/postApi.js";
-import { toast } from "react-toastify";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { getAllPost } from '../common/api/postApi.js';
+import { toast } from 'react-toastify';
+import { Link, useLocation } from 'react-router-dom';
 
-import InfiniteScroll from "react-infinite-scroll-component";
-import "./allBlogs.css";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import './allBlogs.css';
 
 function AllBlogs() {
   // const location = useLocation();
@@ -31,18 +31,18 @@ function AllBlogs() {
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
-      toast.error("Something went wrong...");
+      toast.error('Something went wrong...');
     }
     return res;
   };
   const getSidePosts = async () => {
     const res = await getAllPost(page, limit);
     if (res && res.data.responseCode === 200) {
-      console.log("setsidepost 200", res.data.data);
+      console.log('setsidepost 200', res.data.data);
       //  setSidePosts (res.data.data);
       setSidePosts((prevPosts) => {
-        console.log("Previous Posts:", prevPosts);
-        console.log("New Posts:", res.data.data);
+        console.log('Previous Posts:', prevPosts);
+        console.log('New Posts:', res.data.data);
         return [...prevPosts, ...res.data.data];
       });
     } else if (res && res.data.responseCode === 400) {
@@ -55,23 +55,23 @@ function AllBlogs() {
       }
       toast.error(res.data.errMessage);
     } else {
-      toast.error("Something went wrong...");
+      toast.error('Something went wrong...');
     }
     return res;
   };
   const limitText = (text, limit) => {
-    return text.length > limit ? text.substring(0, limit) + "..." : text;
+    return text.length > limit ? text.substring(0, limit) + '...' : text;
   };
   const loadMorePosts = () => {
     if (hasMore) {
-      console.log("Loading more posts, current page:", page);
+      console.log('Loading more posts, current page:', page);
       setPage((prevPage) => prevPage + 1);
     }
   };
 
   return (
     <>
-      <div style={{ padding: "30px" }}>
+      <div style={{ padding: '30px' }}>
         <div className="mb-3">
           <span>
             <i class="fa-solid fa-arrow-trend-up fa-2x me-2"></i>
@@ -80,15 +80,8 @@ function AllBlogs() {
         </div>
         <div className="d-flex gap-3">
           {post.slice(0, visibleBlogs).map((post, index) => (
-            <div
-              className="col-md-3 col-lg-3 mb-4"
-              style={{ height: "300px" }}
-              key={index}
-            >
-              <div
-                className="card card-common-height d-flex"
-                style={{ width: "100%" }}
-              >
+            <div className="col-md-3 col-lg-3 mb-4" style={{ height: '300px' }} key={index}>
+              <div className="card card-common-height d-flex" style={{ width: '100%' }}>
                 {/* <img src="..." className="card-img-top" alt="..."> */}
                 <div className="card-body card_container">
                   <h5 className="card-title">{post.title}</h5>
@@ -119,7 +112,8 @@ function AllBlogs() {
                   <Link
                     to={`/userpage/allblogs/blogdetailpage`}
                     state={post}
-                    className="nav-link" style={{ color: "black" }}
+                    className="nav-link"
+                    style={{ color: 'black' }}
                   >
                     <div className="border border-1 p-2 side_post">
                       <p>{post.title}</p>

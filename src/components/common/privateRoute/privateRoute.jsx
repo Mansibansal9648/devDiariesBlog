@@ -1,5 +1,5 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { useAppContext } from "../../../contextApi/context";
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAppContext } from '../../../contextApi/context';
 
 function PrivateRoute({ children }) {
   const {
@@ -11,13 +11,11 @@ function PrivateRoute({ children }) {
     // console.log("user.isLogout hit");
 
     switch (decisionInput.pathname) {
-      case "/":
-      case "/home":
-      case "/login":
-      case "/register":
-      case "/forgotpassword":
-      
-      
+      case '/':
+      case '/home':
+      case '/login':
+      case '/register':
+      case '/forgotpassword':
         return children;
       default:
         return <Navigate to="/" />;
@@ -34,13 +32,13 @@ function PrivateRoute({ children }) {
     // console.log("user.isLogin hit");
 
     switch (decisionInput.pathname) {
-      case "/":
-      case "/home":
-      case "/login":
-      case "/register":
-      case "/forgotpassword":
+      case '/':
+      case '/home':
+      case '/login':
+      case '/register':
+      case '/forgotpassword':
         return <Navigate to={`/userpage/${user.id}`} />;
-        default:
+      default:
         return children;
     }
 

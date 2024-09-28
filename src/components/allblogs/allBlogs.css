@@ -1,20 +1,17 @@
- .card-common-height {
-    height: 300px; /* Set the height as desired */
-    overflow: hidden; /* Hide overflowing content */
-    
-     /* Ensures the card body is well spaced */
-  } 
+.card-common-height {
+  height: 300px; /* Set the height as desired */
+  overflow: hidden; /* Hide overflowing content */
 
+  /* Ensures the card body is well spaced */
+}
 
- .side_post{
+.side_post {
   background-color: white !important;
- }
- .side_post:hover{
-   cursor: pointer;
- }
- .side-post {
+}
+.side_post:hover {
+  cursor: pointer;
+}
+.side-post {
   overflow-y: auto;
   height: 80vh;
- }
-      
-  
+}

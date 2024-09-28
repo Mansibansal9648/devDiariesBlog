@@ -8,7 +8,7 @@ export class StringConstants {
   UserWallet = 'UserWallet';
   isLoading = 'isLoading';
 
-  LOCAL_STORAGE_KEY = "store"
+  LOCAL_STORAGE_KEY = 'store';
 }
 
 let strings = new StringConstants();

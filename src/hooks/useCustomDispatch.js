@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { AppContext } from "../contextApi/context"
+import { useContext } from 'react';
+import { AppContext } from '../contextApi/context';
 
 export default function useCustomDispatch() {
   const { dispatch } = useContext(AppContext);
