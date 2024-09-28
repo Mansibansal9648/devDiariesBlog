@@ -9,7 +9,7 @@ import "./allBlogs.css";
 function AllBlogs() {
   // const location = useLocation();
   // const posts = location.state
- // console.log ("posts", posts)
+  // console.log ("posts", posts)
 
   const [post, setPost] = useState([]);
   const [visibleBlogs, setVisibleBlogs] = useState(3);
@@ -78,7 +78,7 @@ function AllBlogs() {
           </span>
           <span className="fw-semibold fs-3">Trending</span>
         </div>
-        <div className="d-flex">
+        <div className="d-flex gap-3">
           {post.slice(0, visibleBlogs).map((post, index) => (
             <div
               className="col-md-3 col-lg-3 mb-4"
@@ -113,19 +113,21 @@ function AllBlogs() {
             <div className="mb-1">
               <span className="fw-semibold fs-5">All Blogs</span>
             </div>
-            {sidePosts.map((post) => (
-              <>
-              <Link
-                        to={`/userpage/allblogs/blogdetailpage`}
-                        state={post}
-                        className="nav-link" style={{color: "black"}}
-                      >
-                <div className="border border-1 p-2 side_post">
-                  <p>{post.title}</p>
-                </div>
-                </Link>
-              </>
-            ))}
+            <div className="d-flex flex-column gap-2">
+              {sidePosts.map((post) => (
+                <>
+                  <Link
+                    to={`/userpage/allblogs/blogdetailpage`}
+                    state={post}
+                    className="nav-link" style={{ color: "black" }}
+                  >
+                    <div className="border border-1 p-2 side_post">
+                      <p>{post.title}</p>
+                    </div>
+                  </Link>
+                </>
+              ))}
+            </div>
 
             {hasMore && (
               <button onClick={loadMorePosts} className="btn btn-primary mt-3">
