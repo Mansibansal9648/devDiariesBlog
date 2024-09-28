@@ -101,7 +101,7 @@ const WithSideBar = ({
               </Link>
             </div>
             <div className="list-group-item hover-element">
-              <Link to={`/userpage/blogs/random`} className="heading text-decoration-none">
+              <Link to={`/userpage/allblogs/random`} className="heading text-decoration-none">
                 All Blogs
               </Link>
             </div>

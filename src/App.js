@@ -55,11 +55,11 @@ function App() {
             }
           ></Route>
           <Route
-            path="/home/featuredpost/:userId/blogdetailpage"
+            path="/post/blogdetailpage"
             element={
-              <PrivateRoute>
-                <Home slides={slidesContent} />
-              </PrivateRoute>
+
+              <BlogDetailPage />
+
             }
           ></Route>
 
@@ -92,7 +92,7 @@ function App() {
 
             }
           ></Route>
-          
+
           <Route
             path="/forgotpassword"
             element={
@@ -112,12 +112,19 @@ function App() {
             }
           ></Route>
           <Route
-            path="//userpage/blogs/random"
+            path="/userpage/allblogs/random"
             element={
-              
-               <UserLayoutPage><AllBlogs />
-                </UserLayoutPage>
-                
+
+              <UserLayoutPage><AllBlogs />
+              </UserLayoutPage>
+
+            }
+          ></Route>
+          <Route
+            path="/userpage/allblogs/blogdetailpage"
+            element={
+
+              <BlogDetailPage />
             }
           ></Route>
           <Route
@@ -135,10 +142,7 @@ function App() {
             path="/userpage/blogs/:userId/:category"
             element={
               <UserLayoutPage>
-              
-                  
-                  <BlogDetailPage isLayout= {false} />
-        
+                <BlogDetailPage isLayout={false} />
               </UserLayoutPage>
             }
           ></Route>
@@ -193,9 +197,9 @@ function App() {
             path="/userpage/stats"
             element={
               <PrivateRoute>
-                 <UserLayoutPage>
-               <Stats/>
-               </UserLayoutPage>
+                <UserLayoutPage>
+                  <Stats />
+                </UserLayoutPage>
               </PrivateRoute>
             }
           ></Route>

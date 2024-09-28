@@ -50,17 +50,14 @@ function Home({ slides }) {
   };
 
   const handlePrev = () => {
-    setPostIndex((prevIndex) =>
-      prevIndex === 0 ? "": prevIndex - 1
-    );
+    setPostIndex((prevIndex) => (prevIndex === 0 ? "" : prevIndex - 1));
   };
 
   // Function to handle next button click
   const handleNext = () => {
-   
     console.log("right button");
     setPostIndex((prevIndex) =>
-    prevIndex === post.length ? "" : prevIndex + 1
+      prevIndex === post.length ? "" : prevIndex + 1
     );
   };
 
@@ -90,7 +87,10 @@ function Home({ slides }) {
                 <h2>Featured Posts</h2>
                 <div className="post-container">
                   {/* Left button */}
-                  <button className="navigation-button left" onClick={handlePrev}>
+                  <button
+                    className="navigation-button left"
+                    onClick={handlePrev}
+                  >
                     &#8249;
                   </button>
 
@@ -105,7 +105,11 @@ function Home({ slides }) {
                       }}
                     >
                       {post.map((post) => (
-                        <div className="post" key={post.id} style={{margin: "10px"}}>
+                        <div
+                          className="post"
+                          key={post.id}
+                          style={{ margin: "10px" }}
+                        >
                           <div className="post-content">
                             <h3>{post.title}</h3>
                             <p
@@ -115,8 +119,9 @@ function Home({ slides }) {
                               className="my-3"
                             />
                             <Link
-                              to={`/home/featuredpost/${post.id}/blogdetailpage`}
-                              className="read-more"
+                              to={`/post/blogdetailpage`}
+                              state={post}
+                              className="nav-link d-inline-block mb-2"
                             >
                               Read More
                             </Link>
@@ -127,8 +132,11 @@ function Home({ slides }) {
                   </div>
 
                   {/* Right button */}
-                  
-                  <button className="navigation-button right" onClick={handleNext}>
+
+                  <button
+                    className="navigation-button right"
+                    onClick={handleNext}
+                  >
                     &#8250;
                   </button>
                 </div>
