@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { loginSchema } from '../../Schema/loginSchema';
+import  loginSchema  from '../../schema/loginSchema';
 import useCustomDispatch from '../../hooks/useCustomDispatch';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
@@ -60,9 +60,9 @@ function LogIn() {
     setShowpassword(!showpassword);
   };
 
-  return (
-    <>
-      <NavBar />
+  function getMainBody () {
+    return (
+      <>
       <div className="container  login-page position-relative z-0">
         <div className="left">
           <h1>this is left side with width 60%</h1>
@@ -140,6 +140,25 @@ function LogIn() {
         </div>
       </div>
 
+      {getLeftSection()}
+      {getRightSection()}
+
+      </>
+    )
+  }
+
+  function getLeftSection () {
+
+  }
+
+  function getRightSection () {
+
+  }
+
+  return (
+    <>
+      <NavBar />
+      {getMainBody()}
       <Footer />
     </>
   );

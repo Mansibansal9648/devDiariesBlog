@@ -1,4 +1,4 @@
-import NavBar from '../common/navBar/navBar';
+import NavBar from '../navBar/navBar';
 import './notFound.css';
 
 function NotFound() {

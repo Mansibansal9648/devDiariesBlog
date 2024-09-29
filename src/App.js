@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './components/home/home';
 import MyBlog from './components/myBlog/myBlog';
 import Register from './components/register/register';
-import NotFound from './components/notFound/notFound';
+import NotFound from './components/common/notFound/notFound';
 import LogIn from './components/login/login';
 import PrivateRoute from './components/common/privateRoute/privateRoute';
 import BlogDetailPage from './components/blogDetailPage/blogDetailPage';

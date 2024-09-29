@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export const signUpSchema = Yup.object({
+const signUpSchema = Yup.object({
   username: Yup.string()
     .min(3, 'username must be atleast 3 characters long')
     .max(25, 'username must be atmost 25 characters long')
@@ -40,3 +40,5 @@ export const signUpSchema = Yup.object({
     .required('Please confirm your password')
     .oneOf([Yup.ref('password'), null], 'Password should be same'),
 });
+
+export default signUpSchema;
