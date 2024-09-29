@@ -1,27 +1,27 @@
-import NavBar from "../common/navBar/navBar";
-import Footer from "../common/footer/footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/fontawesome-free-solid";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useFormik } from "formik";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { loginSchema } from "../../Schema/loginSchema";
-import useCustomDispatch from "../../hooks/useCustomDispatch";
-import "./login.css";
-import { useNavigate } from "react-router-dom";
-import { loginUser } from "../common/api/authUser";
-import strings from "../../utils/constant/stringConstant";
-import { useContext } from "react";
-import { AppContext } from "../../contextApi/context";
+import NavBar from '../common/navBar/navBar';
+import Footer from '../common/footer/footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { loginSchema } from '../../Schema/loginSchema';
+import useCustomDispatch from '../../hooks/useCustomDispatch';
+import './login.css';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../common/api/authUser';
+import strings from '../../utils/stringConstant';
+import { useContext } from 'react';
+import { AppContext } from '../../contextApi/context';
 
 function LogIn() {
   const [showpassword, setShowpassword] = useState(false);
   const { dispatch } = useContext(AppContext);
   const initialValues = {
-    username_email: "",
-    password: "",
+    username_email: '',
+    password: '',
   };
 
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function LogIn() {
       //  console.log("error")
       toast.error(resp.data.errMessage);
     } else {
-      toast.error("Something went wrong...");
+      toast.error('Something went wrong...');
     }
     return resp;
   };
@@ -51,7 +51,7 @@ function LogIn() {
     onSubmit: async function (values, action) {
       await loginInfo(values);
 
-      console.log("Values: ", values);
+      console.log('Values: ', values);
       action.resetForm();
     },
   });
@@ -85,8 +85,7 @@ function LogIn() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.username_email &&
-                formik.errors.username_email ? (
+                {formik.touched.username_email && formik.errors.username_email ? (
                   <p className="form-error">{formik.errors.username_email}</p>
                 ) : null}
               </div>
@@ -97,7 +96,7 @@ function LogIn() {
               </label>
               <div className=" position-relative">
                 <input
-                  type={showpassword ? "text" : "password"}
+                  type={showpassword ? 'text' : 'password'}
                   className="border  w-100 p-2 d-flex mb-0"
                   id="password"
                   placeholder="Enter your password"
@@ -117,15 +116,11 @@ function LogIn() {
             </div>
             <div className="mb-3 form-check">
               <div>
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
+                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                 <label className="form-check-label" htmlFor="exampleCheck1">
                   Remember me?
                 </label>
-                <Link to="/forgotpassword" style={{ textDecoration: "none" }}>
+                <Link to="/forgotpassword" style={{ textDecoration: 'none' }}>
                   Forgot password
                 </Link>
               </div>
@@ -135,8 +130,8 @@ function LogIn() {
             </button>
             <div className="para">
               <p>
-                Don't have an account?{" "}
-                <Link to="/register" style={{ textDecoration: "none" }}>
+                Don't have an account?{' '}
+                <Link to="/register" style={{ textDecoration: 'none' }}>
                   Register here
                 </Link>
               </p>

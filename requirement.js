@@ -1,9 +1,6 @@
 const website = {
   pages: {
-    login: {
-
-
-    },
+    login: {},
     logout: {
       home: {
         navBar: {
@@ -16,29 +13,29 @@ const website = {
           signIn: {
             ifClick: {
               redirect: '/login',
-            }
+            },
           },
           getStated: {
             ifClick: {
               redirect: '/register',
-            }
+            },
           }, // reference: https://medium.com/ home page
         },
       },
       carousel: {},
       featuresPost: {
-        title: "featured Posts",
+        title: 'featured Posts',
         posts: [Object],
       },
       aboutSite: {
-        screen: "using iframe, will add video of website"
+        screen: 'using iframe, will add video of website',
       },
       footer: {
         col: '1',
         col: '2',
-        col: '3'
+        col: '3',
         // https://www.techsuperiors.com/
       },
     },
-  }
-}
+  },
+};

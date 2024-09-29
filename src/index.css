@@ -1,8 +1,8 @@
-:root{
-  --navbar-background-color : #7860cc;
-  --navbar-hover-color : #f8c800;
+:root {
+  --navbar-background-color: #7860cc;
+  --navbar-hover-color: #f8c800;
   --primary-text-color: #fffeff;
-  --button-background-color : #13a64b;
+  --button-background-color: #13a64b;
   --background-color: #f2f6fe;
 }
 .navbar_style {

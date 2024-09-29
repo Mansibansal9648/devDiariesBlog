@@ -1,21 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AppProvider } from "./contextApi/context";
-import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './contextApi/context';
+import { ToastContainer } from 'react-toastify';
 
-import Home from "./components/home/home";
-import MyBlog from "./components/myBlog/myBlog";
-import Register from "./components/register/register";
-import "./App.css";
-import NotFound from "./components/notFound/notFound";
-import LogIn from "./components/login/login";
-import PrivateRoute from "./components/common/privateRoute/privateRoute";
-import BlogDetailPage from "./components/blogDetailPage/blogDetailPage";
-import UpdatePassword from "./components/updatePassword/updatePassword";
-import ForgotPassword from "./components/forgotPassword/forgotPassword";
-import BlogPage from "./components/blogsPage/blogPage";
-import UserLayoutPage from "./components/userDashboard/userLayoutPage";
-import NavBar from "./components/common/navBar/navBar";
-import CreatePost from "./components/createPost/createPost";
+import Home from './components/home/home';
+import MyBlog from './components/myBlog/myBlog';
+import Register from './components/register/register';
+import NotFound from './components/notFound/notFound';
+import LogIn from './components/login/login';
+import PrivateRoute from './components/common/privateRoute/privateRoute';
+import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
+import UpdatePassword from './components/updatePassword/updatePassword';
+import ForgotPassword from './components/forgotPassword/forgotPassword';
+import BlogPage from './components/blogsPage/blogPage';
+import UserLayoutPage from './components/userDashboard/userLayoutPage';
+import NavBar from './components/common/navBar/navBar';
+import CreatePost from './components/createPost/createPost';
 
 function App() {
   return (
@@ -34,20 +33,11 @@ function App() {
       />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home />
-            }
-          ></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
 
-          <Route
-            path="/home"
-            element={
-             <Home />
-            }
-          ></Route>
-
+          <Route path="/about" element={<h1>About</h1>}></Route>
+          <Route path="/blogs" element={<h1>Blogs</h1>}></Route>
           <Route
             path="/register"
             element={
@@ -127,10 +117,7 @@ function App() {
               </UserLayoutPage>
             }
           ></Route>
-          <Route
-            path="blogs/:category"
-            element={<BlogPage isLayout={true} />}
-          ></Route>
+          <Route path="blogs/:category" element={<BlogPage isLayout={true} />}></Route>
 
           <Route
             path="/myblog"

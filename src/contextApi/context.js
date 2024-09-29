@@ -1,18 +1,18 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { reducer } from './reducer';
-import strings from '../utils/constant/stringConstant';
+import strings from '../utils/stringConstant';
 
 const AppContext = createContext();
 
 const initialState = {
   user: {
-    id: "",
-    username: "",
-    name:"",
-    email: "",
-    isLogin:false,
-    accessToken:""
-  }
+    id: '',
+    username: '',
+    name: '',
+    email: '',
+    isLogin: false,
+    accessToken: '',
+  },
 };
 
 const AppProvider = ({ children }) => {

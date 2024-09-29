@@ -9,9 +9,9 @@
   width: 25px;
 }
 
-.del_btn:hover{
+.del_btn:hover {
   color: red;
 }
-.edit_btn:hover{
-  color:rgb(24, 149, 53);
+.edit_btn:hover {
+  color: rgb(24, 149, 53);
 }

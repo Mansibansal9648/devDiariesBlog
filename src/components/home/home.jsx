@@ -1,14 +1,17 @@
 // dependencies
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 // components
-import Footer from "../common/footer/footer";
-import NavBar from "../common/navBar/navBar";
+import Footer from '../common/footer/footer';
+import NavBar from '../common/navBar/navBar';
+
+// utils
+import { limitText } from '../../utils/methods';
 
 // files
-import "./home.css";
-import slides from "./slides";
+import './home.css';
+import slides from './slides';
 
 function Home() {
   const location = useLocation();
@@ -22,8 +25,8 @@ function Home() {
 
   // Navigate path to home page
   useEffect(() => {
-    if (location.pathname === "/") {
-      navigate("/home");
+    if (location.pathname === '/') {
+      navigate('/home');
     }
 
     const intervalId = setInterval(() => {
@@ -36,35 +39,31 @@ function Home() {
 
   // featured post method
   function handlePrev() {
-    setPostIndex((prevIndex) => (prevIndex === 0 ? "" : prevIndex - 1));
+    setPostIndex((prevIndex) => (prevIndex === 0 ? '' : prevIndex - 1));
   }
 
   function handleNext() {
-    setPostIndex((prevIndex) =>
-      prevIndex === post.length ? "" : prevIndex + 1
-    );
+    setPostIndex((prevIndex) => (prevIndex === post.length ? '' : prevIndex + 1));
   }
-  const limitText = (text, limit) => {
-    return text.length > limit ? text.substring(0, limit) + "..." : text;
-  };
-  // File Execution to DOM
-  return (
-    <>
-      <NavBar />
-      <div className=" content h-100">
-      {/*---------- Slides-------------------- */}
+
+  function getCarousel() {
+    return (
       <div className="slider-container">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`slide ${index === currentIndex ? "active" : ""}`}
+            className={`slide ${index === currentIndex ? 'active' : ''}`}
             style={{ backgroundColor: slide.backgroundColor }}
           >
             {slide.content}
           </div>
         ))}
       </div>
-      {/* ------------------------------------Featured Post--------------------------------------------------- */}
+    );
+  }
+
+  function getFeaturedPost() {
+    return (
       <section className="featured-posts">
         <h2>Featured Posts</h2>
         <div className="post-container">
@@ -82,7 +81,7 @@ function Home() {
               }}
             >
               {post.map((post) => (
-                <div className="post" key={post.id} style={{ margin: "10px" }}>
+                <div className="post" key={post.id} style={{ margin: '10px' }}>
                   <div className="post-content">
                     <h3>{post.title}</h3>
                     <p
@@ -91,11 +90,7 @@ function Home() {
                       }}
                       className="my-3"
                     />
-                    <Link
-                      to={`/post/blogdetailpage`}
-                      state={post}
-                      className="nav-link d-inline-block mb-2"
-                    >
+                    <Link to={`/post/blogdetailpage`} state={post} className="nav-link d-inline-block mb-2">
                       Read More
                     </Link>
                   </div>
@@ -109,10 +104,17 @@ function Home() {
           </button>
         </div>
       </section>
+    );
+  }
+
+  return (
+    <>
+      <NavBar />
+      <div className=" content h-100">
+        {getCarousel()}
+        {getFeaturedPost()}
       </div>
-      {/* footer */}
-      
-      <Footer/>
+      <Footer />
     </>
   );
 }

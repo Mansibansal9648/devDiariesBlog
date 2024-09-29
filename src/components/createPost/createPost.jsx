@@ -1,35 +1,33 @@
-import {  useEffect, useState } from "react";
-import ReactQuill from "react-quill";
-import "./createPost.css";
-import "react-quill/dist/quill.snow.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleRight } from "@fortawesome/fontawesome-free-solid";
-import {
-  getAllLabels,
-  getLabelByName,
-  createNewLabel,
-} from "../common/api/labelApi";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { createNewPost, updatePost } from "../common/api/postApi";
-import { useAppContext } from "../../contextApi/context";
-import { useLocation, useNavigate } from "react-router-dom"; 
+import { useEffect, useState } from 'react';
+import ReactQuill from 'react-quill';
+import './createPost.css';
+import 'react-quill/dist/quill.snow.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleRight } from '@fortawesome/fontawesome-free-solid';
+import { getAllLabels, getLabelByName, createNewLabel } from '../common/api/labelApi';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { createNewPost, updatePost } from '../common/api/postApi';
+import { useAppContext } from '../../contextApi/context';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function CreatePost() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const postdata = location.state;
   const initialState = () => {
     return {
-      userId: postdata?.userId ?? "",
-      title: postdata?.title ?? "",
-      content: postdata?.content ?? "",
+      userId: postdata?.userId ?? '',
+      title: postdata?.title ?? '',
+      content: postdata?.content ?? '',
       labels: postdata?.labels ?? [],
-      comment_options: postdata?.comment_options??"allow",
+      comment_options: postdata?.comment_options ?? 'allow',
     };
   };
 
-  const {store: {user}} = useAppContext();
+  const {
+    store: { user },
+  } = useAppContext();
 
   const [post, setPost] = useState(initialState);
   const [allLabels, setAllLabels] = useState([]);
@@ -37,19 +35,18 @@ function CreatePost() {
   const [myLabel, setMyLabel] = useState(postdata?.labels ?? []);
   const [searchedLabel, setSearchedLAbel] = useState({ name: undefined });
 
-
   const selectedLabel = (label) => {
     setMyLabel((preVal) => {
       return [...preVal, label.name];
     });
   };
 
-  useEffect(()=>{
-    setPost((preVal)=>{
-      return {...preVal, labels:myLabel}
-    })
-  },[myLabel])
-  
+  useEffect(() => {
+    setPost((preVal) => {
+      return { ...preVal, labels: myLabel };
+    });
+  }, [myLabel]);
+
   const removeSelectedLabel = (label) => {
     const filteredLabel = myLabel.filter((myLab) => {
       return myLab !== label;
@@ -74,12 +71,12 @@ function CreatePost() {
   };
 
   useEffect(() => {
-    if (searchedLabel.name === "") {
+    if (searchedLabel.name === '') {
       getAllLabelData();
-    }else{
+    } else {
       getLabelName();
     }
-  },[searchedLabel]);
+  }, [searchedLabel]);
 
   const onChangeHandler = (value, e) => {
     if (flag) return;
@@ -93,7 +90,6 @@ function CreatePost() {
   const onChangeHandlerLabel = (event) => {
     setSearchedLAbel({ [event.target.name]: event.target.value });
   };
-  
 
   const addNewLabel = async () => {
     const res = await createNewLabel(searchedLabel.name);
@@ -113,98 +109,90 @@ function CreatePost() {
     if (!postdata) {
       await createPost();
       setPost({
-        title: "",
-        content: "",
+        title: '',
+        content: '',
         labels: [],
       });
       setTimeout(() => {
         setFlag(false);
       }, 1000);
-      
-    }else{
-     editPost({...post, postId:postdata._id})
+    } else {
+      editPost({ ...post, postId: postdata._id });
     }
   };
 
   const createPost = async () => {
     let res = await createNewPost(post, user.accessToken);
-    if(res && res.data.responseCode ===401){
-      toast.error(res.data.errMessage)
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
     }
     // else if(res && res.data.responseCode ===403){
     //   toast.error(res.data.errMessage)
     // }
     else if (res && res.data.responseCode === 201) {
       toast.success(res.data.resMessage);
-      navigate(`/userpage/${user.id}`)
+      navigate(`/userpage/${user.id}`);
     } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
     } else {
-      toast.error("Something went wrong! ");
+      toast.error('Something went wrong! ');
     }
   };
 
   const editPost = async (data) => {
     let res = await updatePost(data, user.accessToken);
-    if(res && res.data.responseCode ===401){
-      toast.error(res.data.errMessage)
+    if (res && res.data.responseCode === 401) {
+      toast.error(res.data.errMessage);
     }
     // else if(res && res.data.responseCode ===403){
     //   toast.error(res.data.errMessage)
     // }
-    else if(res.data.responseCode ===200){
-        toast.success(res.data.resMessage)
-     navigate(`/userpage/${user.id}`)
-    }
-    else if (res && res.data.responseCode === 400) {
+    else if (res.data.responseCode === 200) {
+      toast.success(res.data.resMessage);
+      navigate(`/userpage/${user.id}`);
+    } else if (res && res.data.responseCode === 400) {
       toast.error(res.data.errMessage);
-    }
-    else {
-      toast.error("Something went wrong! ");
+    } else {
+      toast.error('Something went wrong! ');
     }
   };
 
   const modules = {
     toolbar: [
-      [{ header: "1" }, { header: "2" }, { font: [] }],
+      [{ header: '1' }, { header: '2' }, { font: [] }],
       [{ size: [] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ color: [] }, { background: [] }],
       [{ align: [] }],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
 
-      ["link", "image", "video"],
-      [{ script: "sub" }, { script: "super" }],
-      ["code-block"],
-      ["clean"],
+      ['link', 'image', 'video'],
+      [{ script: 'sub' }, { script: 'super' }],
+      ['code-block'],
+      ['clean'],
     ],
   };
 
   const formats = [
-    "header",
-    "font",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "size",
-    "list",
-    "bullet",
-    "indent",
-    "script",
-    "link",
-    "image",
-    "video",
-    "align",
-    "color",
-    "background",
-    "code-block",
+    'header',
+    'font',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'size',
+    'list',
+    'bullet',
+    'indent',
+    'script',
+    'link',
+    'image',
+    'video',
+    'align',
+    'color',
+    'background',
+    'code-block',
   ];
   return (
     <div className="quill-container">
@@ -237,15 +225,8 @@ function CreatePost() {
 
         <div className="col-md-2 p-0 border border-1">
           <div className="quillSidebar py-3">
-            <div
-              className="accordion w-100"
-              id="accordionPanelsStayOpenExample"
-            >
-              <button
-                type="button"
-                onClick={publish}
-                className="btn btn-primary editor-btn mb-4 mt-2 ms-4 "
-              >
+            <div className="accordion w-100" id="accordionPanelsStayOpenExample">
+              <button type="button" onClick={publish} className="btn btn-primary editor-btn mb-4 mt-2 ms-4 ">
                 <FontAwesomeIcon icon={faChevronCircleRight} />
                 Publish
               </button>
@@ -280,19 +261,14 @@ function CreatePost() {
                       value={searchedLabel.name}
                     />
                     <div>
-                      <button
-                        className="btn btn-primary mb-3"
-                        onClick={addNewLabel}
-                      >
+                      <button className="btn btn-primary mb-3" onClick={addNewLabel}>
                         Add New Label
                       </button>
                     </div>
                     {myLabel.map((label) => {
                       return (
                         <>
-                          <span className="badge badge-pill badge-secondary bg-secondary mb-2 ms-2">
-                            {label}
-                          </span>
+                          <span className="badge badge-pill badge-secondary bg-secondary mb-2 ms-2">{label}</span>
                           <button
                             type="button"
                             className="btn-close"
@@ -300,7 +276,7 @@ function CreatePost() {
                             onClick={() => {
                               removeSelectedLabel(label);
                             }}
-                            style={{ fontSize: "10px" }}
+                            style={{ fontSize: '10px' }}
                           ></button>
                         </>
                       );
@@ -308,7 +284,7 @@ function CreatePost() {
                     <div
                       className="all_labels"
                       style={{
-                        display: allLabels.length === 0 ? "none" : "block",
+                        display: allLabels.length === 0 ? 'none' : 'block',
                       }}
                     >
                       <ul className="list-group">
@@ -353,10 +329,7 @@ function CreatePost() {
                 </div>
               </div>
               <div className="accordion-item">
-                <h2
-                  className="accordion-header"
-                  id="panelsStayOpen-headingThree"
-                >
+                <h2 className="accordion-header" id="panelsStayOpen-headingThree">
                   <button
                     className="accordion-button collapsed"
                     type="button"
@@ -380,10 +353,12 @@ function CreatePost() {
                         type="radio"
                         name="comment_options"
                         id="allow"
-                        value={"allow"}
+                        value={'allow'}
                         className="me-2"
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="allow"?true:postdata?false:true}
+                        onChange={(e) => {
+                          onChangeHandler('', e);
+                        }}
+                        defaultChecked={postdata?.comment_options === 'allow' ? true : postdata ? false : true}
                       />
 
                       <label htmlFor="allow">Allow</label>
@@ -393,10 +368,12 @@ function CreatePost() {
                         type="radio"
                         name="comment_options"
                         id="show_existing"
-                        value={"show_existing"}
+                        value={'show_existing'}
                         className="me-2"
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="show_existing"?true:false}
+                        onChange={(e) => {
+                          onChangeHandler('', e);
+                        }}
+                        defaultChecked={postdata?.comment_options === 'show_existing' ? true : false}
                       />
                       <label htmlFor="show_existing">Show Existing</label>
                     </div>
@@ -405,9 +382,11 @@ function CreatePost() {
                         type="radio"
                         name="comment_options"
                         id="hide_existing"
-                        value={"hide_existing"}
-                        onChange={(e)=>{onChangeHandler("",e)}}
-                        defaultChecked={postdata?.comment_options==="hide_existing"?true:false}
+                        value={'hide_existing'}
+                        onChange={(e) => {
+                          onChangeHandler('', e);
+                        }}
+                        defaultChecked={postdata?.comment_options === 'hide_existing' ? true : false}
                         className="me-2"
                       />
 

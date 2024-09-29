@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "./blogPage.css";
-import NavBar from "../common/navBar/navBar";
-import Footer from "../common/footer/footer";
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import './blogPage.css';
+import NavBar from '../common/navBar/navBar';
+import Footer from '../common/footer/footer';
 
 export default function BlogPage({ isLayout }) {
-  const { category } = useParams("");
+  const { category } = useParams('');
   const [data, setData] = useState(null);
   const [sideArticle, setSideArticle] = useState(null);
-  
 
   useEffect(() => {
     const url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=5863c9093a5a49d9a09744f99f6cc1c7&page=1&pageSize=8`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        return (
-          console.log(data),
-          setData(data.articles.slice(0, 2)),
-          setSideArticle(data.articles.toSpliced(0, 2))
-        );
+        return console.log(data), setData(data.articles.slice(0, 2)), setSideArticle(data.articles.toSpliced(0, 2));
       });
   }, [category]);
 

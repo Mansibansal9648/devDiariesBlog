@@ -1,12 +1,12 @@
-import React from "react";
-import NavBar from "../common/navBar/navBar";
-import WithSideBar from "./withSideBar";
-import { useState } from "react";
+import React from 'react';
+import NavBar from '../common/navBar/navBar';
+import WithSideBar from './withSideBar';
+import { useState } from 'react';
 
 export default function UserLayoutPage({ children }) {
   const [isFullWidth, setIsFullWidth] = useState(true);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
-  const [postTitle, setPostTitle] = useState(null)
+  const [postTitle, setPostTitle] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarExpanded((prevState) => !prevState);
@@ -21,18 +21,16 @@ export default function UserLayoutPage({ children }) {
     toggleWidth();
   };
 
-  const handleInputTitle =async (event)=> {
-    setPostTitle(event.target.value)
-   }
+  const handleInputTitle = async (event) => {
+    setPostTitle(event.target.value);
+  };
 
   return (
     <>
       <NavBar handleClick={handleClick} handleInputTitle={handleInputTitle} />
       <WithSideBar stateWidth={{ isFullWidth, isSidebarExpanded }}>
         {/* {children} */}
-        {React.Children.map(children, child =>
-        React.cloneElement(child, {postTitle})
-      )}
+        {React.Children.map(children, (child) => React.cloneElement(child, { postTitle }))}
       </WithSideBar>
     </>
   );

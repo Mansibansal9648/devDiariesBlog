@@ -1,8 +1,8 @@
 // Dependencies
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 // Files
-import "./navbar.css";
+import './navbar.css';
 
 function NavBar() {
   return (
@@ -23,25 +23,22 @@ function NavBar() {
           <NavLink
             className={({ isActive }) =>
               isActive
-                ? "text_style active navbar-brand d-none d-lg-block"
-                : "text_style navbar-brand d-none d-lg-block"
+                ? 'text_style active navbar-brand d-none d-lg-block'
+                : 'text_style navbar-brand d-none d-lg-block'
             }
-            to="/"
+            to="/home"
           >
             DevDiaries
           </NavLink>
-          <div
-            className="collapse navbar-collapse justify-content-center"
-            id="navbarText"
-          ></div>
+          <div className="collapse navbar-collapse justify-content-center" id="navbarText"></div>
           <div className="d-flex align-items-center ms-auto d-block">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text_style active mx-2 fs-6 text-decoration-none"
-                  : "text_style mx-2 text-decoration-none fs-6"
+                  ? 'text_style active mx-2 fs-6 text-decoration-none'
+                  : 'text_style mx-2 text-decoration-none fs-6'
               }
-              to="/ourstory"
+              to="/about"
             >
               Our Story
             </NavLink>
@@ -49,8 +46,8 @@ function NavBar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text_style active mx-2 fs-6 text-decoration-none"
-                  : "text_style mx-2 text-decoration-none fs-6"
+                  ? 'text_style active mx-2 fs-6 text-decoration-none'
+                  : 'text_style mx-2 text-decoration-none fs-6'
               }
               to="/blogs"
             >
@@ -59,8 +56,8 @@ function NavBar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "text_style active mx-2 fs-6 text-decoration-none"
-                  : "text_style mx-2 text-decoration-none fs-6"
+                  ? 'text_style active mx-2 fs-6 text-decoration-none'
+                  : 'text_style mx-2 text-decoration-none fs-6'
               }
               to="/login"
             >
@@ -68,11 +65,7 @@ function NavBar() {
             </NavLink>
           </div>
           <div className=" ms-3">
-            <button
-              className="btn button_style fw-semibold "
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-            >
+            <button className="btn button_style fw-semibold " data-bs-toggle="modal" data-bs-target="#exampleModal">
               Get Started
             </button>
           </div>
@@ -88,31 +81,18 @@ function NavBar() {
               <div className="modal-content">
                 <div className="alert alert-primary">
                   <div className="modal-header p-0">
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div className="modal-body fs-5 fw-bold text-center p-2">
                     You are not logged in. Please login to continue!
                   </div>
                 </div>
                 <div className="modal-footer border-top-0 p-0">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                     Close
                   </button>
                   <NavLink to="/register">
-                    <button
-                      type="button"
-                      className="btn btn-primary "
-                      data-bs-dismiss="modal"
-                    >
+                    <button type="button" className="btn btn-primary " data-bs-dismiss="modal">
                       SignUp
                     </button>
                   </NavLink>
