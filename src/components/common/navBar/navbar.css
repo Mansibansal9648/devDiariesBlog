@@ -1,15 +1,11 @@
 .navbar {
-  background-color: #2b2d42;
-  position: fixed;
+  /* position: fixed; */
   margin-bottom: 30px;
   width: 100%;
   z-index: 1;
 }
 
-.button {
-  background-color: white;
-  border: 0px;
-}
+
 
 /**/
 svg {
