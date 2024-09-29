@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { createUser } from '../common/api/authUser';
 import { useState } from 'react';
 import { useFormik } from 'formik';
-import  signUpSchema  from '../../schema/signUpSchema'; 
+import signUpSchema from '../../schema/signUpSchema';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { toast } from 'react-toastify';

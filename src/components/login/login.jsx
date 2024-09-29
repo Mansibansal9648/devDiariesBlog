@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import  loginSchema  from '../../schema/loginSchema';
+import loginSchema from '../../schema/loginSchema';
 import useCustomDispatch from '../../hooks/useCustomDispatch';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
@@ -60,100 +60,95 @@ function LogIn() {
     setShowpassword(!showpassword);
   };
 
-  function getMainBody () {
+  function getMainBody() {
     return (
       <>
-      <div className="container  login-page position-relative z-0">
-        <div className="left">
-          <h1>this is left side with width 60%</h1>
-        </div>
+        <div className="container  login-page position-relative z-0">
+          <div className="left">
+            <h1>this is left side with width 60%</h1>
+          </div>
 
-        <div className="login">
-          <form onSubmit={formik.handleSubmit}>
-            <h1 className="text-center mb-5">Login</h1>
-            <div className="mb-3">
-              <label htmlFor="username_email" className="form-label">
-                Email address or User Name
-              </label>
-              <div>
-                <input
-                  type="text"
-                  className="border d-block w-100 p-2"
-                  id="username_email"
-                  placeholder="Enter your email or username"
-                  value={formik.values.username_email}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                {formik.touched.username_email && formik.errors.username_email ? (
-                  <p className="form-error">{formik.errors.username_email}</p>
+          <div className="login">
+            <form onSubmit={formik.handleSubmit}>
+              <h1 className="text-center mb-5">Login</h1>
+              <div className="mb-3">
+                <label htmlFor="username_email" className="form-label">
+                  Email address or User Name
+                </label>
+                <div>
+                  <input
+                    type="text"
+                    className="border d-block w-100 p-2"
+                    id="username_email"
+                    placeholder="Enter your email or username"
+                    value={formik.values.username_email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  {formik.touched.username_email && formik.errors.username_email ? (
+                    <p className="form-error">{formik.errors.username_email}</p>
+                  ) : null}
+                </div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <div className=" position-relative">
+                  <input
+                    type={showpassword ? 'text' : 'password'}
+                    className="border  w-100 p-2 d-flex mb-0"
+                    id="password"
+                    placeholder="Enter your password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  <FontAwesomeIcon
+                    icon={showpassword ? faEye : faEyeSlash}
+                    className="eye-position"
+                    onClick={togglepasswordVisibility}
+                  />
+                </div>
+                {formik.touched.password && formik.errors.password ? (
+                  <p className="form-error">{formik.errors.password}</p>
                 ) : null}
               </div>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <div className=" position-relative">
-                <input
-                  type={showpassword ? 'text' : 'password'}
-                  className="border  w-100 p-2 d-flex mb-0"
-                  id="password"
-                  placeholder="Enter your password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                <FontAwesomeIcon
-                  icon={showpassword ? faEye : faEyeSlash}
-                  className="eye-position"
-                  onClick={togglepasswordVisibility}
-                />
+              <div className="mb-3 form-check">
+                <div>
+                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                  <label className="form-check-label" htmlFor="exampleCheck1">
+                    Remember me?
+                  </label>
+                  <Link to="/forgotpassword" style={{ textDecoration: 'none' }}>
+                    Forgot password
+                  </Link>
+                </div>
               </div>
-              {formik.touched.password && formik.errors.password ? (
-                <p className="form-error">{formik.errors.password}</p>
-              ) : null}
-            </div>
-            <div className="mb-3 form-check">
-              <div>
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" htmlFor="exampleCheck1">
-                  Remember me?
-                </label>
-                <Link to="/forgotpassword" style={{ textDecoration: 'none' }}>
-                  Forgot password
-                </Link>
+              <button type="submit" className="btn btn-submit">
+                Login
+              </button>
+              <div className="para">
+                <p>
+                  Don't have an account?{' '}
+                  <Link to="/register" style={{ textDecoration: 'none' }}>
+                    Register here
+                  </Link>
+                </p>
               </div>
-            </div>
-            <button type="submit" className="btn btn-submit">
-              Login
-            </button>
-            <div className="para">
-              <p>
-                Don't have an account?{' '}
-                <Link to="/register" style={{ textDecoration: 'none' }}>
-                  Register here
-                </Link>
-              </p>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
 
-      {getLeftSection()}
-      {getRightSection()}
-
+        {getLeftSection()}
+        {getRightSection()}
       </>
-    )
+    );
   }
 
-  function getLeftSection () {
+  function getLeftSection() {}
 
-  }
-
-  function getRightSection () {
-
-  }
+  function getRightSection() {}
 
   return (
     <>
