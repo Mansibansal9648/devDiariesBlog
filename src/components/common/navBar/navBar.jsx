@@ -20,14 +20,7 @@ function NavBar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? 'text_style active navbar-brand d-none d-lg-block'
-                : 'text_style navbar-brand d-none d-lg-block'
-            }
-            to="/home"
-          >
+          <NavLink className="logo_color navbar-brand" to="/home">
             DevDiaries
           </NavLink>
           <div className="collapse navbar-collapse justify-content-center" id="navbarText"></div>
@@ -84,7 +77,7 @@ function NavBar() {
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div className="modal-body fs-5 fw-bold text-center p-2">
-                    You are not logged in. Please login to continue!
+                    New here? Join devDiaries and start sharing your coding journey today! Sign up to continue.
                   </div>
                 </div>
                 <div className="modal-footer border-top-0 p-0">
@@ -92,7 +85,7 @@ function NavBar() {
                     Close
                   </button>
                   <NavLink to="/register">
-                    <button type="button" className="btn btn-primary " data-bs-dismiss="modal">
+                    <button type="button" className="btn button_style " data-bs-dismiss="modal">
                       SignUp
                     </button>
                   </NavLink>

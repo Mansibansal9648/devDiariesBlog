@@ -106,7 +106,6 @@ function Home() {
       </section>
     );
   }
-  
 
   return (
     <>
@@ -114,7 +113,6 @@ function Home() {
       <div className=" content h-100">
         {getCarousel()}
         {getFeaturedPost()}
-
       </div>
       <Footer />
     </>

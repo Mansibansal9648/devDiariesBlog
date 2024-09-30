@@ -87,3 +87,7 @@ input:focus {
 .modal-backdrop.show {
   z-index: 0 !important;
 }
+.modal.fade .modal-dialog {
+  transform: none !important; /* Disable the default Y translation */
+  transition: none !important; /* Disable any transition/animation */
+}

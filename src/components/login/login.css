@@ -1,31 +1,15 @@
 .left {
-  width: 60%;
+  width: 55%;
 }
 .login {
-  width: 45%;
-  border: 1px solid black;
+  width: 32%;
   padding: 45px;
   margin: 55px 0px;
 }
 .login-page {
-  /* margin-top: 60px; */
   padding-top: 60px;
 }
-.btn-submit {
-  width: 100%;
-  display: block;
-  background-color: #2b2d42;
-  color: white;
-}
-.btn-submit:hover {
-  background-color: #33b249;
-  color: white;
-}
-.eye-position {
-  position: absolute;
-  top: 15px;
-  right: 10px;
-}
+
 @media only screen and (min-device-width: 1080px) {
   .login-page {
     display: flex;
@@ -39,8 +23,5 @@
   .left {
     display: block;
     width: 100%;
-  }
-  .form-error {
-    color: red;
   }
 }

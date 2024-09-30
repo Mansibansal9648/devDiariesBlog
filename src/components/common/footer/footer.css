@@ -1,4 +1,4 @@
-.heading {
+/* .heading {
   margin-bottom: 22px;
   color: white;
 }
@@ -18,15 +18,16 @@
   .col-lg-5 {
     padding-right: 200px;
   }
-}
+} */
 /* copy--paste */
 .footer_section {
   /* height: 320px;  */
-
+  position: relative;
+  width: 100%;
   bottom: 0;
   left: 0;
 
-  overflow: hidden; /* Prevents content overflow */
+  /* Prevents content overflow */
 }
 .first-row {
   width: 52%;

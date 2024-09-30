@@ -2,8 +2,11 @@
   --navbar-background-color: #7860cc;
   --navbar-hover-color: #f8c800;
   --primary-text-color: #fffeff;
-  --button-background-color: #13a64b;
+  --button-background-color: #55c360;
   --background-color: #f2f6fe;
+  --heading-secondary-color: #1e4682;
+  --heading-primary-color: #2b3654;
+  --secondary-text-color: white;
 }
 .navbar_style {
   background-color: var(--navbar-background-color);
@@ -14,15 +17,38 @@
 /* .text_style {
   color: var(--navbar-hover-color) !important;
 } */
-
+.logo_color {
+  color: var(--navbar-hover-color);
+}
 .button_style {
   background-color: var(--button-background-color);
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
   border: 1px solid var(--button-background-color);
 }
 .button_style:hover {
   background-color: var(--button-background-color);
-  color: var(--primary-text-color);
+  color: var(--secondary-text-color);
+}
+.heading_style {
+  color: var(--heading-secondary-color);
+}
+.heading_text {
+  color: var(--heading-primary-color);
+}
+.form_style {
+  border-radius: 12px;
+  /* background-color: rgb(228, 246, 251); */
+  background-color: #cfe2ff;
+  box-shadow: 17px 6px 15px #aec8f0;
+}
+/* Register & login form  */
+.eye-position {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.form-error {
+  color: red;
 }
 
 body {
