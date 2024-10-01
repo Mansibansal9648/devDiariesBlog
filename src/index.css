@@ -7,6 +7,7 @@
   --heading-secondary-color: #1e4682;
   --heading-primary-color: #2b3654;
   --secondary-text-color: white;
+  --secondary-background-color: #cfe2ff;
 }
 .navbar_style {
   background-color: var(--navbar-background-color);
@@ -37,8 +38,7 @@
 }
 .form_style {
   border-radius: 12px;
-  /* background-color: rgb(228, 246, 251); */
-  background-color: #cfe2ff;
+  background-color: var(--secondary-background-color);
   box-shadow: 17px 6px 15px #aec8f0;
 }
 /* Register & login form  */

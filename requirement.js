@@ -4,7 +4,7 @@ const website = {
     logout: {
       home: {
         navBar: {
-          logo: 'image/logout.png',
+          logo: 'image/logo.png',
           /*
             gap
           */

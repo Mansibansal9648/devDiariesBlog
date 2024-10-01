@@ -1,12 +1,17 @@
+// Dependencies
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './contextApi/context';
 import { ToastContainer } from 'react-toastify';
 
+// Components
 import Home from './components/home/home';
 import MyBlog from './components/myBlog/myBlog';
 import Register from './components/register/register';
-import NotFound from './components/common/notFound/notFound';
 import LogIn from './components/login/login';
+import ResetPassword from './components/resetPassword/resetPassword';
+import NotFound from './components/common/notFound/notFound';
+
+// ----------------------------------------------------------------
 import PrivateRoute from './components/common/privateRoute/privateRoute';
 import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
 import UpdatePassword from './components/updatePassword/updatePassword';
@@ -38,14 +43,10 @@ function App() {
 
           <Route path="/about" element={<h1>About</h1>}></Route>
           <Route path="/blogs" element={<h1>Blogs</h1>}></Route>
-          <Route
-            path="/register"
-            element={
-              <PrivateRoute>
-                <Register />
-              </PrivateRoute>
-            }
-          ></Route>
+          <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path="/resetPassword" element={<ResetPassword />}></Route>
 
           <Route
             path="/updatepassword"
@@ -57,14 +58,7 @@ function App() {
               </PrivateRoute>
             }
           ></Route>
-          <Route
-            path="/forgotpassword"
-            element={
-              <PrivateRoute>
-                <ForgotPassword />
-              </PrivateRoute>
-            }
-          ></Route>
+
           <Route
             path="/userpage/:userId"
             element={
@@ -136,14 +130,7 @@ function App() {
               </PrivateRoute>
             }
           ></Route>
-          <Route
-            path="/login"
-            element={
-              <PrivateRoute>
-                <LogIn />
-              </PrivateRoute>
-            }
-          ></Route>
+
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>

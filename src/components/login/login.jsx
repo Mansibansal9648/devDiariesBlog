@@ -122,7 +122,7 @@ function LogIn() {
             <label htmlFor="password" className="form-label">
               Password
             </label>
-            <div className=" position-relative">
+            <div className="position-relative">
               <input
                 type={showpassword ? 'text' : 'password'}
                 className={
@@ -153,6 +153,7 @@ function LogIn() {
                 Remember me?
               </label>
               <Link to="/forgotpassword" style={{ textDecoration: 'none' }}>
+                {' '}
                 Forgot password
               </Link>
             </div>
@@ -160,7 +161,7 @@ function LogIn() {
           <button type="submit" className="btn button_style w-100">
             SignIn
           </button>
-          <div className="para">
+          <div className="mt-2 text-center">
             <p>
               Don't have an account?{' '}
               <Link to="/register" style={{ textDecoration: 'none' }}>

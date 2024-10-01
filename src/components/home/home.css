@@ -130,7 +130,7 @@
 }
 
 .codeeditorbr-row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -144,7 +144,7 @@
 }
 
 .vl-howto {
-  border-left: 55px solid #282A35; /* Adjusted thickness */
+  border-left: 55px solid #282a35; /* Adjusted thickness */
   height: 110px;
   position: absolute;
   top: -6px;
@@ -155,11 +155,10 @@
 
 .vl-howtobtn {
   /* width: 100px; */
-  margin-top:153px;
+  margin-top: 153px;
   position: relative;
   z-index: 2; /* Higher than .vl-howto */
 }
-
 
 .w3-padding-16 {
   padding-top: 16px !important;
@@ -172,7 +171,7 @@
 }
 
 .ws-black {
-  background-color: #282A35 !important;
+  background-color: #282a35 !important;
   color: white !important;
 }
 
@@ -184,6 +183,6 @@
   text-decoration: none;
   text-align: center;
   margin-top: 103px;
-  
+
   border-radius: 10px;
 }
