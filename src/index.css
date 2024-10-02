@@ -9,6 +9,7 @@
   --secondary-text-color: white;
   --secondary-background-color: #cfe2ff;
 }
+
 .navbar_style {
   background-color: var(--navbar-background-color);
 }

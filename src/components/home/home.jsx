@@ -13,7 +13,7 @@ import { limitText } from "../../utils/methods";
 // files
 import "./home.css";
 import slides from "./slides";
-import video from './videoplayback.mp4'
+import video from '../../assets/video.mp4'
 
 function Home() {
   const location = useLocation();
