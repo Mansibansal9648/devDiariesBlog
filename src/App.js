@@ -51,85 +51,12 @@ function App() {
           <Route
             path="/updatepassword"
             element={
-              <PrivateRoute>
-                <UserLayoutPage>
-                  <UpdatePassword />
-                </UserLayoutPage>
-              </PrivateRoute>
+
+              <UpdatePassword />
             }
           ></Route>
 
-          <Route
-            path="/userpage/:userId"
-            element={
-              <PrivateRoute>
-                <UserLayoutPage>
-                  <MyBlog />
-                </UserLayoutPage>
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/userpage/:userId/post/blogdetailpage"
-            element={
-              <PrivateRoute>
-                <UserLayoutPage>
-                  <BlogDetailPage />
-                </UserLayoutPage>
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/userpage/post/:userId"
-            element={
-              <PrivateRoute>
-                <div>
-                  <NavBar />
-                  <CreatePost />
-                </div>
-              </PrivateRoute>
-            }
-          ></Route>
 
-          <Route
-            path="/userpage/post/:postId/edit"
-            element={
-              <PrivateRoute>
-                <div>
-                  <NavBar />
-                  <CreatePost />
-                </div>
-              </PrivateRoute>
-            }
-          ></Route>
-
-          <Route
-            path="/userpage/blogs/:category"
-            element={
-              <UserLayoutPage>
-                <BlogPage isLayout={false} />
-              </UserLayoutPage>
-            }
-          ></Route>
-          <Route path="blogs/:category" element={<BlogPage isLayout={true} />}></Route>
-
-          <Route
-            path="/myblog"
-            element={
-              <PrivateRoute>
-                <MyBlog />
-              </PrivateRoute>
-            }
-          ></Route>
-
-          <Route
-            path="/blog/:blogId"
-            element={
-              <PrivateRoute>
-                <BlogDetailPage />
-              </PrivateRoute>
-            }
-          ></Route>
 
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
