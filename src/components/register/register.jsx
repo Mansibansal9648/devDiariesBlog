@@ -1,7 +1,7 @@
 // Dependencies
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUser } from '../common/api/authUser';
+// import { createUser } from '../common/api/authUser';
 import { useFormik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 // components
 import Footer from '../common/footer/footer';
 import NavBar from '../common/navBar/navBar';
-import signUpSchema from '../../schema/signUpSchema';
+// import signUpSchema from '../../schema/signUpSchema';
 import 'react-toastify/dist/ReactToastify.css';
 import './register.css';
 
@@ -25,31 +25,31 @@ function Register() {
     confirmPassword: '',
   };
 
-  const navigate = useNavigate();
-  const newUser = async (form_data) => {
-    console.log(form_data);
-    const res = await createUser(form_data);
-    //  console.log(res.data)
-    if (res && res.data.responseCode === 201) {
-      toast.success(res.data.resMessage);
-      setTimeout(() => {
-        navigate('/login');
-      }, 3000);
-    } else if (res && res.data.responseCode === 400) {
-      // console.log("error")
-      toast.error(res.data.errMessage);
-    } else {
-      toast.error('Something went wrong...');
-    }
-    return res;
-  };
+  // const navigate = useNavigate();
+  // const newUser = async (form_data) => {
+  //   console.log(form_data);
+  //   const res = await createUser(form_data);
+  //   //  console.log(res.data)
+  //   if (res && res.data.responseCode === 201) {
+  //     toast.success(res.data.resMessage);
+  //     setTimeout(() => {
+  //       navigate('/login');
+  //     }, 3000);
+  //   } else if (res && res.data.responseCode === 400) {
+  //     // console.log("error")
+  //     toast.error(res.data.errMessage);
+  //   } else {
+  //     toast.error('Something went wrong...');
+  //   }
+  //   return res;
+  // };
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: signUpSchema,
+    // validationSchema: signUpSchema,
     onSubmit: async function (values, action) {
       // const res = await newUser(values);
-      await newUser(values);
+      // await newUser(values);
       // console.log("res", res);
       // console.log("Values: ", values);
       action.resetForm();

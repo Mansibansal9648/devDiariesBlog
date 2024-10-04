@@ -1,5 +1,5 @@
 // Dependencies
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
@@ -12,45 +12,45 @@ import Footer from '../common/footer/footer';
 import 'react-toastify/dist/ReactToastify.css';
 import loginSchema from '../../schema/loginSchema';
 import './login.css';
-import { loginUser } from '../common/api/authUser';
-import strings from '../../utils/stringConstant';
-import { AppContext } from '../../contextApi/context';
+// import { loginUser } from '../common/api/authUser';
+// import strings from '../../utils/stringConstant';
+// import { AppContext } from '../../contextApi/context';
 
 function LogIn() {
   const [showpassword, setShowpassword] = useState(false);
-  const { dispatch } = useContext(AppContext);
+  // const { dispatch } = useContext(AppContext);
   const initialValues = {
     username_email: '',
     password: '',
   };
 
-  const navigate = useNavigate();
-  const loginInfo = async (user_data) => {
-    const resp = await loginUser(user_data);
-    //  console.log(res.data)
-    if (resp && resp.data.responseCode === 200) {
-      // console.log("error201", resp.data.data)
-      toast.success(resp.data.resMessage);
+  // const navigate = useNavigate();
+  // const loginInfo = async (user_data) => {
+  //   const resp = await loginUser(user_data);
+  //   //  console.log(res.data)
+  //   if (resp && resp.data.responseCode === 200) {
+  //     // console.log("error201", resp.data.data)
+  //     toast.success(resp.data.resMessage);
 
-      dispatch({ type: strings.LOG_IN, payload: resp.data.data });
-      setTimeout(() => {
-        navigate(`/userpage/${resp.data.data.id}`);
-      }, 3000);
-    } else if (resp && resp.data.responseCode === 400) {
-      //  console.log("error")
-      toast.error(resp.data.errMessage);
-    } else {
-      toast.error('Something went wrong...');
-    }
-    return resp;
-  };
+  //     // dispatch({ type: strings.LOG_IN, payload: resp.data.data });
+  //     setTimeout(() => {
+  //       navigate(`/userpage/${resp.data.data.id}`);
+  //     }, 3000);
+  //   } else if (resp && resp.data.responseCode === 400) {
+  //     //  console.log("error")
+  //     toast.error(resp.data.errMessage);
+  //   } else {
+  //     toast.error('Something went wrong...');
+  //   }
+  //   return resp;
+  // };
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: loginSchema,
     onSubmit: async function (values, action) {
-      await loginInfo(values);
-      console.log('Values: ', values);
+      // await loginInfo(values);
+      // console.log('Values: ', values);
       action.resetForm();
     },
   });

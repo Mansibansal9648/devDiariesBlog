@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 // components
 import Footer from "../common/footer/footer";
 import NavBar from "../common/navBar/navBar";
-import catimage from "../../assets/images/catwallpaper.jpg";
 
 // utils
 import { limitText } from "../../utils/methods";
@@ -20,7 +19,6 @@ function Home() {
   const navigate = useNavigate();
 
   // state
-  const [post, setPost] = useState([]);
   const [currentIndex, setcurrentIndex] = useState(0);
   const [postIndex, setPostIndex] = useState(0);
   const postsPerSlide = 4;

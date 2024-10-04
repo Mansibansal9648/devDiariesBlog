@@ -1,11 +1,11 @@
 // Dependencies
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './contextApi/context';
+// import { AppProvider } from './contextApi/context';
 import { ToastContainer } from 'react-toastify';
 
 // Components
 import Home from './components/home/home';
-import MyBlog from './components/myBlog/myBlog';
+// import MyBlog from './components/myBlog/myBlog';
 import Register from './components/register/register';
 import LogIn from './components/login/login';
 import ResetPassword from './components/resetPassword/resetPassword';
@@ -13,17 +13,18 @@ import NotFound from './components/common/notFound/notFound';
 
 // ----------------------------------------------------------------
 import PrivateRoute from './components/common/privateRoute/privateRoute';
-import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
+// import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
 import UpdatePassword from './components/updatePassword/updatePassword';
 import ForgotPassword from './components/forgotPassword/forgotPassword';
-import BlogPage from './components/blogsPage/blogPage';
-import UserLayoutPage from './components/userDashboard/userLayoutPage';
-import NavBar from './components/common/navBar/navBar';
-import CreatePost from './components/createPost/createPost';
+// import BlogPage from './components/blogsPage/blogPage';
+// import UserLayoutPage from './components/userDashboard/userLayoutPage';
+// import NavBar from './components/common/navBar/navBar';
+// import CreatePost from './components/createPost/createPost';
 
 function App() {
   return (
-    <AppProvider>
+    // <AppProvider>
+    <>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -61,7 +62,8 @@ function App() {
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
-    </AppProvider>
+    {/* </AppProvider> */}
+    </>
   );
 }
 
