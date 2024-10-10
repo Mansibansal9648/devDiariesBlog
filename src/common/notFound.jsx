@@ -1,5 +1,4 @@
-import NavBar from '../navBar/navBar';
-import './notFound.css';
+import NavBar from './navBar';
 
 function NotFound() {
   return (

@@ -1,11 +1,11 @@
 // Dependencies
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { forgotSchema } from '../../schema/forgotSchema';
+import forgotpasswordSchema from '../../schema/index';
 
 // Components
-import Footer from '../common/footer/footer';
-import NavBar from '../common/navBar/navBar';
+import Footer from '../../common/footer';
+import NavBar from '../../common/navBar';
 import './forgotPassword.css';
 
 function ForgotPassword() {
@@ -15,7 +15,7 @@ function ForgotPassword() {
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: forgotSchema,
+    validationSchema: forgotpasswordSchema,
     onSubmit: async function (values, action) {
       // await forgotUserPassword(values);
 

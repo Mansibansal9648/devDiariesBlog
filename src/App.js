@@ -4,18 +4,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 // Components
-import Home from './components/home/home';
+import Home from './pages/home/home';
 // import MyBlog from './components/myBlog/myBlog';
-import Register from './components/register/register';
-import LogIn from './components/login/login';
-import ResetPassword from './components/resetPassword/resetPassword';
-import NotFound from './components/common/notFound/notFound';
+import Register from './pages/register/register';
+import LogIn from './pages/login/login';
+import ResetPassword from './pages/resetPassword/resetPassword';
+import NotFound from './common/notFound';
 
 // ----------------------------------------------------------------
-import PrivateRoute from './components/common/privateRoute/privateRoute';
+//import PrivateRoute from './components/common/privateRoute/privateRoute';
 // import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
-import UpdatePassword from './components/updatePassword/updatePassword';
-import ForgotPassword from './components/forgotPassword/forgotPassword';
+import UpdatePassword from './pages/updatePassword/updatePassword';
+import ForgotPassword from './pages/forgotPassword/forgotPassword';
 // import BlogPage from './components/blogsPage/blogPage';
 // import UserLayoutPage from './components/userDashboard/userLayoutPage';
 // import NavBar from './components/common/navBar/navBar';
@@ -49,20 +49,12 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
           <Route path="/resetPassword" element={<ResetPassword />}></Route>
 
-          <Route
-            path="/updatepassword"
-            element={
-
-              <UpdatePassword />
-            }
-          ></Route>
-
-
+          <Route path="/updatepassword" element={<UpdatePassword />}></Route>
 
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
-    {/* </AppProvider> */}
+      {/* </AppProvider> */}
     </>
   );
 }

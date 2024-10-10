@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 
 // Components
-import NavBar from '../common/navBar/navBar';
-import Footer from '../common/footer/footer';
+import NavBar from '../../common/navBar';
+import Footer from '../../common/footer';
 import 'react-toastify/dist/ReactToastify.css';
-import loginSchema from '../../schema/loginSchema';
+import loginSchema from '../../schema/index';
 import './login.css';
 // import { loginUser } from '../common/api/authUser';
 // import strings from '../../utils/stringConstant';

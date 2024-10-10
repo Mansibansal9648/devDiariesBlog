@@ -1,13 +1,13 @@
 // Dependencies
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { ResetSchema } from '../../schema/resetSchema';
+import ResetPasswordSchema from '../../schema/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { useFormik } from 'formik';
 
 // Components
-import NavBar from '../common/navBar/navBar';
+import NavBar from '../../common/navBar';
 import './resetPassword.css';
 
 function ResetPassword() {
@@ -23,7 +23,7 @@ function ResetPassword() {
   const formik = useFormik({
     initialValues: initialValues,
 
-    validationSchema: ResetSchema,
+    validationSchema: ResetPasswordSchema,
     onSubmit: async function (values, action) {
       //  await passInfo(values, token);
       console.log('values', values);

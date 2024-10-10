@@ -8,8 +8,8 @@ import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { toast } from 'react-toastify';
 
 // components
-import Footer from '../common/footer/footer';
-import NavBar from '../common/navBar/navBar';
+import Footer from '../../common/footer';
+import NavBar from '../../common/navBar';
 // import signUpSchema from '../../schema/signUpSchema';
 import 'react-toastify/dist/ReactToastify.css';
 import './register.css';

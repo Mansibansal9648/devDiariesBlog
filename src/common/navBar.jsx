@@ -1,9 +1,6 @@
 // Dependencies
 import { NavLink } from 'react-router-dom';
 
-// Files
-import './navbar.css';
-
 function NavBar() {
   return (
     <>
