@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 // components
 import Footer from '../../common/footer';
 import NavBar from '../../common/navBar';
-// import signUpSchema from '../../schema/signUpSchema';
+import {signUpSchema} from '../../schema/index';
 import 'react-toastify/dist/ReactToastify.css';
 import './register.css';
 
@@ -46,7 +46,7 @@ function Register() {
 
   const formik = useFormik({
     initialValues: initialValues,
-    // validationSchema: signUpSchema,
+     validationSchema: signUpSchema,
     onSubmit: async function (values, action) {
       // const res = await newUser(values);
       // await newUser(values);

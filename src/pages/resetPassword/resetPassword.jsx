@@ -1,7 +1,7 @@
 // Dependencies
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import ResetPasswordSchema from '../../schema/index';
+import {resetPasswordSchema} from '../../schema/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { useFormik } from 'formik';
@@ -23,7 +23,7 @@ function ResetPassword() {
   const formik = useFormik({
     initialValues: initialValues,
 
-    validationSchema: ResetPasswordSchema,
+    validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
       //  await passInfo(values, token);
       console.log('values', values);

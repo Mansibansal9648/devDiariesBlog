@@ -4,9 +4,9 @@ import {
   resetPasswordSchema,
   loginSchema,
   updatePasswordSchema,
-} from './common.js';
+ } from './common.js';
 
-export default {
+export {
   forgotPasswordSchema,
   signUpSchema,
   resetPasswordSchema,

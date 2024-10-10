@@ -10,7 +10,7 @@ import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import NavBar from '../../common/navBar';
 import Footer from '../../common/footer';
 import 'react-toastify/dist/ReactToastify.css';
-import loginSchema from '../../schema/index';
+import {loginSchema} from '../../schema/index';
 import './login.css';
 // import { loginUser } from '../common/api/authUser';
 // import strings from '../../utils/stringConstant';

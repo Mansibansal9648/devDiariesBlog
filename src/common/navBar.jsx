@@ -1,6 +1,7 @@
 // Dependencies
 import { NavLink } from 'react-router-dom';
 
+
 function NavBar() {
   return (
     <>
@@ -82,7 +83,7 @@ function NavBar() {
                     Close
                   </button>
                   <NavLink to="/register">
-                    <button type="button" className="btn button_style " data-bs-dismiss="modal">
+                    <button type="button" className="btn button_style " onClick={() => window.location.href = '/register'} data-bs-dismiss="modal">
                       SignUp
                     </button>
                   </NavLink>
