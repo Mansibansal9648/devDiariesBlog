@@ -99,12 +99,22 @@ input:focus {
   margin: 0;
 }
 
-.modal-backdrop.show {
+ .show {
   z-index: 0 !important;
 }
-.modal.fade .modal-dialog {
+.modal.fade .modal_container {
   transform: none !important; /* Disable the default Y translation */
   transition: none !important; /* Disable any transition/animation */
+} 
+/* Change the page background to blue when modal is shown */
+.modal-open {
+  background-color: blue !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Optional styling for the modal's backdrop */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Darken the background */
 }
 
 /* ------- Navbar End --------- */

@@ -1,8 +1,18 @@
-// Dependencies
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useEffect } from 'react';
 
 function NavBar() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.classList.add('modal-open'); // Add class when modal is open
+    } else {
+      document.body.classList.remove('modal-open'); // Remove class when modal is closed
+    }
+  }, [showModal]);
+
   return (
     <>
       <nav className="navbar navbar_style fixed-top navbar-expand-lg">
@@ -55,42 +65,50 @@ function NavBar() {
               SignIn
             </NavLink>
           </div>
-          <div className=" ms-3">
-            <button className="btn button_style fw-semibold " data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div className="ms-3">
+            <button
+              className="btn button_style fw-semibold"
+              onClick={() => setShowModal(true)} // Show modal on click
+            >
               Get Started
             </button>
           </div>
 
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="alert alert-primary">
-                  <div className="modal-header p-0">
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          {showModal && (
+            <div className="modal fade show d-block" tabIndex="-1" role="dialog">
+              <div className="modal-dialog modal_container modal-dialog-centered" role="document">
+                <div className="modal-content">
+                  <div className="alert alert-primary">
+                    <div className="modal-header p-0">
+                      <button
+                        type="button"
+                        className="btn-close"
+                        onClick={() => setShowModal(false)} // Close modal
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body fs-5 fw-bold text-center p-2">
+                      New here? Join devDiaries and start sharing your coding journey today! Sign up to continue.
+                    </div>
                   </div>
-                  <div className="modal-body fs-5 fw-bold text-center p-2">
-                    New here? Join devDiaries and start sharing your coding journey today! Sign up to continue.
-                  </div>
-                </div>
-                <div className="modal-footer border-top-0 p-0">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <NavLink to="/register">
-                    <button type="button" className="btn button_style " onClick={() => window.location.href = '/register'} data-bs-dismiss="modal">
-                      SignUp
+                  <div className="modal-footer border-top-0 p-0">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => setShowModal(false)} // Close modal
+                    >
+                      Close
                     </button>
-                  </NavLink>
+                    <NavLink to="/register">
+                      <button type="button" className="btn button_style">
+                        SignUp
+                      </button>
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </nav>
     </>
