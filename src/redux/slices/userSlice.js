@@ -18,7 +18,7 @@ const userSlice = createSlice({
             state.id = payload.id
             state.name=payload.name
             state.username=payload.username
-            state.email = payload.emails
+            state.email = payload.email
             state.isLogin = payload.isLogin
             state.accessToken = payload.accessToken
         },
