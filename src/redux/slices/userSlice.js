@@ -1,4 +1,6 @@
+//Dependencies
 import { createSlice } from '@reduxjs/toolkit'
+import strings from '../../utils/stringConstant'
 
 const initialState = {
     id: '',
@@ -11,7 +13,7 @@ const initialState = {
 }
 
 const userSlice = createSlice({
-    name: 'user',
+    name: strings.USER,
     initialState: initialState,
     reducers: {
         login: (state, { payload }) => {

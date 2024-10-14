@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+//Dependencies
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function NavBar() {
+
+  //staes
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {

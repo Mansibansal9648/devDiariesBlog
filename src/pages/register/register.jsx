@@ -1,7 +1,6 @@
 // Dependencies
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { createUser } from '../common/api/authUser';
 import { useFormik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
@@ -10,11 +9,17 @@ import { toast } from 'react-toastify';
 // components
 import Footer from '../../common/footer';
 import NavBar from '../../common/navBar';
+
+//Schemas
 import {signUpSchema} from '../../schema/index';
+
+//files
 import 'react-toastify/dist/ReactToastify.css';
 import './register.css';
 
 function Register() {
+
+  //states
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {

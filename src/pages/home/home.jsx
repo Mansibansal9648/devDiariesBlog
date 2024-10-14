@@ -21,6 +21,7 @@ function Home() {
   // state
   const [currentIndex, setcurrentIndex] = useState(0);
   const [postIndex, setPostIndex] = useState(0);
+  
   const postsPerSlide = 4;
 
   // Navigate path to home page

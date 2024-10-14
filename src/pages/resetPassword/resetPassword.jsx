@@ -8,13 +8,18 @@ import { useFormik } from 'formik';
 
 // Components
 import NavBar from '../../common/navBar';
+
+//files
 import './resetPassword.css';
 
 function ResetPassword() {
+
+  //states
   const [showpassword, setShowpassword] = useState(false);
+
   const location = useLocation();
   const token = location.pathname.split('/')[2];
-  console.log(token);
+
   const initialValues = {
     newPassword: '',
     confirmPassword: '',
@@ -26,7 +31,6 @@ function ResetPassword() {
     validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
       //  await passInfo(values, token);
-      console.log('values', values);
       action.resetForm();
     },
   });

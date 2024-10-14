@@ -6,6 +6,8 @@ import {forgotPasswordSchema} from '../../schema/index';
 // Components
 import Footer from '../../common/footer';
 import NavBar from '../../common/navBar';
+
+//files
 import './forgotPassword.css';
 
 function ForgotPassword() {

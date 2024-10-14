@@ -1,11 +1,13 @@
+//Dependencies
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './slices/userSlice'
+import strings from '../utils/stringConstant';
 
 // Function to save state to local storage
 const saveStateToLocalStorage = (state) => {
     try {
       const serializedState = JSON.stringify(state);
-      localStorage.setItem('store', serializedState);
+      localStorage.setItem(strings.STORE, serializedState);
     } catch (e) {
       console.error("Could not save state", e);
     }
@@ -14,7 +16,7 @@ const saveStateToLocalStorage = (state) => {
   // Function to load state from local storage
   const loadStateFromLocalStorage = () => {
     try {
-      const serializedState = localStorage.getItem('store');
+      const serializedState = localStorage.getItem(strings.STORE);
       if (serializedState === null) return undefined;
       return JSON.parse(serializedState);
     } catch (e) {

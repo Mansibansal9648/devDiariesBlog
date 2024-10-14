@@ -8,20 +8,27 @@ import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 // Components
 import NavBar from '../../common/navBar';
 import Footer from '../../common/footer';
-import 'react-toastify/dist/ReactToastify.css';
+
+//Schemas
 import {loginSchema} from '../../schema/index';
-import './login.css';
+
+//Methods
 import { login } from '../../api/userApi';
 
+//files
+import 'react-toastify/dist/ReactToastify.css';
+import './login.css';
+
 function LogIn() {
+
+  //states
   const [showpassword, setShowpassword] = useState(false);
-  // const { dispatch } = useContext(AppContext);
+
   const initialValues = {
     username_email: '',
     password: '',
   };
 
-  // const navigate = useNavigate();
   const loginInfo = async (user_data) => {
   await login(user_data,true)
   };

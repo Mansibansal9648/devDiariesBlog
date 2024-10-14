@@ -1,3 +1,4 @@
+//methods
 import {
   forgotPasswordSchema,
   signUpSchema,

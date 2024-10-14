@@ -1,5 +1,8 @@
+//Dependencies
 import { toast } from 'react-toastify';
 import store from '../redux/store';
+
+//constants
 import strings from './stringConstant';
 
 export function getNoAuthCallParams(methodType, body) {

@@ -1,8 +1,7 @@
 class StringConstants {
-    LOGIN = 'login';
   
     //others
-    LOCAL_STORAGE_KEY = 'store';
+    STORE = 'store';
     applicationJSON = { 'Content-Type': 'application/json' };
   
     // http methods
@@ -12,7 +11,7 @@ class StringConstants {
   
     // reducer type
   
-    LOG_IN = 'LOG_IN';
+    USER='user'
     
   }
   

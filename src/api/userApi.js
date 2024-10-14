@@ -1,6 +1,9 @@
-import urls from "../utils/urlConstant";
+//methods
 import { getCallParams, getNoAuthCallParams, makeCall } from "../utils/apiUtils";
+
+//constants
 import strings from "../utils/stringConstant";
+import urls from "../utils/urlConstant";
 
 //Login Function
 export async function login(body, isToast = false) {
