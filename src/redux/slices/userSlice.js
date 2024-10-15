@@ -4,7 +4,7 @@ import strings from '../../utils/stringConstant'
 
 const initialState = {
     id: '',
-    name:'',
+     name:'',
     username:'',
     email: '',
     isLogin: false,
@@ -18,7 +18,7 @@ const userSlice = createSlice({
     reducers: {
         login: (state, { payload }) => {
             state.id = payload.id
-            state.name=payload.name
+             state.name=payload.name
             state.username=payload.username
             state.email = payload.email
             state.isLogin = payload.isLogin

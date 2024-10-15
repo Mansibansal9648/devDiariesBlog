@@ -6,11 +6,12 @@ import strings from "../utils/stringConstant";
 import urls from "../utils/urlConstant";
 
 //Login Function
-export async function login(body, isToast = false) {
+export async function logIn(body, isToast = false) {
   try {
     const callParams = getNoAuthCallParams(strings.POST, body);
     const response = await makeCall(urls.login, callParams, isToast);
     return response;
+   
   } catch (error) {
     throw error;
   }

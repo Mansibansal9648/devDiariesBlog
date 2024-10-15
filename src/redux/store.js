@@ -32,7 +32,8 @@ const store = configureStore({
     reducer: {
         user: userSlice,
     },
-    preloadedState:persistedState
+    preloadedState:persistedState,
+    devTools: process.env.NODE_ENV !== 'production',
 })
 
 // Subscribe to store updates
