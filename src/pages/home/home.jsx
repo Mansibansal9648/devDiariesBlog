@@ -36,7 +36,7 @@ function Home() {
 
     // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [slides.length]);
+  }, []);
 
   // featured post method
   function handlePrev() {

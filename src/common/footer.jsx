@@ -106,25 +106,7 @@ function Footer() {
                       </svg>
                     </a>
                     <a href="" rel="noreferrer" target="_blank" class="mx-1 border rounded-circle " title="linkedIn">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-brand-linkedin"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="white"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                        <line x1="8" y1="11" x2="8" y2="16"></line>
-                        <line x1="8" y1="8" x2="8" y2="8.01"></line>
-                        <line x1="12" y1="16" x2="12" y2="11"></line>
-                        <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-                      </svg>
+                      {/* add icon */}
                     </a>
                   </div>
                 </div>
@@ -139,22 +121,7 @@ function Footer() {
                       <h6 class="location-tsc">Head Office - Gurugram</h6>
                       <p class="mt-2 para-margin para-font text-white" role="button">
                         <span class="me-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="footer_iconColor__be1N5"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="11" r="3"></circle>
-                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
-                          </svg>
+                          {/* add icon */}
                         </span>
                         812 P, Sector 47, <span class="para-font footer_socialPin__U4Z5t">Gurugram </span>
                         <p class="para-font ms-4 footer_locationDelhi__X3Gus">Haryana 122018</p>
@@ -189,33 +156,18 @@ function Footer() {
                       <h6 class="location-tsc">Dehradun</h6>
                       <p class="mt-2 para-bottom para-font text-white" role="button">
                         <span class="me-1">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="footer_iconColor__be1N5"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            stroke-width="2"
-                            stroke="currentColor"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="11" r="3"></circle>
-                            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
-                          </svg>
+                          {/* add icon */}
                         </span>
                         308, 3rd Floor, Plot No. 21{' '}
-                        <p class="ms-4 para-font footer_loctionDehradun__8g9dm">Chrysler Tech Centre, IT Park,</p>
-                        <p class="ms-4 para-font footer_loctionDehradun__8g9dm">Sahastradhara Road, Dehradun</p>
-                        <p class="ms-4 para-font footer_loctionDehradun__8g9dm">Uttarakhand - 248013</p>
+                        <p class="ms-4 ">Chrysler Tech Centre, IT Park,</p>
+                        <p class="ms-4 ">Sahastradhara Road, Dehradun</p>
+                        <p class="ms-4 ">Uttarakhand - 248013</p>
                       </p>
                       <h6 class="location-delhi">Delhi</h6>
                       <p class="my-2 para-font text-white" role="button">
                         <span class="me-1">{/* add icon */}</span>
-                        A-21, <span class="para-font footer_socialPin__U4Z5t">Green Park Extension,</span>
-                        <p class="para-font ms-4 footer_locationDelhi__X3Gus">New Delhi- 110016</p>
+                        A-21, <span class="para-font ">Green Park Extension,</span>
+                        <p class="para-font ms-4 ">New Delhi- 110016</p>
                       </p>
                     </div>
                   </div>

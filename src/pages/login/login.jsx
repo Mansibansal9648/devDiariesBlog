@@ -33,7 +33,7 @@ function LogIn() {
 
   const loginInfo = async (user_data) => {
     const response = await logIn(user_data, true); 
-   // console.log("API Response:", response); 
+    console.log("API Response:", response); 
 
     if (response.success) {
       // Dispatch the action to save user data in Redux

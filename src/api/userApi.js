@@ -16,3 +16,16 @@ export async function logIn(body, isToast = false) {
     throw error;
   }
 }
+
+//SignUp Function
+export async function signUp(body, isToast = false) {
+  try {
+    const callParams = getNoAuthCallParams(strings.POST, body);
+    const response = await makeCall(urls.signup, callParams, isToast);
+
+    return response;
+
+  } catch (error) {
+    throw error;
+  }
+}
