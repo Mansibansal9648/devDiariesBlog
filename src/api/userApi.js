@@ -29,3 +29,14 @@ export async function signUp(body, isToast = false) {
     throw error;
   }
 }
+
+//Forgot password Function 
+export async function forgotPassword(body, isToast = false) {
+  try {
+    const callParams = getNoAuthCallParams(strings.POST, body);
+    const response = await makeCall(urls.forgotPassword, callParams, isToast);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}

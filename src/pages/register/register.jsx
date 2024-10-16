@@ -1,6 +1,5 @@
 // Dependencies
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,15 +14,13 @@ import { signUpSchema } from "../../schema/index";
 
 //Methods
 import { signUp } from "../../api/userApi";
-import { login } from "../../redux/slices/userSlice";
 
 //files
 import "react-toastify/dist/ReactToastify.css";
 import "./register.css";
 
 function Register() {
-  //states
-  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -41,16 +38,7 @@ function Register() {
       console.log("Register Data:", response);
       if (response.success) {
         const userdata = response.data;
-        // console.log(userdata);
-        // dispatch(
-        //   login({
-        //     name: response.data.name,
-        //     username: response.data.username,
-        //     email: response.data.email,
-        //     accessToken: response.data.accessToken,
-        //     isLogin: response.data.isLogin,
-        //   })
-        // );
+        
         navigate("/login");
       }
     } catch (error) {

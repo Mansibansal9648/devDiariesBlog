@@ -5,6 +5,7 @@ class UrlConstant {
   
     login = `${this.url_dev}/login`;
     signup = `${this.url_dev}/signup`;
+    forgotPassword = `${this.url_dev}/forgot-password`;
    
   }
   

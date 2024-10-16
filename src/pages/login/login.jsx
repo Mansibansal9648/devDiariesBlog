@@ -46,6 +46,7 @@ function LogIn() {
           isLogin: response.data.isLogin,
         })
       );
+      console.log(response.data);
     } else {
       console.error("Login failed:", response.message); 
     }
