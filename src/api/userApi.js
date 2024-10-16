@@ -1,5 +1,9 @@
 //methods
-import { getCallParams, getNoAuthCallParams, makeCall } from "../utils/apiUtils";
+import {
+  getCallParams,
+  getNoAuthCallParams,
+  makeCall,
+} from "../utils/apiUtils";
 
 //constants
 import strings from "../utils/stringConstant";
@@ -11,7 +15,6 @@ export async function logIn(body, isToast = false) {
     const callParams = getNoAuthCallParams(strings.POST, body);
     const response = await makeCall(urls.login, callParams, isToast);
     return response;
-   
   } catch (error) {
     throw error;
   }
@@ -24,17 +27,27 @@ export async function signUp(body, isToast = false) {
     const response = await makeCall(urls.signup, callParams, isToast);
 
     return response;
-
   } catch (error) {
     throw error;
   }
 }
 
-//Forgot password Function 
+//Forgot password Function
 export async function forgotPassword(body, isToast = false) {
   try {
     const callParams = getNoAuthCallParams(strings.POST, body);
     const response = await makeCall(urls.forgotPassword, callParams, isToast);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//Reset password Function
+export async function resetPassword(body, isToast = false) {
+  try {
+    const callParams = getNoAuthCallParams(strings.POST, body);
+    const response = await makeCall(urls.resetPassword, callParams, isToast);
     return response;
   } catch (error) {
     throw error;

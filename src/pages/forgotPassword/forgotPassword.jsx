@@ -14,14 +14,11 @@ import { forgotPassword } from "../../api/userApi";
 //files
 import "./forgotPassword.css";
 
-
 function ForgotPassword() {
   const [timer, setTimer] = useState(0);
   const initialValues = {
     email: "",
   };
-
-  
 
   // Countdown effect
   useEffect(() => {
@@ -33,22 +30,23 @@ function ForgotPassword() {
     } else if (timer === 0) {
       clearInterval(countdown);
     }
-    return () => clearInterval(countdown); 
+    return () => clearInterval(countdown);
   }, [timer]);
 
   const passwordInfo = async (user_data) => {
     const response = await forgotPassword(user_data, true);
     console.log("Forgot Password Data:", response);
-  }
+  };
+  
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: forgotPasswordSchema,
     onSubmit: async function (values, action) {
-      setTimer(20)
-       await passwordInfo(values);
-     
+      setTimer(20);
+      await passwordInfo(values);
+
       console.log("Values: ", values);
-       action.resetForm();
+      action.resetForm();
     },
   });
 
@@ -78,7 +76,10 @@ function ForgotPassword() {
   function getRightSection() {
     return (
       <div class="col-lg-4 col-sm-12 my-5 px-1">
-        <form className="fpass-form-container border border-muted px-5 py-4 mx-5" onSubmit={formik.handleSubmit}>
+        <form
+          className="fpass-form-container border border-muted px-5 py-4 mx-5"
+          onSubmit={formik.handleSubmit}
+        >
           <i class="fa-solid fa-lock fs-1 mb-5 text-primary text-center lock-icon"></i>
           <h2 className="text-center mb-3" style={{ color: "#1E4682" }}>
             Trouble logging in?
@@ -118,7 +119,6 @@ function ForgotPassword() {
             type="submit"
             className="btn button_style w-100 mt-2"
             disabled={timer > 0}
-            
           >
             Submit
           </button>

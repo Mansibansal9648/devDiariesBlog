@@ -9,6 +9,9 @@ import { useFormik } from 'formik';
 // Components
 import NavBar from '../../common/navBar';
 
+// API
+import { resetPassword } from '../../api/userApi';
+
 //files
 import './resetPassword.css';
 
@@ -18,19 +21,24 @@ function ResetPassword() {
   const [showpassword, setShowpassword] = useState(false);
 
   const location = useLocation();
-  const token = location.pathname.split('/')[2];
+   const token = location.pathname.split('/')[2];
 
   const initialValues = {
     newPassword: '',
     confirmPassword: '',
   };
 
+  const passwordInfo = async (user_data) => {
+    const response = await resetPassword(user_data, true);
+    console.log("Reset Password Data:", response);
+  }
   const formik = useFormik({
     initialValues: initialValues,
 
     validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
-      //  await passInfo(values, token);
+      await passwordInfo(values, token);
+      console.log(values)
       action.resetForm();
     },
   });
