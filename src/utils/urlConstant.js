@@ -7,7 +7,7 @@ class UrlConstant {
   login = `${this.url_dev}/login`;
   signup = `${this.url_dev}/signup`;
   forgotPassword = `${this.url_dev}/forgot-password`;
-  resetPassword = `${this.url_dev}/reset-password?accessToken`;
+  resetPassword = `${this.url_dev}/reset-password`;
 
 }
 

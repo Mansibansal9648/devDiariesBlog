@@ -2,6 +2,7 @@
 import {
   getCallParams,
   getNoAuthCallParams,
+  getQueryParams,
   makeCall,
 } from "../utils/apiUtils";
 
@@ -44,10 +45,11 @@ export async function forgotPassword(body, isToast = false) {
 }
 
 //Reset password Function
-export async function resetPassword(body, isToast = false) {
+export async function resetPassword(body, isToast = false,queryParams={}) {
   try {
     const callParams = getNoAuthCallParams(strings.POST, body);
-    const response = await makeCall(urls.resetPassword, callParams, isToast);
+    const queryURL=getQueryParams(urls.resetPassword,queryParams);
+    const response = await makeCall(queryURL, callParams, isToast);
     return response;
   } catch (error) {
     throw error;

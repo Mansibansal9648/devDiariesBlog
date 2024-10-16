@@ -23,22 +23,25 @@ function ResetPassword() {
   const location = useLocation();
    const token = location.pathname.split('/')[2];
 
+   const queryParams={
+    accessToken:token
+  }
+
   const initialValues = {
     newPassword: '',
     confirmPassword: '',
   };
 
   const passwordInfo = async (user_data) => {
-    const response = await resetPassword(user_data, true);
-    console.log("Reset Password Data:", response);
+    const response = await resetPassword({newPassword:user_data.newPassword}, true,queryParams);
   }
   const formik = useFormik({
     initialValues: initialValues,
 
     validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
-      await passwordInfo(values, token);
-      console.log(values)
+      await passwordInfo(values);
+    
       action.resetForm();
     },
   });

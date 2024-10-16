@@ -90,3 +90,9 @@ export function getTimeoutPromise() {
     setTimeout(() => reject({ error: true, message: 'Timeout Error', success: false }), 5000);
   });
 }
+
+export function getQueryParams(url,queryParams){
+    const queryString = new URLSearchParams(queryParams).toString();
+     const queryURL = `${url}?${queryString}`;
+  return queryURL
+}
