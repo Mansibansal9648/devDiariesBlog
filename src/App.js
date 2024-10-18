@@ -9,17 +9,14 @@ import Home from './pages/home/home';
 import Register from './pages/register/register';
 import LogIn from './pages/login/login';
 import ResetPassword from './pages/resetPassword/resetPassword';
+import UserLayout from './utils/userLayout';
+import MyBlog from './pages/post/component/myBlog';
 import NotFound from './common/notFound';
 
 // ----------------------------------------------------------------
-//import PrivateRoute from './components/common/privateRoute/privateRoute';
-// import BlogDetailPage from './components/blogDetailPage/blogDetailPage';
 import UpdatePassword from './pages/updatePassword/updatePassword';
 import ForgotPassword from './pages/forgotPassword/forgotPassword';
-// import BlogPage from './components/blogsPage/blogPage';
-// import UserLayoutPage from './components/userDashboard/userLayoutPage';
-// import NavBar from './components/common/navBar/navBar';
-// import CreatePost from './components/createPost/createPost';
+
 
 function App() {
   return (
@@ -48,8 +45,8 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
           <Route path="/reset-password/:id" element={<ResetPassword />}></Route>
-
           <Route path="/updatepassword" element={<UpdatePassword />}></Route>
+          <Route path="/userpage/:userId" element={<UserLayout><MyBlog/></UserLayout> }></Route>
 
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>

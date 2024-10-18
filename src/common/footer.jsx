@@ -24,21 +24,7 @@ function Footer() {
                 <div class="row">
                   <div class="my-3 d-flex">
                     <a href="" class="me-1 border rounded-circle " title="facebook" target="_blank">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-brand-facebook"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="white"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
-                      </svg>
+                      {/* add icon */}
                     </a>
                     <a
                       href="https://www.instagram.com/tech_superior_consulting/"
@@ -47,23 +33,7 @@ function Footer() {
                       class="mx-1 border rounded-circle "
                       title="instagram"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-brand-instagram"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="white"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <rect x="4" y="4" width="16" height="16" rx="4"></rect>
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <line x1="16.5" y1="7.5" x2="16.5" y2="7.501"></line>
-                      </svg>
+                     {/* add icon */}
                     </a>
                     <a
                       href="https://www.google.com/search?q=tech+superior+consulting&amp;rlz=1C1IMSH_enIN1044IN1044&amp;sxsrf=APwXEdfYT00Q89dQ8wb23OTXlvSAQ6tLiw%3A1684931940247&amp;ei=ZAVuZO_MDurb4-EPrf2ygAU&amp;ved=0ahUKEwjvjpPO_I3_AhXq7TgGHa2-DFAQ4dUDCA8&amp;uact=5&amp;oq=tech+superior+consulting&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzILCC4QgAQQxwEQrwEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgYIABAWEB4yAggmMhkILhCABBDHARCvARCXBRDcBBDeBBDgBBgBOgQIABBHOgoIABBHENYEELADOgcIIxCKBRAnOgUIJhCLA0oECEEYAFDhB1izCmDIDWgBcAJ4AIABiQKIAbsDkgEFMC4xLjGYAQCgAQHIAQO4AQPAAQHaAQYIARABGBQ&amp;sclient=gws-wiz-serp"
@@ -72,38 +42,10 @@ function Footer() {
                       class="mx-1 border rounded-circle "
                       title="google"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-brand-google"
-                        width="29"
-                        height="29"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="white"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
-                      </svg>
+                      
                     </a>
                     <a href="https://twitter.com" target="_blank" class="mx-2 border rounded-circle " title="twitter">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="tabler-icon tabler-icon-brand-x "
-                      >
-                        <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-                      </svg>
+                      {/* Add icon */}
                     </a>
                     <a href="" rel="noreferrer" target="_blank" class="mx-1 border rounded-circle " title="linkedIn">
                       {/* add icon */}

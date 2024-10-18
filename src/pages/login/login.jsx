@@ -1,6 +1,7 @@
 // Dependencies
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/slices/userSlice";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
@@ -24,7 +25,9 @@ import "./login.css";
 function LogIn() {
   //states
   const dispatch = useDispatch();
+  
   const [showpassword, setShowpassword] = useState(false);
+  const navigate = useNavigate();
 
   const initialValues = {
     username_email: "",
@@ -39,6 +42,7 @@ function LogIn() {
       // Dispatch the action to save user data in Redux
       dispatch(
         login({
+          id : response.data.id,
           name: response.data.name,
           username: response.data.username,
           email: response.data.email,
@@ -46,7 +50,9 @@ function LogIn() {
           isLogin: response.data.isLogin,
         })
       );
-      console.log(response.data);
+   
+      navigate(`/userpage/${response.data.id}`);
+    //  console.log(response.data);
     } else {
       console.error("Login failed:", response.message); 
     }

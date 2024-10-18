@@ -270,6 +270,7 @@ function Register() {
   return (
     <>
       <NavBar />
+      {/* {x ? getLoginUser() : getGuestUSer()} */}
       {getMainBody()}
       <Footer />
     </>
