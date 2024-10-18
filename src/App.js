@@ -1,22 +1,22 @@
 // Dependencies
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { AppProvider } from './contextApi/context';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
 // Components
-import Home from './pages/home/home';
+import Home from "./pages/home/home";
 // import MyBlog from './components/myBlog/myBlog';
-import Register from './pages/register/register';
-import LogIn from './pages/login/login';
-import ResetPassword from './pages/resetPassword/resetPassword';
-import UserLayout from './common/userLayout';
-import MyBlog from './pages/post/component/myBlog';
-import NotFound from './common/notFound';
+import Register from "./pages/register/register";
+import LogIn from "./pages/login/login";
+import ResetPassword from "./pages/resetPassword/resetPassword";
+import UserLayout from "./common/userLayout";
+import MyBlog from "./pages/post/component/myBlog";
+import NotFound from "./common/notFound";
+import PrivateRoute from "./common/privateRoute";
 
 // ----------------------------------------------------------------
-import UpdatePassword from './pages/updatePassword/updatePassword';
-import ForgotPassword from './pages/forgotPassword/forgotPassword';
-
+import UpdatePassword from "./pages/updatePassword/updatePassword";
+import ForgotPassword from "./pages/forgotPassword/forgotPassword";
 
 function App() {
   return (
@@ -44,9 +44,22 @@ function App() {
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
-          <Route path="/reset-password/:id" element={<ResetPassword />}></Route>
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPassword />}
+          ></Route>
           <Route path="/updatepassword" element={<UpdatePassword />}></Route>
-          <Route path="/userpage/:userId" element={<UserLayout><MyBlog/></UserLayout> }></Route>
+
+          <Route
+            path="/userpage/:userId"
+            element={
+              <PrivateRoute>
+                <UserLayout>
+                  <MyBlog />
+                </UserLayout>
+              </PrivateRoute>
+            }
+          ></Route>
 
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>

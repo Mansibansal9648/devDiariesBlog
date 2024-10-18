@@ -1,6 +1,7 @@
 // dependencies
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // components
 import Footer from '../../common/footer';
@@ -24,10 +25,16 @@ function Home() {
   
   const postsPerSlide = 4;
 
+  const user = useSelector((state) => state.user)
+
   // Navigate path to home page
   useEffect(() => {
     if (location.pathname === '/') {
       navigate('/home');
+    } 
+      if(user.isLogin){
+        navigate(`/userpage/${user.id}`)
+
     }
 
     const intervalId = setInterval(() => {

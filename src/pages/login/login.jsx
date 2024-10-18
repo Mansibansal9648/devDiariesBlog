@@ -1,5 +1,5 @@
 // Dependencies
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/slices/userSlice";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/fontawesome-free-solid";
+import { useSelector } from "react-redux";
 
 // Components
 import NavBar from "../../common/navBar";
@@ -33,6 +34,14 @@ function LogIn() {
     username_email: "",
     password: "",
   };
+
+  const user = useSelector((state) => state.user)
+
+  useEffect(()=>{
+    if(user.isLogin){
+      navigate(`/userpage/${user.id}`)
+    } 
+  })
 
   const userLogin = async (user_data) => {
     const response = await logIn(user_data, true); 

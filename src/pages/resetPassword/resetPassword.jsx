@@ -1,10 +1,12 @@
 // Dependencies
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {resetPasswordSchema} from '../../schema/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // Components
 import NavBar from '../../common/navBar';
@@ -21,6 +23,7 @@ function ResetPassword() {
   const [showpassword, setShowpassword] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
    const token = location.pathname.split('/')[2];
 
    const queryParams={
@@ -31,6 +34,14 @@ function ResetPassword() {
     newPassword: '',
     confirmPassword: '',
   };
+
+  const user = useSelector((state) => state.user)
+
+  useEffect(()=>{
+    if(user.isLogin){
+      navigate(`/userpage/${user.id}`)
+    } 
+  })
 
   const resetUserPassword = async (user_data) => {
     await resetPassword({newPassword:user_data.newPassword}, true,queryParams);

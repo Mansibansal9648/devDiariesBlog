@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { forgotPasswordSchema } from "../../schema/index";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import Footer from "../../common/footer";
@@ -19,6 +21,14 @@ function ForgotPassword() {
   const initialValues = {
     email: "",
   };
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user)
+
+  useEffect(()=>{
+    if(user.isLogin){
+      navigate(`/userpage/${user.id}`)
+    } 
+  })
 
   // Countdown effect
   useEffect(() => {

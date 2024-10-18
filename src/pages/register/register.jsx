@@ -1,9 +1,10 @@
 // Dependencies
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/fontawesome-free-solid";
+import { useSelector } from "react-redux";
 
 // components
 import Footer from "../../common/footer";
@@ -23,6 +24,7 @@ function Register() {
   
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const user = useSelector((state) => state.user)
 
   const initialValues = {
     username: "",
@@ -31,6 +33,12 @@ function Register() {
     password: "",
     confirmPassword: "",
   };
+
+  useEffect(()=>{
+    if(user.isLogin){
+      navigate(`/userpage/${user.id}`)
+    } 
+  })
 
   const userSignUp = async (user_data) => {
       const response = await signUp(user_data, true);
