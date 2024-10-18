@@ -13,7 +13,6 @@ import { limitText } from '../../utils/methods';
 // files
 import './home.css';
 import slides from './slides';
-import video from '../../assets/video.mp4';
 
 function Home() {
   const location = useLocation();
@@ -136,7 +135,7 @@ function Home() {
               />
             </div>
           </div>
-          <video width="100%" height="500px" controls src={video}></video>
+          <video width="100%" height="500px" controls src="https://res.cloudinary.com/dxyrkdzvp/video/upload/v1729270151/video_tqzwe3.mp4"></video>
         </div>
 
         <div style={{ position: 'relative' }}>
