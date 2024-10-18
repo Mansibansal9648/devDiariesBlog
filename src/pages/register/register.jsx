@@ -32,28 +32,18 @@ function Register() {
     confirmPassword: "",
   };
 
-  const signUpInfo = async (user_data) => {
-    try {
+  const userSignUp = async (user_data) => {
       const response = await signUp(user_data, true);
-      console.log("Register Data:", response);
       if (response.success) {
-        const userdata = response.data;
-        
         navigate("/login");
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
-    }
   };
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema,
     onSubmit: async function (values, action) {
-      // const res = await signUpInfo(values);
-      await signUpInfo(values);
-      // console.log("res", res);
-      console.log("Values: ", values);
+      await userSignUp(values);
       action.resetForm();
     },
   });

@@ -33,19 +33,16 @@ function ForgotPassword() {
     return () => clearInterval(countdown);
   }, [timer]);
 
-  const passwordInfo = async (user_data) => {
-    const response = await forgotPassword(user_data, true);
-    console.log("Forgot Password Data:", response);
+  const forgotUserPassword = async (user_data) => {
+     await forgotPassword(user_data, true);
   };
   
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: forgotPasswordSchema,
     onSubmit: async function (values, action) {
-      setTimer(20);
-      await passwordInfo(values);
-
-      console.log("Values: ", values);
+      setTimer(60);
+      await forgotUserPassword(values);
       action.resetForm();
     },
   });

@@ -9,7 +9,7 @@ import Home from './pages/home/home';
 import Register from './pages/register/register';
 import LogIn from './pages/login/login';
 import ResetPassword from './pages/resetPassword/resetPassword';
-import UserLayout from './utils/userLayout';
+import UserLayout from './common/userLayout';
 import MyBlog from './pages/post/component/myBlog';
 import NotFound from './common/notFound';
 

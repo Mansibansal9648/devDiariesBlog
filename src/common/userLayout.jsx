@@ -1,4 +1,4 @@
-import NavBar from "../common/navBar"
+import NavBar from "./navBar"
 import React from "react"
 
 export default function UserLayout({children}) {

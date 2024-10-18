@@ -32,15 +32,15 @@ function ResetPassword() {
     confirmPassword: '',
   };
 
-  const passwordInfo = async (user_data) => {
-    const response = await resetPassword({newPassword:user_data.newPassword}, true,queryParams);
+  const resetUserPassword = async (user_data) => {
+    await resetPassword({newPassword:user_data.newPassword}, true,queryParams);
   }
   const formik = useFormik({
     initialValues: initialValues,
 
     validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
-      await passwordInfo(values);
+      await resetUserPassword(values);
     
       action.resetForm();
     },

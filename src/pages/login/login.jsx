@@ -34,9 +34,8 @@ function LogIn() {
     password: "",
   };
 
-  const loginInfo = async (user_data) => {
+  const userLogin = async (user_data) => {
     const response = await logIn(user_data, true); 
-    console.log("API Response:", response); 
 
     if (response.success) {
       // Dispatch the action to save user data in Redux
@@ -52,9 +51,6 @@ function LogIn() {
       );
    
       navigate(`/userpage/${response.data.id}`);
-    //  console.log(response.data);
-    } else {
-      console.error("Login failed:", response.message); 
     }
   };
 
@@ -62,7 +58,7 @@ function LogIn() {
     initialValues: initialValues,
     validationSchema: loginSchema,
     onSubmit: async function (values, action) {
-      await loginInfo(values);
+      await userLogin(values);
       action.resetForm();
     },
   });
