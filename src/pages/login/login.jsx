@@ -47,7 +47,7 @@ function LogIn() {
     const response = await logIn(user_data, true); 
 
     if (response.success) {
-      // Dispatch the action to save user data in Redux
+      
       dispatch(
         login({
           id : response.data.id,
