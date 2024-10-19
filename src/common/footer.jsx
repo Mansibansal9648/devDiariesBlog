@@ -33,7 +33,7 @@ function Footer() {
                       class="mx-1 border rounded-circle "
                       title="instagram"
                     >
-                     {/* add icon */}
+                      {/* add icon */}
                     </a>
                     <a
                       href="https://www.google.com/search?q=tech+superior+consulting&amp;rlz=1C1IMSH_enIN1044IN1044&amp;sxsrf=APwXEdfYT00Q89dQ8wb23OTXlvSAQ6tLiw%3A1684931940247&amp;ei=ZAVuZO_MDurb4-EPrf2ygAU&amp;ved=0ahUKEwjvjpPO_I3_AhXq7TgGHa2-DFAQ4dUDCA8&amp;uact=5&amp;oq=tech+superior+consulting&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzILCC4QgAQQxwEQrwEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgYIABAWEB4yAggmMhkILhCABBDHARCvARCXBRDcBBDeBBDgBBgBOgQIABBHOgoIABBHENYEELADOgcIIxCKBRAnOgUIJhCLA0oECEEYAFDhB1izCmDIDWgBcAJ4AIABiQKIAbsDkgEFMC4xLjGYAQCgAQHIAQO4AQPAAQHaAQYIARABGBQ&amp;sclient=gws-wiz-serp"
@@ -41,9 +41,7 @@ function Footer() {
                       rel="noreferrer"
                       class="mx-1 border rounded-circle "
                       title="google"
-                    >
-                      
-                    </a>
+                    ></a>
                     <a href="https://twitter.com" target="_blank" class="mx-2 border rounded-circle " title="twitter">
                       {/* Add icon */}
                     </a>
@@ -62,9 +60,7 @@ function Footer() {
                     <div class="first-row">
                       <h6 class="location-tsc">Head Office - Gurugram</h6>
                       <p class="mt-2 para-margin para-font text-white" role="button">
-                        <span class="me-1">
-                          {/* add icon */}
-                        </span>
+                        <span class="me-1">{/* add icon */}</span>
                         812 P, Sector 47, <span class="para-font footer_socialPin__U4Z5t">Gurugram </span>
                         <p class="para-font ms-4 footer_locationDelhi__X3Gus">Haryana 122018</p>
                       </p>
@@ -97,11 +93,8 @@ function Footer() {
                     <div class="second-row">
                       <h6 class="location-tsc">Dehradun</h6>
                       <p class="mt-2 para-bottom para-font text-white" role="button">
-                        <span class="me-1">
-                          {/* add icon */}
-                        </span>
-                        308, 3rd Floor, Plot No. 21{' '}
-                        <p class="ms-4 ">Chrysler Tech Centre, IT Park,</p>
+                        <span class="me-1">{/* add icon */}</span>
+                        308, 3rd Floor, Plot No. 21 <p class="ms-4 ">Chrysler Tech Centre, IT Park,</p>
                         <p class="ms-4 ">Sahastradhara Road, Dehradun</p>
                         <p class="ms-4 ">Uttarakhand - 248013</p>
                       </p>

@@ -1,65 +1,62 @@
 // Dependencies
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/fontawesome-free-solid";
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../redux/slices/userSlice";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../../redux/slices/userSlice';
 
 // components
-import Footer from "../../common/footer";
-import NavBar from "../../common/navBar";
+import Footer from '../../common/footer';
+import NavBar from '../../common/navBar';
 
 //Schemas
-import { signUpSchema } from "../../schema/index";
+import { signUpSchema } from '../../schema/index';
 
 //Methods
-import { signUp } from "../../api/userApi";
+import { signUp } from '../../api/userApi';
 
 //files
-import "react-toastify/dist/ReactToastify.css";
-import "./register.css";
+import 'react-toastify/dist/ReactToastify.css';
+import './register.css';
 
 function Register() {
-  
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const initialValues = {
-    username: "",
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    username: '',
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   };
 
-  useEffect(()=>{
-    if(user.isLogin){
-      navigate(`/userpage/${user.id}`)
-    } 
-    
-  })
+  useEffect(() => {
+    if (user.isLogin) {
+      navigate(`/userpage/${user.id}`);
+    }
+  });
 
   const userSignUp = async (user_data) => {
-    
-      const response = await signUp(user_data, true);
-      console.log("register",response);
-      if (response.success) {
-        dispatch(
-          login({
-            id : response.data.id,
-            name: response.data.name,
-            username: response.data.username,
-            email: response.data.email,
-            accessToken: response.data.accessToken,
-            isLogin: response.data.isLogin,
-          })
-        );
-         navigate(`/userpage/${response.data.id}`);
-      }
+    const response = await signUp(user_data, true);
+
+    if (response.success) {
+      dispatch(
+        login({
+          id: response.data.id,
+          name: response.data.name,
+          username: response.data.username,
+          email: response.data.email,
+          accessToken: response.data.accessToken,
+          isLogin: response.data.isLogin,
+        }),
+      );
+      navigate(`/userpage/${response.data.id}`);
+    }
   };
 
   const formik = useFormik({
@@ -94,24 +91,18 @@ function Register() {
         </h2>
         <p className="fs-4">Empower Your Coding Journey!</p>
         <p className="me-5 ms-5 text-muted">
-          We’re thrilled to have you join our growing community of passionate
-          developers, coders, and tech enthusiasts. At DevDiariesBlog, we
-          believe that coding is not just about writing lines of code—it's about
-          learning, growing, and sharing experiences with like-minded
-          individuals.By becoming a part of our community, you’re not just
-          getting access to expert insights and tutorials but also becoming a
-          valued contributor to a collaborative space where knowledge is freely
-          exchanged. Whether you're a seasoned professional or just beginning
-          your journey in development, DevDiariesBlog has something for
-          everyone.
+          We’re thrilled to have you join our growing community of passionate developers, coders, and tech enthusiasts.
+          At DevDiariesBlog, we believe that coding is not just about writing lines of code—it's about learning,
+          growing, and sharing experiences with like-minded individuals.By becoming a part of our community, you’re not
+          just getting access to expert insights and tutorials but also becoming a valued contributor to a collaborative
+          space where knowledge is freely exchanged. Whether you're a seasoned professional or just beginning your
+          journey in development, DevDiariesBlog has something for everyone.
         </p>
         <p className="me-5 ms-5 text-muted ">
-          Explore in-depth articles, engage in thought-provoking discussions,
-          and discover coding tips and tricks tailored to your learning needs.
-          Our mission is to empower you with the tools and knowledge to take
-          your skills to the next level. So, dive in, connect with others, and
-          let’s code, learn, and innovate together. Your development journey
-          starts here—and we’re excited to be part of it with you!
+          Explore in-depth articles, engage in thought-provoking discussions, and discover coding tips and tricks
+          tailored to your learning needs. Our mission is to empower you with the tools and knowledge to take your
+          skills to the next level. So, dive in, connect with others, and let’s code, learn, and innovate together. Your
+          development journey starts here—and we’re excited to be part of it with you!
         </p>
       </div>
     );
@@ -120,10 +111,7 @@ function Register() {
   function getRightSection() {
     return (
       <div className="col">
-        <form
-          className="container register-form form_style"
-          onSubmit={formik.handleSubmit}
-        >
+        <form className="container register-form form_style" onSubmit={formik.handleSubmit}>
           <div className="register">
             <h1 className="text-center mb-4 heading_style">Register</h1>
           </div>
@@ -137,8 +125,8 @@ function Register() {
                 type="text"
                 className={
                   formik.errors.username && formik.touched.username
-                    ? "border border-danger d-block w-100 p-2 mb-0"
-                    : "border d-block w-100 p-2 mb-0"
+                    ? 'border border-danger d-block w-100 p-2 mb-0'
+                    : 'border d-block w-100 p-2 mb-0'
                 }
                 id="username"
                 name="username"
@@ -162,8 +150,8 @@ function Register() {
                 type="text"
                 className={
                   formik.errors.name && formik.touched.name
-                    ? "border border-danger d-block w-100 p-2 mb-0"
-                    : "border d-block w-100 p-2 mb-0"
+                    ? 'border border-danger d-block w-100 p-2 mb-0'
+                    : 'border d-block w-100 p-2 mb-0'
                 }
                 id="name"
                 name="name"
@@ -187,8 +175,8 @@ function Register() {
                 type="email"
                 className={
                   formik.errors.email && formik.touched.email
-                    ? "border border-danger d-block w-100 p-2 mb-0"
-                    : "border d-block w-100 p-2 mb-0"
+                    ? 'border border-danger d-block w-100 p-2 mb-0'
+                    : 'border d-block w-100 p-2 mb-0'
                 }
                 id="email"
                 name="email"
@@ -209,12 +197,12 @@ function Register() {
             </label>
             <div className="position-relative">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 autoComplete="new-password"
                 className={
                   formik.errors.password && formik.touched.password
-                    ? "border border-danger d-block w-100 p-2 mb-0"
-                    : "border d-block w-100 p-2 mb-0"
+                    ? 'border border-danger d-block w-100 p-2 mb-0'
+                    : 'border d-block w-100 p-2 mb-0'
                 }
                 id="password"
                 name="password"
@@ -242,10 +230,9 @@ function Register() {
               <input
                 type="password"
                 className={
-                  formik.errors.confirmPassword &&
-                  formik.touched.confirmPassword
-                    ? "border border-danger d-block w-100 p-2 mb-0"
-                    : "border d-block w-100 p-2 mb-0"
+                  formik.errors.confirmPassword && formik.touched.confirmPassword
+                    ? 'border border-danger d-block w-100 p-2 mb-0'
+                    : 'border d-block w-100 p-2 mb-0'
                 }
                 id="confirmPassword"
                 name="confirmPassword"
@@ -254,11 +241,8 @@ function Register() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              {formik.errors.confirmPassword &&
-              formik.touched.confirmPassword ? (
-                <p className="form-error mt-0">
-                  {formik.errors.confirmPassword}
-                </p>
+              {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+                <p className="form-error mt-0">{formik.errors.confirmPassword}</p>
               ) : null}
             </div>
           </div>
@@ -270,7 +254,7 @@ function Register() {
           <div className="para">
             <p>
               Do you already have an account?
-              <Link to="/login" style={{ textDecoration: "none" }}>
+              <Link to="/login" style={{ textDecoration: 'none' }}>
                 Login Now
               </Link>
             </p>

@@ -1,26 +1,23 @@
 // Dependencies
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { AppProvider } from './contextApi/context';
-import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 // Components
-import Home from "./pages/home/home";
-// import MyBlog from './components/myBlog/myBlog';
-import Register from "./pages/register/register";
-import LogIn from "./pages/login/login";
-import ResetPassword from "./pages/resetPassword/resetPassword";
-import UserLayout from "./common/userLayout";
-import MyBlog from "./pages/post/component/myBlog";
-import NotFound from "./common/notFound";
-import PrivateRoute from "./common/privateRoute";
+import Home from './pages/home/home';
+import Register from './pages/register/register';
+import LogIn from './pages/login/login';
+import ResetPassword from './pages/resetPassword/resetPassword';
+import UserLayout from './common/userLayout';
+import MyBlog from './pages/post/component/myBlog';
+import NotFound from './common/notFound';
+import PrivateRoute from './common/privateRoute';
 
 // ----------------------------------------------------------------
-import UpdatePassword from "./pages/updatePassword/updatePassword";
-import ForgotPassword from "./pages/forgotPassword/forgotPassword";
+import UpdatePassword from './pages/updatePassword/updatePassword';
+import ForgotPassword from './pages/forgotPassword/forgotPassword';
 
 function App() {
   return (
-    // <AppProvider>
     <>
       <ToastContainer
         position="top-right"
@@ -44,10 +41,7 @@ function App() {
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
-          <Route
-            path="/reset-password/:token"
-            element={<ResetPassword />}
-          ></Route>
+          <Route path="/reset-password/:token" element={<ResetPassword />}></Route>
           <Route path="/updatepassword" element={<UpdatePassword />}></Route>
 
           <Route
@@ -64,7 +58,6 @@ function App() {
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
-      {/* </AppProvider> */}
     </>
   );
 }

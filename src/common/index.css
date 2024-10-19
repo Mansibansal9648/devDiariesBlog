@@ -99,13 +99,13 @@ input:focus {
   margin: 0;
 }
 
- .show {
+.show {
   z-index: 0 !important;
 }
 .modal.fade .modal_container {
   transform: none !important; /* Disable the default Y translation */
   transition: none !important; /* Disable any transition/animation */
-} 
+}
 /* Change the page background to blue when modal is shown */
 .modal-open {
   background-color: blue !important;

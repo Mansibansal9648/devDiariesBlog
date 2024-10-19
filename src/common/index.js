@@ -7,9 +7,4 @@ import PrivateRoute from './privateRoute.jsx';
 //files
 import './index.css';
 
-export {
-  Footer,
-  NavBar,
-  NotFound,
-  PrivateRoute,
-};
+export { Footer, NavBar, NotFound, PrivateRoute };

@@ -35,12 +35,12 @@ export function getHeaderObject(accessToken, contentType) {
 }
 
 // getNoAuthCallParams private api call
-export const getCallParams =(methodType, body) => {
+export const getCallParams = (methodType, body) => {
   // const store = JSON.parse(localStorage.getItem('store'));
   const accessToken = store.getState().user.accessToken;
   const params = {
     method: methodType,
-    headers:  getHeaderObject(accessToken, strings.applicationJSON),
+    headers: getHeaderObject(accessToken, strings.applicationJSON),
   };
 
   switch (methodType) {
@@ -79,7 +79,6 @@ export async function makeCall(callName, callParams, isToast) {
 
     return json;
   } catch (error) {
-    
     toast.error(error.message);
     return null;
   }
@@ -91,8 +90,8 @@ export function getTimeoutPromise() {
   });
 }
 
-export function getQueryParams(url,queryParams){
-    const queryString = new URLSearchParams(queryParams).toString();
-     const queryURL = `${url}?${queryString}`;
-  return queryURL
+export function getQueryParams(url, queryParams) {
+  const queryString = new URLSearchParams(queryParams).toString();
+  const queryURL = `${url}?${queryString}`;
+  return queryURL;
 }

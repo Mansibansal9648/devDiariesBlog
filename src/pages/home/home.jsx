@@ -21,19 +21,18 @@ function Home() {
   // state
   const [currentIndex, setcurrentIndex] = useState(0);
   const [postIndex, setPostIndex] = useState(0);
-  
+
   const postsPerSlide = 4;
 
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
   // Navigate path to home page
   useEffect(() => {
     if (location.pathname === '/') {
       navigate('/home');
-    } 
-      if(user.isLogin){
-        navigate(`/userpage/${user.id}`)
-
+    }
+    if (user.isLogin) {
+      navigate(`/userpage/${user.id}`);
     }
 
     const intervalId = setInterval(() => {
@@ -135,7 +134,12 @@ function Home() {
               />
             </div>
           </div>
-          <video width="100%" height="500px" controls src="https://res.cloudinary.com/dxyrkdzvp/video/upload/v1729270151/video_tqzwe3.mp4"></video>
+          <video
+            width="100%"
+            height="500px"
+            controls
+            src="https://res.cloudinary.com/dxyrkdzvp/video/upload/v1729270151/video_tqzwe3.mp4"
+          ></video>
         </div>
 
         <div style={{ position: 'relative' }}>

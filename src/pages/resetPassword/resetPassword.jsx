@@ -1,7 +1,7 @@
 // Dependencies
 import { Link, useLocation } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-import {resetPasswordSchema} from '../../schema/index';
+import { useState, useEffect } from 'react';
+import { resetPasswordSchema } from '../../schema/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid';
 import { useFormik } from 'formik';
@@ -18,41 +18,40 @@ import { resetPassword } from '../../api/userApi';
 import './resetPassword.css';
 
 function ResetPassword() {
-
   //states
   const [showpassword, setShowpassword] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
-   const token = location.pathname.split('/')[2];
+  const token = location.pathname.split('/')[2];
 
-   const queryParams={
-    accessToken:token
-  }
+  const queryParams = {
+    accessToken: token,
+  };
 
   const initialValues = {
     newPassword: '',
     confirmPassword: '',
   };
 
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
-  useEffect(()=>{
-    if(user.isLogin){
-      navigate(`/userpage/${user.id}`)
-    } 
-  })
+  useEffect(() => {
+    if (user.isLogin) {
+      navigate(`/userpage/${user.id}`);
+    }
+  });
 
   const resetUserPassword = async (user_data) => {
-    await resetPassword({newPassword:user_data.newPassword}, true,queryParams);
-  }
+    await resetPassword({ newPassword: user_data.newPassword }, true, queryParams);
+  };
   const formik = useFormik({
     initialValues: initialValues,
 
     validationSchema: resetPasswordSchema,
     onSubmit: async function (values, action) {
       await resetUserPassword(values);
-    
+
       action.resetForm();
     },
   });
